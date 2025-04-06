@@ -1,94 +1,117 @@
-# 🚀 Project Name: Prototype
-
----
+# 🚀 Prototype
 
 ## 📁 Project Structure
 
 ```
-project/
-│
-├── app.py                  # Main application code
-├── templates/              # HTML files
-├── static/                 # CSS, JS, images
-├── requirements.txt        # Python dependencies
-├── README.md               # This file
+prototype/
+├── app.py              # Main application code
+├── templates/          # HTML templates
+├── static/             # CSS, JS, images
+├── requirements.txt    # Python dependencies
+└── README.md           # Project documentation
 ```
+
 ---
 
 ## 🔧 Prerequisites
 
-- Python 3.10
-- Git
-- Code editor (e.g., VS Code)
+- [Python 3.10+](https://www.python.org/downloads/)
+- [Git](https://git-scm.com/)
+- A code editor (e.g., [VS Code](https://code.visualstudio.com/))
 
 ---
 
 ## 🛠️ Setup Instructions
 
-### 🔹 1. Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/anish-107/prototype.git
 cd prototype
 ```
 
-### 🔹 2. Create and Activate a Virtual Environment
+> Note : Consider forking the repository first if you plan to contribute.
 
+---
+
+### 2️⃣ Create & Activate a Virtual Environment
+
+**Windows:**
 ```bash
-# For Windows
 python -m venv venv
 venv\Scripts\activate
+```
 
-# For macOS/Linux
+**macOS/Linux:**
+```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 🔹 3. Install Dependencies
+---
+
+### 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 🔹 4. Run the App Locally
+---
+
+### 4️⃣ Run the Application Locally
 
 ```bash
-
 python app.py
-
 ```
 
-Then open your browser and go to:  
-[http://localhost:5000](http://localhost:5000)
+Visit the app at: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🤝 Contributing
+## 🤝 How to Contribute
 
-1. Create a new branch:  
-   `git checkout -b feature-name`
-2. Make changes and commit:  
-   `git commit -m "Add feature"`
-3. Push your branch:  
-   `git push origin feature-name`
-4. Create a pull request on GitHub.
+Contributions are welcome! Here's how to get started:
+
+1. **Fork** the repository
+2. **Clone** your fork locally
+3. **Create a new branch** for your feature or fix  
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+4. **Make your changes**, then **commit** them  
+   ```bash
+   git add .
+   git commit -m "Add: your description here"
+   ```
+5. **Push** your branch to your fork  
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. **Open a Pull Request** on GitHub from your forked repo
 
 ---
 
-## 📦 How to Update `requirements.txt`
+## 🔄 Syncing with the Original Repo
 
-After installing or upgrading packages locally:
+To keep your fork up to date:
+
+```bash
+git remote add upstream https://github.com/anish-107/prototype.git
+git fetch upstream
+git checkout master
+git merge upstream/master
+git push origin master
+```
+
+---
+
+## 📦 Updating `requirements.txt`
+
+If you add or update Python packages:
 
 ```bash
 pip freeze > requirements.txt
-```
-
-Then commit and push:
-
-```bash
 git add requirements.txt
 git commit -m "Update dependencies"
 git push
 ```
-
----
