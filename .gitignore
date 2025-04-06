@@ -1,0 +1,15 @@
+# 🐍 Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# 🚫 Virtual Environment
+venv/
+
+# 🗃️ Environment Variables
+.env
+
+# 🌐 VSCode/IDE
+.vscode/
+*.code-workspace
+.idea/
