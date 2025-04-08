@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!--For Social media icons-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- Header with navigation -->
     <header class="site-header">
         <div class="overlay"></div>
         <div class="nav-container">
             <div class="logo">Dr. Ranjeet Kumar Rout</div>
-            <nav class="navbar">
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <nav class="navbar" id="navbar">
                 <ul>
                     <li><a href="#" class="active">Home</a></li>
                     <li><a href="#">Research</a></li>
@@ -28,11 +29,13 @@
         </div>
     </header>
 
+    <!-- Main content -->
     <main>
         <h1>Welcome to Dr. Ranjeet Kumar Rout's Website</h1>
-        <p>This is a basic single-page version of the homepage.</p>
+        <p>A paragraph</p>
     </main>
 
+    <!-- Footer with social media links -->
     <footer>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -42,6 +45,13 @@
         </div>
         <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
