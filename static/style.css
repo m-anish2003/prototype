@@ -187,15 +187,12 @@ footer {
     }
 }
 
-/* ===== NEWS SECTION ===== */
+/* =======================
+   News & Updates Section
+======================= */
 .news-updates {
     padding: 40px 20px;
     background: #f8f9fa;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .news-swiper {
@@ -226,7 +223,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Read More Functionality */
 .news-excerpt {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -247,7 +243,6 @@ footer {
     margin-top: 10px;
 }
 
-/* Announcements */
 .announcements {
     background: white;
     padding: 25px;
@@ -256,11 +251,12 @@ footer {
     border-top: 3px solid #1a73e8;
 }
 
-/* Mobile Responsiveness */
+/* Responsive tweaks for News section */
 @media (max-width: 768px) {
     .news-swiper {
         padding: 20px 0;
     }
+
     .swiper-button-next, 
     .swiper-button-prev {
         display: none;
