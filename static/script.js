@@ -8,13 +8,12 @@ function toggleMenu() {
 
 
 /* ===========================
-   Carousel Logic
+   Hero Carousel Logic
 =========================== */
 let currentSlide = 0;
 const slides = document.querySelectorAll(".carousel-image");
 const dots = document.querySelectorAll(".dot");
 
-// Show the slide at the specified index
 function showSlide(index) {
     slides.forEach((slide, i) => {
         slide.classList.toggle("active", i === index);
@@ -23,24 +22,54 @@ function showSlide(index) {
     currentSlide = index;
 }
 
-// Show next slide (loops back to first)
 function nextSlide() {
     let next = (currentSlide + 1) % slides.length;
     showSlide(next);
 }
 
-// Show previous slide (loops to last if at start)
 function prevSlide() {
     let prev = (currentSlide - 1 + slides.length) % slides.length;
     showSlide(prev);
 }
 
-// Set slide manually (used by dots)
 function setSlide(index) {
     showSlide(index);
 }
 
-// ===========================
-// Auto-play every 4 seconds
-// ===========================
-setInterval(nextSlide, 4000);
+setInterval(nextSlide, 4000); // Auto-play every 4 seconds
+
+
+/* ===========================
+   DOM Content Loaded: News Swiper + Expandable Cards
+=========================== */
+document.addEventListener('DOMContentLoaded', function () {
+    // News Slider using Swiper
+    if (document.querySelector('.news-swiper')) {
+        new Swiper('.news-swiper', {
+            loop: true,
+            autoplay: { delay: 5000 },
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: { el: '.swiper-pagination' },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            breakpoints: {
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+    }
+
+    // Expandable Read More / Read Less
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('read-more')) {
+            const excerpt = e.target.closest('.news-content').querySelector('.news-excerpt');
+            excerpt.classList.toggle('expanded');
+            e.target.textContent = excerpt.classList.contains('expanded')
+                ? 'Read Less'
+                : 'Read More';
+        }
+    });
+});
