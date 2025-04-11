@@ -34,20 +34,20 @@ def news():
             "date": "June 15, 2023",
             "title": "New Research Published",
             "excerpt": "Our quantum computing paper accepted in Nature...",
-            "full_text": "Detailed findings show breakthrough in..."
+            "full_text": "Detailed findings show breakthrough in quantum entanglement simulation using novel qubit architecture."
         }
-        # Add more items
     ]
-    
+
     announcements = [
         "Paper submission deadline: July 30",
         "New lab equipment arrived"
     ]
-    
+
+
     return render_template('news.html', 
-                         news_items=news_items,
-                         announcements=announcements,
-                         active_page='news')  # For active nav highlighting
+                           news_items=news_items,
+                           announcements=announcements,
+                           active_page='news')
 
 if __name__ == '__main__':
     app.run(debug=True)
