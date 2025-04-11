@@ -1,0 +1,135 @@
+/* =======================
+   Carousel Section Layout
+======================= */
+.carousel-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #f7f7f7;
+    gap: 30px;
+}
+
+/* =======================
+   Carousel Container Styling
+======================= */
+.carousel-container {
+    position: relative;
+    width: 800px;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* =======================
+   Carousel Images
+======================= */
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.carousel-image.active {
+    display: block;
+}
+
+/* =======================
+   Navigation Buttons
+======================= */
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+
+/* =======================
+   Carousel Dots
+======================= */
+.carousel-dots {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #333;
+}
+
+
+/* =======================
+   Carousel Text Section
+======================= */
+.carousel-text {
+    text-align: center;
+    max-width: 700px;
+}
+
+.carousel-text h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.carousel-text p {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+
+/* =======================
+   Responsive Styles
+======================= */
+@media (max-width: 768px) {
+    .intro-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intro-text {
+        text-align: center;
+    }
+
+    .carousel-container {
+        width: 100%;
+        height: 250px; /* Scales image height for mobile */
+    }
+}
