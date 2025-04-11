@@ -26,5 +26,28 @@ def people():
 def contact():
     return render_template("contact.html", active_page='contact')
 
+@app.route('/news')
+def news():
+    news_items = [
+        {
+            "image": "news1.jpg",
+            "date": "June 15, 2023",
+            "title": "New Research Published",
+            "excerpt": "Our quantum computing paper accepted in Nature...",
+            "full_text": "Detailed findings show breakthrough in..."
+        }
+        # Add more items
+    ]
+    
+    announcements = [
+        "Paper submission deadline: July 30",
+        "New lab equipment arrived"
+    ]
+    
+    return render_template('news.html', 
+                         news_items=news_items,
+                         announcements=announcements,
+                         active_page='news')  # For active nav highlighting
+
 if __name__ == '__main__':
     app.run(debug=True)
