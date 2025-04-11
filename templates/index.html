@@ -5,12 +5,15 @@
     <title>Dr. Ranjeet Kumar Rout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='carousel.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header with navigation -->
+    <!-- Site header with logo and nav menu -->
     <header class="site-header">
         <div class="overlay"></div>
         <div class="nav-container">
@@ -18,6 +21,7 @@
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             <nav class="navbar" id="navbar">
                 <ul>
+                    <!-- Active page gets a class for styling -->
                     <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
                     <li><a href="{{ url_for('research') }}" class="{{ 'active' if active_page == 'research' else '' }}">Research</a></li>
                     <li><a href="{{ url_for('projects') }}" class="{{ 'active' if active_page == 'projects' else '' }}">Projects</a></li>
@@ -29,13 +33,73 @@
         </div>
     </header>
 
-    <!-- Main content -->
+    <!-- Main content section -->
     <main>
-        <h1>Welcome to Dr. Ranjeet Kumar Rout's Website</h1>
-        <p>A paragraph</p>
-    </main>
 
-    <!-- Footer with social media links -->
+        <!-- Intro section with profile image and details -->
+        <section class="intro-section">
+            <div class="intro-image">
+                <img src="{{ url_for('static', filename='images/teacher.jpg') }}" alt="Dr. Ranjeet Kumar Rout">
+            </div>
+            <div class="intro-text">
+                <h1 class="prof-name">Dr. Ranjeet Kumar Rout</h1>
+                <p class="designation-text">
+                    Assistant Professor, Department of Computer Science and Engineering, National Institute of Technology Srinagar,<br>
+                    Hazratbal-190006, J&K, India.
+                </p>
+                <p class="research-interest-text">
+                    <strong>Research Interest:</strong>
+                    <em>Artificial Intelligence, Machine Learning, Biometric, Computational Biology (Biological Data Analytics),</em>
+                    and <strong>Cyber-Physical Systems</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- Welcome message section -->
+        <section class="welcome-note">
+            <span class="welcome-heading">Message from professor</span>
+            <p class="welcome-body">
+                Welcome to the professional website of Dr. Ranjeet Kumar Rout.
+                As an Assistant Professor in the Department of Computer Science and Engineering at the National Institute of Technology Srinagar, I am committed to advancing research and education in the domains of Artificial Intelligence, Machine Learning, Biometric Systems, and Cyber-Physical Systems.
+
+                This platform serves as a gateway to my academic contributions, ongoing research initiatives, and professional engagements. It is also intended to support students, researchers, and collaborators in exploring opportunities for learning and innovation.
+            </p>
+        </section>
+    
+        <!-- Image slider + research group intro -->
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Slides -->
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="carousel-image active" alt="Slide 1">
+                    <img src="{{ url_for('static', filename='images/slide2.jpg') }}" class="carousel-image" alt="Slide 2">
+                    <img src="{{ url_for('static', filename='images/slide3.jpg') }}" class="carousel-image" alt="Slide 3">
+
+                    <!-- Navigation arrows -->
+                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                </div>
+
+                <!-- Dots to switch between slides -->
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="setSlide(0)"></span>
+                    <span class="dot" onclick="setSlide(1)"></span>
+                    <span class="dot" onclick="setSlide(2)"></span>
+                </div>
+            </div>
+
+            <!-- Text alongside carousel -->
+            <div class="carousel-text">
+                <h2 class="carousel-heading">Our Research Group</h2>
+                <p class="carousel-para">
+                    We are a dynamic research group at the intersection of Artificial Intelligence, Cyber-Physical Systems, and Biometric Analytics. 
+                    Our mission is to develop innovative, real-world solutions through interdisciplinary collaboration and cutting-edge technologies.
+                </p>
+            </div>
+        </section>
+    </main>    
+
+    <!-- Footer with social links and copyright -->
     <footer>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -46,6 +110,7 @@
         <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
     </footer>
 
+    <!-- Scripts -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
