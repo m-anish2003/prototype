@@ -1,0 +1,65 @@
+{% extends "index.html" %}  <!-- Assuming you have base.html, otherwise use the provided header/footer -->
+
+{% block head %}
+    {{ super() }}
+    <!-- Add Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <!-- News-specific CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <!-- News Section -->
+    <section class="news-updates">
+        <div class="container">
+            <h1>News & Updates</h1>
+            
+            <!-- Swiper Container -->
+            <div class="swiper news-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slides will be populated from backend -->
+                    {% for item in news_items %}
+                    <div class="swiper-slide">
+                        <div class="news-card">
+                            <img src="{{ url_for('static', filename='images/news/' + item.image) }}" class="news-image">
+                            <div class="news-content">
+                                <div class="news-date">{{ item.date }}</div>
+                                <h3>{{ item.title }}</h3>
+                                <p class="news-excerpt">
+                                    {{ item.excerpt }}
+                                    <span class="full-text">{{ item.full_text }}</span>
+                                </p>
+                                <div class="read-more">Read More</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Navigation -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            
+            <!-- Announcements -->
+            <div class="announcements">
+                <h2>Important Announcements</h2>
+                <ul>
+                    {% for announcement in announcements %}
+                    <li>{{ announcement }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- News-specific JS -->
+    <script src="{{ url_for('static', filename='static/script.js') }}"></script>
+{% endblock %}
