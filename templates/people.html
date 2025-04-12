@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='carousel.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -21,19 +24,34 @@
                     <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
                     <li><a href="{{ url_for('research') }}" class="{{ 'active' if active_page == 'research' else '' }}">Research</a></li>
                     <li><a href="{{ url_for('projects') }}" class="{{ 'active' if active_page == 'projects' else '' }}">Projects</a></li>
+                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li>  
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
                     <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
                     <li><a href="{{ url_for('contact') }}" class="{{ 'active' if active_page == 'contact' else '' }}">Contact</a></li>
-                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li>  
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Main content -->
-    <main>
-        <h1>This is the people page</h1>
-        <p>A paragraph</p>
+    <main class="people-container">
+        <h1>Our Team</h1>
+        <div class="people-grid">
+            {% for person in people %}
+            <div class="person-card">
+                <img src="{{ url_for('static', filename='images/' + person.image) }}" alt="{{ person.name }}">
+                <h2>{{ person.name }}</h2>
+                <h3>{{ person.title }}</h3>
+                <p class="degree">{{ person.degree }}: {{ person.institution }}</p>
+
+                <ul>
+                    {% for interest in person.interests %}
+                    <li>{{ interest }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
     </main>
 
     <!-- Footer with social media links -->
