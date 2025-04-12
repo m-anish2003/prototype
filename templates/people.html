@@ -39,7 +39,7 @@
         <div class="people-grid">
             {% for person in people %}
             <div class="person-card">
-                <img src="{{ url_for('static', filename='images/' + person.image) }}" alt="{{ person.name }}">
+                <img src="{{ url_for('static', filename='images/people/' + person.image) }}" alt="{{ person.name }}">
                 <h2>{{ person.name }}</h2>
                 <h3>{{ person.title }}</h3>
                 <p class="degree">{{ person.degree }}: {{ person.institution }}</p>
