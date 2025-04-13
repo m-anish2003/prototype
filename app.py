@@ -10,6 +10,178 @@ def home():
 def research_projects():
     return render_template("research_projects.html", active_page='research_projects')
 
+
+from flask import send_from_directory
+
+@app.route('/protected/<path:filename>')
+def protected_files(filename):
+    return send_from_directory(
+        'secure_docs',  # Different folder
+        filename,
+        as_attachment=True  # Forces download
+    )
+
+
+# Research Data - Can be moved to separate JSON files later
+PROJECTS = [
+    {
+        "id": "quantum-computing",
+        "title": "Artificial Intelligence Based Techniques",
+        "status": "ongoing",
+        "year": "2023-Present",
+        "funding": " Rs. 20,40, 240/-",
+        "description": "Design and Development of Agriculture-Artificial Intelligence Based Techniques for Saffron Production in India",
+        "image": "slide1.jpg",
+        "team": ["Ranjeet Kumar Rout"],
+        "tags": ["Artificial Intelligence", "ML"],
+        "patent": False,
+        "patent_no": "",
+        "sponsored": True,
+        "sponsored_by": "DST iHub - IIT ROPAR"
+    },
+    {
+        "id": "ai-healthcare",
+        "title": "Analysis and prediction of disease-relevant mutations",
+        "status": "completed",
+        "year": "2020-2022",
+        "funding": " Rs. 3,00,000/- ",
+        "description": "Deep learning models for lung cancer detection...",
+        "image": "ai-medicine.jpg",
+        "team": ["Ranjeet Kumar Rout"],
+        "tags": ["Computer Vision", "Medical AI"],
+        "sponsored": True,
+        "sponsored_by": "TEQIP-III"
+
+    },
+    {
+        "id": "ai-healthcare",
+        "title": "Action Plan for Municipal Solid Waste Management",
+        "status": "completed",
+        "year": "2020-2022",
+        "funding": " Rs. 7,80,000/-",
+        "description": "Action Plan for Municipal Solid Waste Management for the City of Srinagar using Machine Learning Identification and Segregation",
+        "image": "ai-medicine.jpg",
+        "team": ["Ranjeet Kumar Rout"],
+        "tags": ["Computer Vision", "Medical AI"],
+        "sponsored": True,
+        "sponsored_by": "JKST&IC,  DST, J&K"
+        
+    },
+    {
+        "id": "ai-healthcare",
+        "title": "facial emotion recognition",
+        "status": "completed",
+        "year": "2021",
+        "funding": "",
+        "description": "Implementation of facial emotion recognition system using deep neural network approaches and its application",
+        "image": "ai-medicine.jpg",
+        "team": ["Ranjeet Kumar Rout, Saiyed Umer, and Amrit Lal Sangal"],
+        "tags": ["Deep neural network"],
+        "patent": True,
+        "patent_no": "202111012711",
+        "sponsored": False,
+        "sponsored_by": ""
+        
+    },
+    {
+        "id": "ai-healthcare",
+        "title": "Systems and methods for facilitating biometric recognition",
+        "status": "completed",
+        "year": "2020-2022",
+        "funding": "",
+        "description": "Systems and methods for facilitating biometric recognition.(United States, Granted)",
+        "documents": [{"name": "Research Paper", "url": "/static/docs/DOC1.pdf", "icon": "file-pdf"}],
+        "image": "ai-medicine.jpg",
+        "team": ["Muhammad Khurram Khan, Saiyed Umer, Ranjeet Kumar Rout, Alamgir Sardar"],
+        "tags": ["Computer Vision", "Medical AI"],
+        "patent": True,
+        "patent_no": "US11762969B1",
+        "sponsored": False,
+        "sponsored_by": "JKST&IC,  DST, J&K"
+        
+    },
+    {
+        "id": "ai-healthcare",
+        "title": "A Recommendation System And Method For E-commerce Using Machine Learning",
+        "status": "completed",
+        "year": "",
+        "funding": " ",
+        "description": "A Recommendation System And Method For E-commerce Using Machine Learning",
+        "image": "ai-medicine.jpg",
+        "team": ["Rout, Ranjeet Kumar; Umer, Saiyed; Sahoo, Ratikanta; Acharya, Biswaranjan ,Ranga"],
+        "tags": ["Machine Learning"],
+        "patent": True,
+        "patent_no": "Australian Patent Number:2021106572",
+        "sponsored": False,
+        "sponsored_by": ""
+        
+    },
+    {
+        "id": "ai-Ecommerce",
+        "title": "Affine Boolean Function for 16 Queen Problem",
+        "status": "completed",
+        "year": "2021",
+        "funding": "",
+        "description": "Implementation of Affine Boolean Function for 16 Queen Problem and Its Application",
+        "image": "ai-medicine.jpg",
+        "team": ["Ranjeet Kumar Rout, Saiyed Umer, Sabha Sheikh, Harveeer Singh Pali and Ratikanta Sahoo"],
+        "tags": ["Artificial Intelligence", "Machine Learning"],
+        "patent": True,
+        "patent_no": "202111035066",
+        "sponsored": False,
+        "sponsored_by": ""
+        
+    },
+    {
+        "id": "dryer",
+        "title": "SOLAR DRYER",
+        "status": "completed",
+        "year": "2021-2022",
+        "funding": "",
+        "description": "AN ECO-FRIENDLY LOW COST HYBRID SOLAR DRYER FOR DRYING VEGETABLES AND FRUITS",
+        "image": "ai-medicine.jpg",
+        "team": ["H. S Pali, Ranjeet Kumar Rout, Saiyed Umer and Ratikanta Sahoo"],
+        "tags": ["Computer Vision", "Medical AI"],
+        "patent": True,
+        "patent_no": "2202111055051",
+        "sponsored": False,
+        "sponsored_by": ""
+        
+    },
+
+]
+
+PUBLICATIONS = [
+    {
+        "type": "journal",
+        "title": "Quantum Neural Networks for Molecular Property Prediction",
+        "authors": "Smith, J., Zhang, L., Kumar, R.",
+        "journal": "Nature Quantum Information",
+        "year": 2023,
+        "doi": "10.1038/s41534-023-00710-z",
+        "pdf": "qnn-paper.pdf"
+    }
+]
+
+BOOKS = [
+    {
+        "title": "Advanced Quantum Algorithms",
+        "publisher": "Springer",
+        "year": 2023,
+        "cover": "quantum-book.jpg",
+        "link": "https://link.springer.com/quantum-algorithms"
+    }
+]
+
+@app.route('/publications')
+def publications():
+    return render_template('publications.html', publications=PUBLICATIONS)
+
+@app.route('/books')
+def books():
+    return render_template('books.html', books=BOOKS)
+
+
 @app.route('/responsibilities')
 def responsibilities():
     return render_template("responsibilities.html", active_page='responsibilities')
