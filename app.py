@@ -6,13 +6,9 @@ app = Flask(__name__)
 def home():
     return render_template("index.html", active_page='home')
 
-@app.route('/research')
-def research():
-    return render_template("research.html", active_page='research')
-
-@app.route('/projects')
-def projects():
-    return render_template("projects.html", active_page='projects')
+@app.route('/research-projects')
+def research_projects():
+    return render_template("research_projects.html", active_page='research_projects')
 
 @app.route('/responsibilities')
 def responsibilities():
@@ -120,11 +116,11 @@ def people():
         },
         # Add more as needed
     ]
-    return render_template("people.html", people=people)
+    return render_template("people.html", people=people, active_page='people')
 
-@app.route('/contact')
-def contact():
-    return render_template("contact.html", active_page='contact')
+@app.route('/talks-writings')
+def talks_writings():
+    return render_template("talks_writings.html", active_page='talks_writings')
 
 @app.route('/news')
 def news():

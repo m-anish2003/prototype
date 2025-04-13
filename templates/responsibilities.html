@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='res.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -18,13 +19,12 @@
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             <nav class="navbar" id="navbar">
                 <ul>
-                    <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
-                    <li><a href="{{ url_for('research') }}" class="{{ 'active' if active_page == 'research' else '' }}">Research</a></li>
-                    <li><a href="{{ url_for('projects') }}" class="{{ 'active' if active_page == 'projects' else '' }}">Projects</a></li>
-                    <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
-                    <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
-                    <li><a href="{{ url_for('contact') }}" class="{{ 'active' if active_page == 'contact' else '' }}">Contact</a></li>
-                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li>  
+                  <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
+                  <li><a href="{{ url_for('research_projects') }}" class="{{ 'active' if active_page == 'research_projects' else '' }}">Research & Projects</a></li>
+                  <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
+                  <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
+                  <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li>  
+                  <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,8 +32,48 @@
 
     <!-- Main content -->
     <main>
-        <h1>This is the responsibilities page</h1>
-        <p>A paragraph</p>
+        <section class="responsibilities-section">
+            <div class="container">
+              <h2 class="section-title">Institutional and Departmental Responsibilities</h2>
+          
+              <div class="category">
+                <h3 class="category-title">Leadership Roles</h3>
+                <ul class="responsibilities-list">
+                  <li><span class="role">Associate Dean of Academic</span> <span class="date">October 2023</span></li>
+                  <li><span class="role">Warden</span> <span class="date">December 2020</span></li>
+                  <li><span class="role">Convener DUGC</span> <span class="date">March 2022</span></li>
+                </ul>
+              </div>
+          
+              <div class="category">
+                <h3 class="category-title">Academic & Program Coordination</h3>
+                <ul class="responsibilities-list">
+                  <li><span class="role">Nodal Officer Scholarship</span> <span class="date">October 2023</span></li>
+                  <li><span class="role">Program Coordinator, Center of Excellence AI and Agriculture (CEAIA)</span> <span class="date">December 2023</span></li>
+                  <li><span class="role">Adjunct Faculty, Center of Excellence Energy Research (CEER)</span> <span class="date">2023</span></li>
+                  <li><span class="role">EK BHARAT SHRESTHA BHARAT (EBSB) Nodal Officer</span> <span class="date">February 2022</span></li>
+                  <li><span class="role">Semester Coordinator</span> <span class="date">January 2019</span></li>
+                  <li><span class="role">Departmental NBA Coordinator</span> <span class="date">July 2020</span></li>
+                </ul>
+              </div>
+          
+              <div class="category">
+                <h3 class="category-title">Committee Memberships</h3>
+                <ul class="responsibilities-list">
+                  <li><span class="role">Plagiarism S/W Committee Member</span> <span class="date">June 2019</span></li>
+                  <li><span class="role">Wi-Fi Monitoring Committee Member</span> <span class="date">June 2019</span></li>
+                </ul>
+              </div>
+          
+              <div class="category">
+                <h3 class="category-title">Administrative Duties</h3>
+                <ul class="responsibilities-list">
+                  <li><span class="role">Upgradation of Teaching and Learning Process of the Institute</span> <span class="date">June 2019</span></li>
+                  <li><span class="role">Website Coordinator</span> <span class="date">November 2019</span></li>
+                </ul>
+              </div>
+            </div>
+          </section>          
     </main>
 
     <!-- Footer with social media links -->
