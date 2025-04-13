@@ -333,4 +333,319 @@ footer {
     font-size: 14px;
     color: #444;
 }
+/* ===== Elegant Black Dropdown Navigation ===== */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #2d3748;
+    font-weight: 500;
+    padding: 12px 0;
+    position: relative;
+    transition: color 0.2s;
+  }
+  
+  nav a:hover {
+    color: #1a73e8;
+  }
+  
+  /* Dropdown Container */
+  .dropdown {
+    position: relative;
+  }
+  
+  /* Dropdown Arrow */
+  .dropdown > a::after {
+    content: "▾";
+    font-size: 0.7em;
+    padding-left: 6px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    vertical-align: middle;
+  }
+  
+  .dropdown:hover > a::after {
+    transform: rotate(180deg);
+  }
+  
+  /* Dropdown Menu - BLACK VERSION */
+  .dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #000000; /* Pure black background */
+    min-width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.175);
+    border: 1px solid #333;
+    padding: 6px 0;
+    pointer-events: none;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  /* Dropdown Items - WHITE TEXT */
+  .dropdown-content a {
+    color: white !important; /* Force white text */
+    padding: 10px 20px;
+    margin: 0 6px;
+    border-radius: 4px;
+    display: block;
+    transition: all 0.25s;
+    font-size: 0.95em;
+    font-weight: 400;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #333 !important; /* Dark gray hover */
+    color: white !important;
+    transform: translateX(3px);
+  }
+  
+  /* Active Page Indicator */
+  .active-page {
+    color: #1a73e8;
+    font-weight: 600;
+  }
+  
+  .active-page::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #1a73e8;
+  }
+  :root {
+    /* Premium Research Color Palette */
+    --oxford-blue: #002147;
+    --imperial-red: #ED2939;
+    --gold-leaf: #D4AF37;
+    --slate-gray: #708090;
+    --ivory: #FFFFF0;
+    --dark-charcoal: #333333;
+}
+
+body {
+    font-family: 'Lora', serif;
+    background-color: var(--ivory);
+    color: var(--dark-charcoal);
+    line-height: 1.6;
+}
+
+/* Navigation - Dark Academia Style */
+nav {
+    background-color: var(--oxford-blue);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+nav a {
+    color: var(--ivory);
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    color: var(--gold-leaf);
+}
+
+/* ===== Enhanced Filter Buttons ===== */
+.filter-btn-group {
+    display: flex;
+    gap: 12px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: #f0f0f0;
+    color: var(--oxford-blue);
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--oxford-blue), var(--imperial-red));
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.filter-btn:hover::before {
+    width: 100%;
+}
+
+.filter-btn:hover {
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.filter-btn.active {
+    background: linear-gradient(90deg, var(--oxford-blue), var(--imperial-red));
+    color: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+/* ===== Premium Project Cards ===== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.project-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.badge-patent {
+    background: var(--gold-leaf);
+    color: var(--oxford-blue);
+}
+
+.badge-sponsored {
+    background: var(--imperial-red);
+    color: white;
+}
+
+.project-image {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.project-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,33,71,0.1), rgba(0,33,71,0.8));
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.project-meta {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+    font-size: 0.9rem;
+}
+
+.project-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--slate-gray);
+}
+
+.project-meta i {
+    font-size: 1.1rem;
+    color: var(--gold-leaf);
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.project-tag {
+    padding: 4px 12px;
+    background: #f0f2f5;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--oxford-blue);
+}
+/* Document Links Styling */
+.project-documents {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.document-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    color: var(--oxford-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    border: 1px solid #e0e0e0;
+}
+
+.document-link:hover {
+    background-color: var(--oxford-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Document Type Colors */
+.fa-file-pdf { color: #e63946; }
+.fa-file-word { color: #2b579a; }
+.fa-file-contract { color: var(--gold-leaf); }
+.fa-file-powerpoint { color: #d24726; }
+.fa-file-excel { color: #217346; }
 
