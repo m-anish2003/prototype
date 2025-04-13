@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='research.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
 </head>
 <body>
 
@@ -20,11 +20,18 @@
             <nav class="navbar" id="navbar">
                 <ul>
                     <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
-                    <li><a href="{{ url_for('research_projects') }}" class="{{ 'active' if active_page == 'research_projects' else '' }}">Research & Projects</a></li>
+                    <li class="dropdown">
+                        <a href="/research">Research</a>
+                        <div class="dropdown-content">
+                          <a href="/projects">Projects</a>
+                          <a href="/publications">Publications</a>
+                          <a href="/books">Books</a>
+                        </div>
+                      </li>
+                      <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
                     <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
-                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li>  
-                    <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="{{ 'active' if active_page == 'contact' else '' }}">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,22 +39,82 @@
 
     <!-- Main content -->
     <main>
-        <div class="toggle-buttons">
-            <button onclick="showSection('research')" id="researchBtn" class="active">Research</button>
-            <button onclick="showSection('projects')" id="projectsBtn">Projects</button>
-        </div>
+        <section class="projects-section">
+            <div class="container">
+                <h1 class="page-title">Research Projects</h1>
+                <p class="page-subtitle">Innovative research with real-world impact</p>
+                
+                <div class="filter-btn-group">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="ongoing">
+                        <i class="fas fa-spinner"></i> Ongoing
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check-circle"></i> Completed
+                    </button>
+                    <button class="filter-btn" data-filter="patent">
+                        <i class="fas fa-certificate"></i> Patents
+                    </button>
+                    <button class="filter-btn" data-filter="sponsored">
+                        <i class="fas fa-handshake"></i> Sponsored
+                    </button>
+                </div>
         
-        <div class="section" id="researchSection">
-            <!-- Research content here -->
-
-            
-        </div>
-        
-        <div class="section" id="projectsSection" style="display: none;">
-            <!-- Projects content here -->
-
-
-        </div>          
+                <div class="projects-grid">
+                    {% for project in projects %}
+                    <div class="project-card" 
+                         data-status="{{ project.status }}"
+                         data-type="{% if project.patent %}patent{% endif %} {% if project.sponsored %}sponsored{% endif %}">
+                        
+                        <!-- Patent/Sponsored Badge -->
+                        {% if project.patent %}
+                        <div class="project-badge badge-patent">
+                            <i class="fas fa-certificate"></i> Patent Filed
+                        </div>
+                        {% endif %}
+                        
+                        {% if project.sponsored %}
+                        <div class="project-badge badge-sponsored">
+                            <i class="fas fa-handshake"></i> {{ project.sponsored_by }}
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Project Image -->
+                        <div class="project-image" 
+                             style="background-image: url('{{ url_for('static', filename='images/' + project.image) }}')">
+                            <div class="project-status">{{ project.status|capitalize }}</div>
+                        </div>
+                        
+                        <!-- Project Content -->
+                        <div class="project-content">
+                            <h2>{{ project.title }}</h2>
+                            
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> {{ project.year }}</span>
+                                <span><i class="fas fa-dollar-sign"></i> {{ project.funding }}</span>
+                                <span><i class="fas fa-users"></i> {{ project.team|length }} members</span>
+                            </div>
+                            
+                            <p>{{ project.description }}</p>
+                            <div class="project-documents">
+                                {% for doc in project.documents %}
+                                <a href="{{ doc.url }}" class="document-link" target="_blank">
+                                    <i class="fas fa-{{ doc.icon }}"></i> {{ doc.name }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="project-tags">
+                                {% for tag in project.tags %}
+                                <span class="project-tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer with social media links -->
