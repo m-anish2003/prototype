@@ -120,7 +120,7 @@ def people():
         },
         # Add more as needed
     ]
-    return render_template("people.html", people=people)
+    return render_template("people.html", active_page=people)
 
 @app.route('/contact')
 def contact():
