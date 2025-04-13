@@ -73,3 +73,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// This is for the toggle button on research and projects page
+function showSection(section) {
+    document.getElementById('researchSection').style.display = section === 'research' ? 'block' : 'none';
+    document.getElementById('projectsSection').style.display = section === 'projects' ? 'block' : 'none';
+
+    document.getElementById('researchBtn').classList.toggle('active', section === 'research');
+    document.getElementById('projectsBtn').classList.toggle('active', section === 'projects');
+}
+
+
+// This is for the toggle button on the talks and writings page
+function showEngage(section) {
+    const sections = ['seminars', 'talks', 'blogs'];
+    sections.forEach(s => {
+        document.getElementById(s + 'Section').style.display = section === s ? 'block' : 'none';
+        document.getElementById(s + 'Btn').classList.toggle('active', section === s);
+    });
+}
