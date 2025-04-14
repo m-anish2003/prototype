@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dr. Ranjeet Kumar Rout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+</head>
+<body>
+
+    <!-- Header with navigation -->
+    <header class="site-header">
+        <div class="overlay"></div>
+        <div class="nav-container">
+            <div class="logo">Dr. Ranjeet Kumar Rout</div>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <nav class="navbar" id="navbar">
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
+                    <li class="dropdown {% if active_page in ['projects', 'publications', 'books'] %}active{% endif %}">
+                        <a href="javascript:void(0)">Research</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('projects') }}" class="{{ 'active' if active_page == 'projects' else '' }}">Projects</a>
+                            <a href="{{ url_for('publications') }}" class="{{ 'active' if active_page == 'publications' else '' }}">Publications</a>
+                            <a href="{{ url_for('books') }}" class="{{ 'active' if active_page == 'books' else '' }}">Books</a>
+                        </div>
+                    </li>                    
+                      <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
+                    <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
+                    <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
+                    <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <section class="projects-section">
+            <div class="container">
+                <h1 class="page-title">Research Projects</h1>
+                <p class="page-subtitle">Innovative research with real-world impact</p>
+                
+                <div class="filter-btn-group">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="ongoing">
+                        <i class="fas fa-spinner"></i> Ongoing
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check-circle"></i> Completed
+                    </button>
+                    <button class="filter-btn" data-filter="patent">
+                        <i class="fas fa-certificate"></i> Patents
+                    </button>
+                    <button class="filter-btn" data-filter="sponsored">
+                        <i class="fas fa-handshake"></i> Sponsored
+                    </button>
+                </div>
+        
+                <div class="projects-grid">
+                    {% for project in projects %}
+                    <div class="project-card" 
+                         data-status="{{ project.status }}"
+                         data-type="{% if project.patent %}patent{% endif %} {% if project.sponsored %}sponsored{% endif %}">
+                        
+                        <!-- Patent/Sponsored Badge -->
+                        {% if project.patent %}
+                        <div class="project-badge badge-patent">
+                            <i class="fas fa-certificate"></i> Patent Filed
+                        </div>
+                        {% endif %}
+                        
+                        {% if project.sponsored %}
+                        <div class="project-badge badge-sponsored">
+                            <i class="fas fa-handshake"></i> {{ project.sponsored_by }}
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Project Image -->
+                        <div class="project-image" 
+                        style="background-image: url('{{ url_for('static', filename='images/' ~ project.image) }}')">
+                            <div class="project-status">{{ project.status|capitalize }}</div>
+                        </div>
+                        
+                        <!-- Project Content -->
+                        <div class="project-content">
+                            <h2>{{ project.title }}</h2>
+                            
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> {{ project.year }}</span>
+                                <span><i class="fas fa-dollar-sign"></i> {{ project.funding }}</span>
+                                <span><i class="fas fa-users"></i> {{ project.team|length }} members</span>
+                            </div>
+                            
+                            <p>{{ project.description }}</p>
+                            <div class="project-documents">
+                                {% for doc in project.documents %}
+                                <a href="{{ doc.url }}" class="document-link" target="_blank">
+                                    <i class="fas fa-{{ doc.icon }}"></i> {{ doc.name }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="project-tags">
+                                {% for tag in project.tags %}
+                                <span class="project-tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer with social media links -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:your@email.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
