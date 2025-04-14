@@ -13,22 +13,29 @@
 
     <!-- Header with navigation -->
     <header class="site-header">
-        <div class="overlay"></div>
-        <div class="nav-container">
-            <div class="logo">Dr. Ranjeet Kumar Rout</div>
-            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-            <nav class="navbar" id="navbar">
-                <ul>
+      <div class="overlay"></div>
+      <div class="nav-container">
+          <div class="logo">Dr. Ranjeet Kumar Rout</div>
+          <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+          <nav class="navbar" id="navbar">
+              <ul>
                   <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
-                  <li><a href="{{ url_for('research_projects') }}" class="{{ 'active' if active_page == 'research_projects' else '' }}">Research & Projects</a></li>
+                  <li class="dropdown {% if active_page in ['projects', 'publications', 'books'] %}active{% endif %}">
+                      <a href="javascript:void(0)">Research</a>
+                      <div class="dropdown-content">
+                          <a href="{{ url_for('projects') }}" class="{{ 'active' if active_page == 'projects' else '' }}">Projects</a>
+                          <a href="{{ url_for('publications') }}" class="{{ 'active' if active_page == 'publications' else '' }}">Publications</a>
+                          <a href="{{ url_for('books') }}" class="{{ 'active' if active_page == 'books' else '' }}">Books</a>
+                      </div>
+                  </li>                    
+                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
                   <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
                   <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
-                  <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li>  
                   <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+              </ul>
+          </nav>
+      </div>
+  </header>
 
     <!-- Main content -->
     <main>

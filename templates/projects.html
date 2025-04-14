@@ -20,18 +20,18 @@
             <nav class="navbar" id="navbar">
                 <ul>
                     <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
-                    <li class="dropdown">
-                        <a href="/research">Research</a>
+                    <li class="dropdown {% if active_page in ['projects', 'publications', 'books'] %}active{% endif %}">
+                        <a href="javascript:void(0)">Research</a>
                         <div class="dropdown-content">
-                          <a href="/projects">Projects</a>
-                          <a href="/publications">Publications</a>
-                          <a href="/books">Books</a>
+                            <a href="{{ url_for('projects') }}" class="{{ 'active' if active_page == 'projects' else '' }}">Projects</a>
+                            <a href="{{ url_for('publications') }}" class="{{ 'active' if active_page == 'publications' else '' }}">Publications</a>
+                            <a href="{{ url_for('books') }}" class="{{ 'active' if active_page == 'books' else '' }}">Books</a>
                         </div>
-                      </li>
+                    </li>                    
                       <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
                     <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
-                    <li><a href="{{ url_for('contact') }}" class="{{ 'active' if active_page == 'contact' else '' }}">Contact</a></li>
+                    <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
                 </ul>
             </nav>
         </div>
@@ -81,7 +81,7 @@
                         
                         <!-- Project Image -->
                         <div class="project-image" 
-                             style="background-image: url('{{ url_for('static', filename='images/' + project.image) }}')">
+                        style="background-image: url('{{ url_for('static', filename='images/' ~ project.image) }}')">
                             <div class="project-status">{{ project.status|capitalize }}</div>
                         </div>
                         

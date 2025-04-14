@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask import send_from_directory
 
 app = Flask(__name__)
 
@@ -6,23 +7,19 @@ app = Flask(__name__)
 def home():
     return render_template("index.html", active_page='home')
 
-@app.route('/research-projects')
-def research_projects():
-    return render_template("research_projects.html", active_page='research_projects')
+@app.route('/projects')
+def projects():
+    return render_template("projects.html", projects=PROJECTS, active_page='projects')
 
-
-from flask import send_from_directory
 
 @app.route('/protected/<path:filename>')
 def protected_files(filename):
     return send_from_directory(
-        'secure_docs',  # Different folder
+        'secure_docs',  
         filename,
-        as_attachment=True  # Forces download
+        as_attachment=True  
     )
 
-
-# Research Data - Can be moved to separate JSON files later
 PROJECTS = [
     {
         "id": "quantum-computing",
@@ -175,11 +172,11 @@ BOOKS = [
 
 @app.route('/publications')
 def publications():
-    return render_template('publications.html', publications=PUBLICATIONS)
+    return render_template('publications.html', publications=PUBLICATIONS, active_page='publications')
 
 @app.route('/books')
 def books():
-    return render_template('books.html', books=BOOKS)
+    return render_template('books.html', books=BOOKS, active_page='books')
 
 
 @app.route('/responsibilities')

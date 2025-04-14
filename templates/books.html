@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='talks.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
 </head>
 <body>
 
@@ -37,35 +37,55 @@
         </div>
     </header>
 
-    <!-- Main content -->
+
+    <!-- Main Section -->
     <main>
-        <div class="toggle-buttons">
-            <button onclick="showEngage('seminars')" id="seminarsBtn" class="active">Seminars</button>
-            <button onclick="showEngage('talks')" id="talksBtn">Talks Delivered</button>
-            <button onclick="showEngage('blogs')" id="blogsBtn">Blogs</button>
-          </div>
-          
-          <div class="section" id="seminarsSection">
-            <!-- List of seminars -->
+        <section class="projects-section">
+            <div class="container">
+                <h1 class="page-title">Books</h1>
+                <p class="page-subtitle">Published books authored or edited by Dr. Rout</p>
 
+                <div class="projects-grid">
+                    {% for book in books %}
+                    <div class="project-card">
+                        <!-- Book Cover -->
+                        <div class="project-image" 
+                             style="background-image: url('{{ url_for('static', filename='images/books/' ~ book.image) }}')">
+                            <div class="project-status">{{ book.year }}</div>
+                        </div>
 
-          </div>
-          
-          <div class="section" id="talksSection" style="display: none;">
-            <!-- Talks Delivered -->
+                        <!-- Book Info -->
+                        <div class="project-content">
+                            <h2>{{ book.title }}</h2>
+                            <div class="project-meta">
+                                <span><i class="fas fa-user"></i> {{ book.author }}</span>
+                                {% if book.publisher %}
+                                <span><i class="fas fa-building"></i> {{ book.publisher }}</span>
+                                {% endif %}
+                            </div>
+                            <p>{{ book.description }}</p>
 
+                            {% if book.link %}
+                            <a href="{{ book.link }}" target="_blank" class="document-link">
+                                <i class="fas fa-link"></i> View Book
+                            </a>
+                            {% endif %}
 
-          </div>
-          
-          <div class="section" id="blogsSection" style="display: none;">
-            <!-- Blog snippets -->
-
-
-          </div>          
+                            <div class="project-tags">
+                                {% for tag in book.tags %}
+                                <span class="project-tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer with social media links -->
-    <footer>
+     <!-- Footer with social media links -->
+     <footer>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>

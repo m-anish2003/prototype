@@ -92,6 +92,8 @@ function showEngage(section) {
         document.getElementById(s + 'Btn').classList.toggle('active', section === s);
     });
 }
+
+
 // Enhanced Project Filtering
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
