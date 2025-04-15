@@ -159,9 +159,6 @@ BOOKS = [
 ]
 
 
-@app.route('/projects')
-def projects():
-    return render_template('projects.html', projects=PROJECTS)
 
 # Sample data - replace with your actual publication data
 @app.route('/publications')
@@ -408,7 +405,7 @@ def publications():
                          journal_pubs=journal_pubs,
                          conference_pubs=conference_pubs,
                          years=years,
-                         topics=sorted(topics))
+                         topics=sorted(topics), active_page='publications')
 
 @app.route('/books')
 def books():
