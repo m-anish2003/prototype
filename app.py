@@ -407,11 +407,28 @@ def publications():
                          years=years,
                          topics=sorted(topics), active_page='publications')
 
+books_data = [
+    {
+        "title": "Artificial Intelligence Technologies for Computational Biology",
+        "editors": "Ranjeet Kumar Rout, Saiyed Umer, Sabha Sheikh, Amrit Lal Sangal",
+        "cover": "both.jpg",
+        "link": "https://www.routledge.com/Artificial-Intelligence-Technologies-for-Computational-Biology/Rout-Umer-Sheikh-Sangal/p/book/9781032160009",
+        "download": "#"
+    },
+    {
+        "title": "Advancement of Deep Learning in Object Detection and Recognition",
+        "editors": "Roohie Naaz Mir, Vipul Kumar Sharma, Ranjeet Kumar Rout, Saiyed Umer",
+        "cover": "both2.jpg",
+        "link": "https://www.riverpublishers.com/book_details.php?book_id=1021",
+        "download": "#"
+    },
+    # Add more books here as needed
+]
+
 @app.route('/books')
 def books():
-    return render_template('books.html', books=BOOKS, active_page='books')
-
-
+    return render_template("books.html", books=books_data)
+    
 @app.route('/responsibilities')
 def responsibilities():
     return render_template("responsibilities.html", active_page='responsibilities')
