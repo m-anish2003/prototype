@@ -649,3 +649,214 @@ nav a:hover {
 .fa-file-powerpoint { color: #d24726; }
 .fa-file-excel { color: #217346; }
 
+
+/* Publications Page Styles */
+:root {
+    --primary-dark: #2E4053;
+    --primary-main: #2874A6;
+    --primary-light: #D6EAF8;
+
+    --accent-dark: #7D6608;
+    --accent-main: #F1C40F;
+    --accent-light: #F9E79F;
+
+    --neutral-dark: #333;
+    --neutral-medium: #7F8C8D;
+    --neutral-light: #F5F5F5;
+}
+
+.publications-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pub-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pub-types {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.pub-type-btn {
+    padding: 0.5rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    position: relative;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.pub-type-btn.active {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.pub-type-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #16a085;
+}
+
+.filters {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-group select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.pub-section {
+    display: none;
+}
+
+.pub-section.active {
+    display: block;
+}
+
+.pub-year {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.pub-card {
+    background: white;
+    border-left: 5px solid var(--accent-main);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pub-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.pub-title {
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.pub-authors {
+    color: #555;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.pub-venue {
+    font-size: 0.95rem;
+    color: var(--primary-main);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+.pub-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.pub-link, .pub-bibtex {
+    padding: 0.3rem 0.8rem;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    color: #2c3e50;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.pub-link:hover, .pub-bibtex:hover {
+    background-color: #e0e0e0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 2rem;
+    width: 60%;
+    max-width: 700px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+#bibtex-content {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    margin: 1rem 0;
+}
+
+#copy-bibtex {
+    padding: 0.5rem 1rem;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .filters {
+        justify-content: flex-start;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+    }
+}
