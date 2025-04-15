@@ -7,7 +7,6 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
 </head>
 <body>
 
@@ -19,76 +18,125 @@
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             <nav class="navbar" id="navbar">
                 <ul>
-                    <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
-                    <li class="dropdown {% if active_page in ['projects', 'publications', 'books'] %}active{% endif %}">
-                        <a href="javascript:void(0)">Research</a>
-                        <div class="dropdown-content">
-                            <a href="{{ url_for('projects') }}" class="{{ 'active' if active_page == 'projects' else '' }}">Projects</a>
-                            <a href="{{ url_for('publications') }}" class="{{ 'active' if active_page == 'publications' else '' }}">Publications</a>
-                            <a href="{{ url_for('books') }}" class="{{ 'active' if active_page == 'books' else '' }}">Books</a>
-                        </div>
-                    </li>                    
-                      <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
+                    <li><a href="/" class="{% if active_page == 'home' %}active-page{% endif %}">Home</a></li>
+        <li class="dropdown">
+            <span class="dropdown-toggle">Research</span>
+            <div class="dropdown-content">
+                <a href="/projects" class="{% if active_page == 'projects' %}active-page{% endif %}">Projects</a>
+                <a href="/publications" class="{% if active_page == 'publications' %}active-page{% endif %}">Publications</a>
+                <a href="/books" class="{% if active_page == 'books' %}active-page{% endif %}">Books</a>
+            </div>
+        </li>
+                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li>  
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
                     <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
-                    <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="{{ 'active' if active_page == 'contact' else '' }}">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-
-    <!-- Main Section -->
+    <!-- Main content -->
     <main>
-        <section class="projects-section">
-            <div class="container">
-                <h1 class="page-title">Publications</h1>
-                <p class="page-subtitle">Academic and research publications by Dr. Rout</p>
 
-                <div class="projects-grid">
-                    {% for pub in publications %}
-                    <div class="project-card">
-                        <!-- Optional Image or Icon -->
-                        <div class="project-image"
-                        style="background-image: url('{{ url_for('static', filename='images/' ~ pub.image) }}')">
-                            <div class="project-status">{{ pub.year }}</div>
-                        </div>
-
-                        <!-- Publication Info -->
-                        <div class="project-content">
-                            <h2>{{ pub.title }}</h2>
-                            <div class="project-meta">
-                                <span><i class="fas fa-user"></i> {{ pub.authors }}</span>
-                                {% if pub.journal %}
-                                <span><i class="fas fa-book"></i> {{ pub.journal }}</span>
-                                {% endif %}
-                                {% if pub.doi %}
-                                <span><i class="fas fa-barcode"></i> DOI: {{ pub.doi }}</span>
-                                {% endif %}
-                            </div>
-                            <p>{{ pub.abstract }}</p>
-
-                            {% if pub.link %}
-                            <a href="{{ pub.link }}" target="_blank" class="document-link">
-                                <i class="fas fa-external-link-alt"></i> View Publication
-                            </a>
-                            {% endif %}
-
-                            <div class="project-tags">
-                                {% for keyword in pub.keywords %}
-                                <span class="project-tag">{{ keyword }}</span>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
+        {% block content %}
+        <div class="publications-container">
+            <div class="pub-header">
+                <h2>Publications</h2>
+                <div class="pub-types">
+                    <button class="pub-type-btn active" data-type="journal">Journal Publications</button>
+                    <button class="pub-type-btn" data-type="conference">Conference Publications</button>
                 </div>
             </div>
-        </section>
+        
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="year-filter">Filter by Year:</label>
+                    <select id="year-filter">
+                        <option value="all">All Years</option>
+                        {% for year in years|sort(reverse=True) %}
+                        <option value="{{ year }}">{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="topic-filter">Filter by Topic:</label>
+                    <select id="topic-filter">
+                        <option value="all">All Topics</option>
+                        {% for topic in topics %}
+                        <option value="{{ topic }}">{{ topic }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        
+            <div id="journal-pubs" class="pub-section active">
+                {% for year in journal_pubs|sort(reverse=True) %}
+                <div class="pub-year-group" data-year="{{ year }}">
+                    <h3 class="pub-year">{{ year }}</h3>
+                    <div class="pub-items">
+                        {% for pub in journal_pubs[year] %}
+                        <div class="pub-card" data-topics="{{ pub.topics|join(',') }}">
+                            <div class="pub-title">{{ pub.title }}</div>
+                            <div class="pub-authors">{{ pub.authors }}</div>
+                            <div class="pub-venue">{{ pub.venue }}, {{ pub.year }}</div>
+                            <div class="pub-links">
+                                {% if pub.doi %}
+                                <a href="https://doi.org/{{ pub.doi }}" target="_blank" class="pub-link">DOI</a>
+                                {% endif %}
+                                {% if pub.pdf %}
+                                <a href="{{ url_for('static', filename='papers/' + pub.pdf) }}" target="_blank" class="pub-link">PDF</a>
+                                {% endif %}
+                                <button class="pub-bibtex" data-bibtex="{{ pub.bibtex|escape }}">BibTeX</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        
+            <div id="conference-pubs" class="pub-section">
+                {% for year in conference_pubs|sort(reverse=True) %}
+                <div class="pub-year-group" data-year="{{ year }}">
+                    <h3 class="pub-year">{{ year }}</h3>
+                    <div class="pub-items">
+                        {% for pub in conference_pubs[year] %}
+                        <div class="pub-card" data-topics="{{ pub.topics|join(',') }}">
+                            <div class="pub-title">{{ pub.title }}</div>
+                            <div class="pub-authors">{{ pub.authors }}</div>
+                            <div class="pub-venue">{{ pub.venue }}, {{ pub.year }}</div>
+                            <div class="pub-links">
+                                {% if pub.doi %}
+                                <a href="https://doi.org/{{ pub.doi }}" target="_blank" class="pub-link">DOI</a>
+                                {% endif %}
+                                {% if pub.pdf %}
+                                <a href="{{ url_for('static', filename='papers/' + pub.pdf) }}" target="_blank" class="pub-link">PDF</a>
+                                {% endif %}
+                                <button class="pub-bibtex" data-bibtex="{{ pub.bibtex|escape }}">BibTeX</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        
+            <!-- BibTeX Modal -->
+            <div id="bibtex-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>BibTeX Citation</h3>
+                    <pre id="bibtex-content"></pre>
+                    <button id="copy-bibtex">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
     </main>
 
-     <!-- Footer with social media links -->
-     <footer>
+    <!-- Footer with social media links -->
+    <footer>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
