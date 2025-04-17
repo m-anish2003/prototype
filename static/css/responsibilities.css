@@ -1,0 +1,64 @@
+/* Responsibilities Section Styles */
+.responsibilities-section {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container to center content */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Section Title Styling */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #a80000;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+/* Category Styling */
+.category {
+  margin-bottom: 40px;
+}
+
+/* Category Title Styling */
+.category-title {
+  font-size: 1.4rem;
+  color: #004d4d;
+  font-weight: bold;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+/* Responsibilities List Styling */
+.responsibilities-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Individual Responsibility Item */
+.responsibilities-list li {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: #0f4f4f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Role Styling */
+.responsibilities-list .role {
+  font-weight: 500;
+}
+
+/* Date Styling */
+.responsibilities-list .date {
+  font-style: italic;
+  color: #666;
+  font-size: 0.95rem;
+}

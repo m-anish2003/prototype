@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and viewport configuration -->
     <meta charset="UTF-8">
     <title>Dr. Ranjeet Kumar Rout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- External CSS files for different sections -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/books.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <!-- Font Awesome icons library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
 </head>
 <body>
 
-    <!-- Header with navigation -->
+    <!-- Header Section with navigation -->
     <header class="site-header">
         <div class="overlay"></div>
         <div class="nav-container">
-            <div class="logo">Dr. Ranjeet Kumar Rout</div>
+            <!-- Logo displaying the name of Dr. Ranjeet Kumar Rout -->
+            <div class="logo"><a class="logo-link" href="{{ url_for('about_me') }}">Dr. Ranjeet Kumar Rout</a></div>
+            <!-- Menu toggle for mobile view -->
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <!-- Navigation bar with links to different pages -->
             <nav class="navbar" id="navbar">
                 <ul>
+                    <!-- Dynamic classes to highlight the active page -->
                     <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
                     <li class="dropdown {% if active_page in ['projects', 'publications', 'books'] %}active{% endif %}">
                         <a href="javascript:void(0)">Research</a>
@@ -28,7 +36,7 @@
                             <a href="{{ url_for('books') }}" class="{{ 'active' if active_page == 'books' else '' }}">Books</a>
                         </div>
                     </li>                    
-                      <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
+                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li>
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
                     <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
                     <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
@@ -36,66 +44,68 @@
             </nav>
         </div>
     </header>
-
-
-    <!-- Main Section -->
+    
+<!-- Main Section -->
     <main>
-        <section class="projects-section">
-            <div class="container">
-                <h1 class="page-title">Books</h1>
-                <p class="page-subtitle">Published books authored or edited by Dr. Rout</p>
-
-                <div class="projects-grid">
-                    {% for book in books %}
-                    <div class="project-card">
-                        <!-- Book Cover -->
-                        <div class="project-image" 
-                             style="background-image: url('{{ url_for('static', filename='images/books/' ~ book.image) }}')">
-                            <div class="project-status">{{ book.year }}</div>
-                        </div>
-
-                        <!-- Book Info -->
-                        <div class="project-content">
-                            <h2>{{ book.title }}</h2>
-                            <div class="project-meta">
-                                <span><i class="fas fa-user"></i> {{ book.author }}</span>
-                                {% if book.publisher %}
-                                <span><i class="fas fa-building"></i> {{ book.publisher }}</span>
-                                {% endif %}
-                            </div>
-                            <p>{{ book.description }}</p>
-
-                            {% if book.link %}
-                            <a href="{{ book.link }}" target="_blank" class="document-link">
-                                <i class="fas fa-link"></i> View Book
-                            </a>
-                            {% endif %}
-
-                            <div class="project-tags">
-                                {% for tag in book.tags %}
-                                <span class="project-tag">{{ tag }}</span>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
+        <!-- Book Section -->
+        <section class="books-section">
+        <!-- Section Title -->
+        <h1 class="section-title">Books</h1>
+    
+        <!-- Search Input for Filtering Books -->
+        <input type="text" id="searchInput" placeholder="Search books..." />
+    
+        <!-- Book Grid (Displays a list of books) -->
+        <div class="book-grid" id="bookGrid">
+            <!-- Loop through each book and display it in a card -->
+            {% for book in books %}
+            <div class="book-card" data-title="{{ book.title | lower }}">
+            <!-- Book Cover Image -->
+            <img src="{{ url_for('static', filename='images/books/' + book.cover) }}" alt="{{ book.title }}" loading="lazy">
+            
+            <div class="book-info">
+                <!-- Book Title -->
+                <h2>{{ book.title }}</h2>
+                
+                <!-- Book Editors -->
+                <p><strong>Editors:</strong> {{ book.editors }}</p>
+                
+                <!-- Book Action Buttons (View and Download) -->
+                <div class="book-actions">
+                <a href="{{ book.link }}" target="_blank" class="btn">View</a> <!-- View Book Link -->
+                <a href="{{ book.download }}" download class="btn">Download</a> <!-- Download Button -->
                 </div>
             </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Pagination Section (Controls for navigating between pages of books) -->
+        <div class="pagination">
+            <button id="prevBtn">Previous</button> <!-- Previous Page Button -->
+            <span id="pageInfo">Page 1</span> <!-- Page Number Display -->
+            <button id="nextBtn">Next</button> <!-- Next Page Button -->
+        </div>
         </section>
     </main>
 
-     <!-- Footer with social media links -->
-     <footer>
+    <!-- Footer Section with social media links -->
+    <footer>
         <div class="social-icons">
+            <!-- Social media icons with links -->
             <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
             <a href="mailto:your@email.com"><i class="fas fa-envelope"></i></a>
         </div>
+        <!-- Copyright information -->
         <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
     </footer>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- External JavaScript files -->
+    <script src="{{ url_for('static', filename='js/books.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
 
 </body>
 </html>

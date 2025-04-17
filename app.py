@@ -1,26 +1,26 @@
-from flask import Flask, render_template
-from flask import send_from_directory
+from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
 
+# Home Page
 @app.route('/')
 def home():
+    """
+    This route handles the home page ('/') of the web application.
+    It renders the 'index.html' template and passes an additional
+    variable 'active_page' to mark the home link as active in the navbar.
+    """
     return render_template("index.html", active_page='home')
 
+# Projects
 @app.route('/projects')
 def projects():
-    return render_template("projects.html", projects=PROJECTS, active_page='projects')
-
-
-@app.route('/protected/<path:filename>')
-def protected_files(filename):
-    return send_from_directory(
-        'secure_docs',  
-        filename,
-        as_attachment=True  
-    )
-
-PROJECTS = [
+    """
+    This route handles the projects page ('/projects') of the web application.
+    It renders the 'projects.html' template.
+    """
+    # Project List
+    PROJECTS = [
     {
         "id": "quantum-computing",
         "title": "Artificial Intelligence Based Techniques",
@@ -28,7 +28,7 @@ PROJECTS = [
         "year": "2023-Present",
         "funding": " Rs. 20,40, 240/-",
         "description": "Design and Development of Agriculture-Artificial Intelligence Based Techniques for Saffron Production in India",
-        "image": "slide1.jpg",
+        "image": "slide1.jpg", # Image
         "team": ["Ranjeet Kumar Rout"],
         "tags": ["Artificial Intelligence", "ML"],
         "patent": False,
@@ -144,23 +144,22 @@ PROJECTS = [
         "sponsored": False,
         "sponsored_by": ""
         
-    },
-
-]
-
-BOOKS = [
-    {
-        "title": "Advanced Quantum Algorithms",
-        "publisher": "Springer",
-        "year": 2023,
-        "cover": "quantum-book.jpg",
-        "link": "https://link.springer.com/quantum-algorithms"
     }
-]
+    ]
+
+    return render_template("projects.html", projects=PROJECTS, active_page='projects')
 
 
+@app.route('/protected/<path:filename>')
+def protected_files(filename):
+    return send_from_directory(
+        'secure_docs',  
+        filename,
+        as_attachment=True  
+    )
 
-# Sample data - replace with your actual publication data
+
+# Publications
 @app.route('/publications')
 def publications():
     journal_pubs = {
@@ -407,16 +406,75 @@ def publications():
                          years=years,
                          topics=sorted(topics), active_page='publications')
 
+# Books Section
 @app.route('/books')
 def books():
-    return render_template('books.html', books=BOOKS, active_page='books')
+    """
+    This route handles the books page ('/books') of the web application.
+    It renders the 'books.html' template.
+    """
+    books_data = [
+        {
+            "title": "Artificial Intelligence Technologies for Computational Biology",
+            "editors": "Ranjeet Kumar Rout, Saiyed Umer, Sabha Sheikh, Amrit Lal Sangal",
+            "cover": "both.jpg",
+            "link": "https://www.routledge.com/Artificial-Intelligence-Technologies-for-Computational-Biology/Rout-Umer-Sheikh-Sangal/p/book/9781032160009",
+            "download": "#"
+        },
+        {
+            "title": "Advancement of Deep Learning in Object Detection and Recognition",
+            "editors": "Roohie Naaz Mir, Vipul Kumar Sharma, Ranjeet Kumar Rout, Saiyed Umer",
+            "cover": "both2.jpg",
+            "link": "https://www.riverpublishers.com/book_details.php?book_id=1021",
+            "download": "#"
+        },
+        # Add more books here as needed
+    ]
+
+    return render_template("books.html", books=books_data, active_page='books')
 
 
+# News Section
+@app.route('/news')
+def news():
+    """
+    This route handles the news page ('/news') of the web application.
+    It renders the 'news.html' template.
+    """
+    news_items = [
+        {
+            "image": "news1.jpg",
+            "date": "June 15, 2023",
+            "title": "New Research Published",
+            "excerpt": "Our quantum computing paper accepted in Nature...",
+            "full_text": "Detailed findings show breakthrough in quantum entanglement simulation using novel qubit architecture."
+        }
+        # Add more as needed
+    ]
+
+    announcements = [
+        "Paper submission deadline: July 30",
+        "New lab equipment arrived"
+        # Add more as needed
+    ]
+
+
+    return render_template('news.html', 
+                           news_items=news_items,
+                           announcements=announcements,
+                           active_page='news')
+
+
+# Responsibilities
 @app.route('/responsibilities')
 def responsibilities():
+    """
+    This route handles the responsibilities page ('/responsibilities') of the web application.
+    It renders the 'responsibilities.html' template.
+    """
     return render_template("responsibilities.html", active_page='responsibilities')
 
-
+# People Section
 @app.route('/people')
 def people():
     people = [
@@ -520,32 +578,27 @@ def people():
     ]
     return render_template("people.html", people=people, active_page='people')
 
-@app.route('/talks-writings')
+# Talks and Writings
+@app.route('/talks_writings')
 def talks_writings():
+    """
+    This route handles the talks & writings page ('/talks_writings') of the web application.
+    It renders the 'talks_writings.html' template.
+    """
     return render_template("talks_writings.html", active_page='talks_writings')
 
-@app.route('/news')
-def news():
-    news_items = [
-        {
-            "image": "news1.jpg",
-            "date": "June 15, 2023",
-            "title": "New Research Published",
-            "excerpt": "Our quantum computing paper accepted in Nature...",
-            "full_text": "Detailed findings show breakthrough in quantum entanglement simulation using novel qubit architecture."
-        }
-    ]
+# About Me
+@app.route('/about-me')
+def about_me():
+    '''
+    This is the dedicated page for professor's about section
+    '''
+    return render_template('about_me.html')
 
-    announcements = [
-        "Paper submission deadline: July 30",
-        "New lab equipment arrived"
-    ]
-
-
-    return render_template('news.html', 
-                           news_items=news_items,
-                           announcements=announcements,
-                           active_page='news')
 
 if __name__ == '__main__':
+    """
+    Run the Flask application in debug mode for development purposes.
+    This allows for automatic reloading and better error messages.
+    """
     app.run(debug=True)
