@@ -1,0 +1,83 @@
+/* ==========================
+   PEOPLE SECTION STYLING
+=========================== */
+
+/* Container for the People section */
+.people-container {
+    padding: 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+/* Header styling */
+.people-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+/* Grid for arranging person cards */
+.people-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Person card styling */
+.person-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    width: 280px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for person card */
+.person-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Image styling in the person card */
+.person-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #e0e0e0;
+}
+
+/* Person's name styling */
+.person-card h2 {
+    color: #b20000;
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+
+/* Subtitle or position */
+.person-card h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Additional information styling */
+.person-card .phd {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #666;
+}
+
+/* List styling inside person card */
+.person-card ul {
+    list-style-type: disc;
+    text-align: left;
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #444;
+}

@@ -113,23 +113,3 @@
     margin: auto;
     padding: 1rem;
 }
-
-
-/* =======================
-   Carousel Content Styling
-======================= */
-.carousel-heading {
-    font-family: 'Caveat', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #111;
-    text-align: center;
-    margin-bottom: 0.3rem;
-}
-
-.carousel-para {
-    font-family: 'Lora', serif;
-    font-size: 1.05rem;
-    color: #444;
-    text-align: center;
-}

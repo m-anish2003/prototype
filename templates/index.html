@@ -5,23 +5,30 @@
     <title>Dr. Ranjeet Kumar Rout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='carousel.css') }}">
+    <!-- Linking local and external stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header with navigation -->
+    <!-- Header section with logo and navigation menu -->
     <header class="site-header">
         <div class="overlay"></div>
         <div class="nav-container">
-            <div class="logo">Dr. Ranjeet Kumar Rout</div>
+            <div class="logo"><a class="logo-link" href="{{ url_for('about_me') }}">Dr. Ranjeet Kumar Rout</a></div>
+
+            <!-- Hamburger menu for mobile -->
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+
+            <!-- Navigation bar with dynamic active highlighting -->
             <nav class="navbar" id="navbar">
                 <ul>
                     <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
+                    
+                    <!-- Dropdown for research section -->
                     <li class="dropdown {% if active_page in ['projects', 'publications', 'books'] %}active{% endif %}">
                         <a href="javascript:void(0)">Research</a>
                         <div class="dropdown-content">
@@ -29,8 +36,10 @@
                             <a href="{{ url_for('publications') }}" class="{{ 'active' if active_page == 'publications' else '' }}">Publications</a>
                             <a href="{{ url_for('books') }}" class="{{ 'active' if active_page == 'books' else '' }}">Books</a>
                         </div>
-                    </li>                    
-                      <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
+                    </li>  
+                    
+                    <!-- Other page links -->
+                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
                     <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
                     <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
@@ -40,13 +49,13 @@
     </header>
 
 
-    <!-- Main content section -->
+    <!-- Main body of the page -->
     <main>
 
-        <!-- Intro section with profile image and details -->
+        <!-- Introduction block with profile photo and info -->
         <section class="intro-section">
             <div class="intro-image">
-                <img src="{{ url_for('static', filename='images/teacher.jpg') }}" alt="Dr. Ranjeet Kumar Rout">
+                <a class="image-link" href="{{ url_for('about_me') }}"><img src="{{ url_for('static', filename='images/index/teacher.jpg') }}" alt="Dr. Ranjeet Kumar Rout"></a>
             </div>
             <div class="intro-text">
                 <h1 class="prof-name">Dr. Ranjeet Kumar Rout</h1>
@@ -62,7 +71,7 @@
             </div>
         </section>
 
-        <!-- Welcome message section -->
+        <!-- Professor’s welcome message to visitors -->
         <section class="welcome-note">
             <span class="welcome-heading">Message from professor</span>
             <p class="welcome-body">
@@ -73,21 +82,21 @@
             </p>
         </section>
     
-        <!-- Image slider + research group intro -->
+        <!-- Carousel (image slider) and group introduction -->
         <section class="carousel-section">
             <div class="carousel-container">
                 <div class="carousel">
-                    <!-- Slides -->
-                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="carousel-image active" alt="Slide 1">
-                    <img src="{{ url_for('static', filename='images/slide2.jpg') }}" class="carousel-image" alt="Slide 2">
-                    <img src="{{ url_for('static', filename='images/slide3.jpg') }}" class="carousel-image" alt="Slide 3">
+                    <!-- Slide images -->
+                    <img src="{{ url_for('static', filename='images/index/slide1.jpg') }}" class="carousel-image active" alt="Slide 1">
+                    <img src="{{ url_for('static', filename='images/index/slide2.jpg') }}" class="carousel-image" alt="Slide 2">
+                    <img src="{{ url_for('static', filename='images/index/slide3.jpg') }}" class="carousel-image" alt="Slide 3">
 
-                    <!-- Navigation arrows -->
+                    <!-- Slide navigation arrows -->
                     <button class="prev" onclick="prevSlide()">&#10094;</button>
                     <button class="next" onclick="nextSlide()">&#10095;</button>
                 </div>
 
-                <!-- Dots to switch between slides -->
+                <!-- Navigation dots for carousel -->
                 <div class="carousel-dots">
                     <span class="dot active" onclick="setSlide(0)"></span>
                     <span class="dot" onclick="setSlide(1)"></span>
@@ -95,7 +104,7 @@
                 </div>
             </div>
 
-            <!-- Text alongside carousel -->
+            <!-- TODO : Description of the research group -->
             <div class="carousel-text">
                 <h2 class="carousel-heading">Our Research Group</h2>
                 <p class="carousel-para">
@@ -106,9 +115,10 @@
         </section>
     </main>    
 
-    <!-- Footer with social links and copyright -->
+    <!-- Footer with social media icons and copyright -->
     <footer>
         <div class="social-icons">
+            <!-- TODO : Replace with actual profile links -->
             <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -117,8 +127,10 @@
         <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- Javascript File Link -->
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
 </body>
 </html>
