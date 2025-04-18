@@ -92,6 +92,20 @@
     color: white; /* Text color */
 }
 
+/* Supervised badge styling */
+.badge-supervised {
+    background-color: #4b7bec; 
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+
 .project-image {
     height: 220px; /* Fixed height for image */
     background-size: cover; /* Cover image within container */

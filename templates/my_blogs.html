@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags for character encoding and viewport configuration -->
     <meta charset="UTF-8">
     <title>Dr. Ranjeet Kumar Rout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- External CSS files for different sections -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/my_blogs.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-    <!-- Font Awesome icons library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
-    <!-- Header Section with navigation -->
+    <!-- Header with navigation -->
     <header class="site-header">
         <div class="overlay"></div>
         <div class="nav-container">
@@ -49,51 +47,9 @@
         </div>
     </header>
 
-    <!-- Main Content Section for People -->
+    <!-- Main Section -->
     <main>
-        <!-- News Section -->
-        <section class="news-updates">
-            <div class="container">
-                <h1>News & Updates</h1>
-    
-                <!-- Swiper Container -->
-                <div class="swiper news-swiper">
-                    <div class="swiper-wrapper">
-                        <!-- Slides will be populated from backend -->
-                        {% for item in news_items %}
-                        <div class="swiper-slide">
-                            <div class="news-card">
-                                <img src="{{ url_for('static', filename='images/news/' + item.image) if item.image else url_for('static', filename='images/news/default.jpg') }}" class="news-image">
-                                <div class="news-content">
-                                    <div class="news-date">{{ item.date }}</div>
-                                    <h3>{{ item.title }}</h3>
-                                    <p class="news-excerpt">
-                                        {{ item.excerpt }}
-                                        <span class="full-text">{{ item.full_text }}</span>
-                                    </p>
-                                    <div class="read-more">Read More</div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <!-- Navigation -->
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-    
-                <!-- Announcements -->
-                <div class="announcements">
-                    <h2>Important Announcements</h2>
-                    <ul>
-                        {% for announcement in announcements %}
-                        <li>{{ announcement }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </section>
+        
     </main>
 
     <!-- Footer Section with social media links -->
@@ -110,11 +66,8 @@
     </footer>
 
     <!-- External JavaScript files -->
-    <script src="{{ url_for('static', filename='js/news.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/my_blogs.js') }}"></script>
     <script src="{{ url_for('static', filename='js/header.js') }}"></script>
     <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
-    <!-- Font Awesome icons script -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
 </body>
 </html>
