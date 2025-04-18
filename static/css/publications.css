@@ -67,11 +67,11 @@
 /* Container for filter options */
 .filters {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 2rem;
-    gap: 1rem;
+    gap: 20px;
+    margin-top: 20px;
     flex-wrap: wrap;
-}
+  }
+  
 
 /* Grouping of filter options */
 .filter-group {
@@ -95,6 +95,12 @@
 /* Active state for visible publication section */
 .pub-section.active {
     display: block;
+}
+
+.publications-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* Year heading styling */
