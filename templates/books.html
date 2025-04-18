@@ -19,14 +19,10 @@
     <header class="site-header">
         <div class="overlay"></div>
         <div class="nav-container">
-            <!-- Logo displaying the name of Dr. Ranjeet Kumar Rout -->
             <div class="logo"><a class="logo-link" href="{{ url_for('about_me') }}">Dr. Ranjeet Kumar Rout</a></div>
-            <!-- Menu toggle for mobile view -->
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-            <!-- Navigation bar with links to different pages -->
             <nav class="navbar" id="navbar">
                 <ul>
-                    <!-- Dynamic classes to highlight the active page -->
                     <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
                     <li class="dropdown {% if active_page in ['projects', 'publications', 'books'] %}active{% endif %}">
                         <a href="javascript:void(0)">Research</a>
@@ -36,10 +32,18 @@
                             <a href="{{ url_for('books') }}" class="{{ 'active' if active_page == 'books' else '' }}">Books</a>
                         </div>
                     </li>                    
-                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li>
+                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
                     <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
-                    <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
+                    <li class="dropdown {% if active_page in ['Seminars & Workshops', 'My Blogs', 'Talks Delivered'] %}active{% endif %}">
+                        <a href="javascript:void(0)">Outreach</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('seminar_workshop') }}" class="{{ 'active' if active_page == 'seminar_workshop' else '' }}">Seminars & Workshops</a>
+                            <a href="{{ url_for('my_blogs') }}" class="{{ 'active' if active_page == 'my_blogs' else '' }}">My Blogs</a>
+                            <a href="{{ url_for('talks_delivered') }}" class="{{ 'active' if active_page == 'talks_delivered' else '' }}">Talks Delivered</a>
+                        </div>
+                    </li>
+                    <li><a href="{{ url_for('contact') }}" class="{{ 'active' if active_page == 'contact' else '' }}">Contact</a></li>
                 </ul>
             </nav>
         </div>

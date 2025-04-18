@@ -144,7 +144,191 @@ def projects():
         "sponsored": False,
         "sponsored_by": ""
         
+    },
+
+    {
+        "id": "handwritten-equations-cv",
+        "title": "Solving Handwritten Linear Equations using Computer Vision & Deep Learning",
+        "status": "completed",
+        "year": "2021",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Computer Vision", "Deep Learning"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "product-eval-comments",
+        "title": "Product Evaluation using comment analysis: A Case Study in E-Commerce",
+        "status": "completed",
+        "year": "2021",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["E-Commerce", "Sentiment Analysis"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "fake-news-app",
+        "title": "Fake news detection App development using machine learning",
+        "status": "completed",
+        "year": "2021",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Fake News", "ML"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "emotion-biased-model",
+        "title": "Human emotion recognition using biased deep learning model",
+        "status": "completed",
+        "year": "2021",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Emotion Recognition", "Deep Learning"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "facial-recognition-alexa",
+        "title": "Facial recognition and emotion detection using Alexa as voice interface",
+        "status": "completed",
+        "year": "2020",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Facial Recognition", "Alexa", "Emotion Detection"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "peer-connect-chat",
+        "title": "Peer connect (An improvised chat application) using Firebase realtime database as backend",
+        "status": "completed",
+        "year": "2020",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Chat App", "Firebase"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "crypto-price-predict",
+        "title": "Crypto Currency Price Prediction (ML)",
+        "status": "completed",
+        "year": "2019",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Cryptocurrency", "ML"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "safe-remote-purchase",
+        "title": "Safe Remote Purchase (Blockchain)",
+        "status": "completed",
+        "year": "2019",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Blockchain", "E-Commerce"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "3d-map-travel-app",
+        "title": "3D Map with travel simulator app",
+        "status": "completed",
+        "year": "2019",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["3D Mapping", "Simulation"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "image-processing-ml",
+        "title": "Image Processing using ML",
+        "status": "completed",
+        "year": "2019",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Image Processing", "ML"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "community-buybooks",
+        "title": "Community Builder App with BuyBooks",
+        "status": "completed",
+        "year": "2019",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Community", "App Development"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "cab-demand-predict",
+        "title": "Cab Demand Prediction System",
+        "status": "completed",
+        "year": "2019",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Demand Prediction", "ML"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
+    },
+    {
+        "id": "car-insurance-ml",
+        "title": "Car Insurance Premium Calculator from Driving Behavior of Driver",
+        "status": "completed",
+        "year": "2019",
+        "funding": "",
+        "description": "",
+        "image": "ai-medicine.jpg",
+        "team": [],
+        "tags": ["Insurance", "ML"],
+        "patent": False,
+        "sponsored": False,
+        "supervised": True
     }
+
     ]
 
     return render_template("projects.html", projects=PROJECTS, active_page='projects')
@@ -579,13 +763,241 @@ def people():
     return render_template("people.html", people=people, active_page='people')
 
 # Talks and Writings
-@app.route('/talks_writings')
-def talks_writings():
+@app.route('/talks_delivered')
+def talks_delivered():
     """
-    This route handles the talks & writings page ('/talks_writings') of the web application.
-    It renders the 'talks_writings.html' template.
+    This route handles the stalks delivered route.
     """
-    return render_template("talks_writings.html", active_page='talks_writings')
+    # Talks data categorized by year
+    talks_data = {
+        "2023": [
+            {
+                "title": "Fine-grained Image Analysis for Affective Computing using Deep CNNs in IoT Environment",
+                "event": "CIoT-2023, 8th June",
+                "location": "Bennett University, Greater Noida"
+            },
+            {
+                "title": "Fine-grained Image Analysis for Emotion Recognition using Deep CNNs with Bilinear Pooling",
+                "event": "AITHA-2023, 24th Feb",
+                "location": "NIT Delhi"
+            },
+            {
+                "title": "Facial Expression Recognition using Deep CNNs",
+                "event": "STC on Advanced Deep Learning, 27 Feb – 3 Mar",
+                "location": "NITTTR Chandigarh"
+            },
+            {
+                "title": "AI and Agriculture (Fisheries Sector)",
+                "event": "Workshop, 8 Aug",
+                "location": "SKUAST-K, Jammu and Kashmir"
+            }
+        ],
+        "2022": [
+            {
+                "title": "ML in Genomics",
+                "event": "AI/ML in Animal Breeding, 22–28 Mar",
+                "location": "SKUAST-K"
+            },
+            {
+                "title": "Computer Vision on Linux Applications in Engineering",
+                "event": "STC, 28 Nov – 2 Dec",
+                "location": "NITTTR Chandigarh"
+            }
+        ],
+        "2021": [
+            {
+                "title": "ML for Biometric Reorganization & Security",
+                "event": "Webinar, 22–26 Feb",
+                "location": "ITS Engineering College, Noida"
+            },
+            {
+                "title": "Cancelable Biometrics using ML",
+                "event": "Webinar, 26 Jun",
+                "location": "ITS Engineering College, Noida"
+            },
+            {
+                "title": "Session Chair, Confluence 2021",
+                "event": "28–29 Jan",
+                "location": "Amity University, Noida"
+            }
+        ],
+        "2020": [
+            {
+                "title": "India International Science Festival (IISF)",
+                "event": "Virtual, 22–25 Dec",
+                "location": ""
+            }
+        ],
+        "2019": [
+            {
+                "title": "Career Counseling",
+                "event": "23rd Feb",
+                "location": "SP Model Higher Secondary School, Srinagar"
+            }
+        ],
+        "2018": [
+            {
+                "title": "3rd International Conference on Soft Computing: SoCTA-2018",
+                "event": "21–23 Dec",
+                "location": ""
+            }
+        ]
+    }
+
+    return render_template("talks_delivered.html", active_page='talks_delivered', talks_by_year=talks_data)
+
+
+# Blogs
+@app.route('/my_blogs')
+def my_blogs():
+    """
+    This route handles the blogs route.
+    """
+    return render_template("my_blogs.html", active_page='my_blogs')
+
+# Seminars
+@app.route('/seminar_workshop')
+def seminar_workshop():
+    seminar_workshop_entries = [
+        # Seminars
+        {
+            "title": "Guest Speaker on Machine Learning",
+            "details": "Organized by Dept. of CSE, ITS Engineering College, Greater Noida on February 22-26, 2021.",
+            "location": "Greater Noida",
+            "type": "seminar"
+        },
+        {
+            "title": "Coordinator - Applications of ML and DL",
+            "details": "Organized by Dept. of CSE, NIT Srinagar on October 26-30, 2020.",
+            "location": "NIT Srinagar",
+            "type": "seminar"
+        },
+        {
+            "title": "Jt. Organizing Secretary - International Conference on Digital Democracy - IT for Change",
+            "details": "Held at KIIT Bhubaneswar, January 16-18, 2020. Organized by the Computer Society of India.",
+            "location": "KIIT Bhubaneswar",
+            "type": "seminar"
+        },
+        {
+            "title": "Organizing Secretary - 8th International Symposium on Fusion of Science & Technology (ISFT-2020)",
+            "details": "Held at J.C. Bose University of Science & Technology, YMCA, Faridabad, India on January 6-10, 2020.",
+            "location": "YMCA, Faridabad",
+            "type": "seminar"
+        },
+        {
+            "title": "Coordinator - Exordium 2019",
+            "details": "Second National Level Workshop Cum Coding Festival by Semicolon and Dept. of CSE, NIT Srinagar, April 3-7, 2019.",
+            "location": "NIT Srinagar",
+            "type": "seminar"
+        },
+        {
+            "title": "Organized one-day coding competition Techno Crackers: Let's Codify",
+            "details": "Dept. of CSE, NIT Srinagar, May 13, 2017.",
+            "location": "NIT Srinagar",
+            "type": "seminar"
+        },
+
+        # Academic Visits / Workshops
+        {
+            "title": "One Day Workshop on Cloud Computing and Big Data Analytics",
+            "details": "Held on May 19, 2015 at NIT Jalandhar.",
+            "location": "NIT Jalandhar, Punjab",
+            "type": "visit"
+        },
+        {
+            "title": "STC on Recent Trends in Software Engineering and Knowledge Mining",
+            "details": "June 1-5, 2015 at NIT Jalandhar.",
+            "location": "NIT Jalandhar, Punjab",
+            "type": "visit"
+        },
+        {
+            "title": "STC on Image and NLP",
+            "details": "May 30 to June 3, 2016 at NIT Jalandhar.",
+            "location": "NIT Jalandhar, Punjab",
+            "type": "visit"
+        },
+        {
+            "title": "STC on Advances in CS & IT Trends",
+            "details": "January 2-6, 2017 at NIT Jalandhar.",
+            "location": "NIT Jalandhar, Punjab",
+            "type": "visit"
+        },
+        {
+            "title": "TECHNO CRACKER: LET's CODIFY under CSI Banner",
+            "details": "May 13, 2017.",
+            "location": "NIT Jalandhar, Punjab",
+            "type": "visit"
+        },
+        {
+            "title": "Research Promotional Workshop on Digital Geometry",
+            "details": "June 23-25, 2014.",
+            "location": "IIEST Shibpur",
+            "type": "visit"
+        },
+        {
+            "title": "International Indo-US Workshop on Statistical Method on Bioinformatics",
+            "details": "December 12-14, 2013.",
+            "location": "IISc Bangalore",
+            "type": "visit"
+        },
+        {
+            "title": "Course on Mathematical Morphology and Fractal Informatics",
+            "details": "June 29 - July 15, 2012.",
+            "location": "ISI Bangalore",
+            "type": "visit"
+        },
+        {
+            "title": "International Workshop on Spatial Statistical Tools",
+            "details": "November 26-30, 2012.",
+            "location": "ISI Bangalore",
+            "type": "visit"
+        },
+        {
+            "title": "Course on Spatial Informatics from Image",
+            "details": "November 30 - December 8, 2012.",
+            "location": "ISI Bangalore",
+            "type": "visit"
+        },
+        {
+            "title": "CDSA-2014: 3rd International Symposium on Complex Dynamical Systems",
+            "details": "March 10-12, 2014.",
+            "location": "ISI Kolkata",
+            "type": "visit"
+        },
+        {
+            "title": "6th Workshop on Nano-Electronics and Biochips",
+            "details": "December 22, 2012.",
+            "location": "ISI Kolkata",
+            "type": "visit"
+        },
+        {
+            "title": "Workshop on Experiencing Data Mining using Statistica",
+            "details": "March 25-26, 2013.",
+            "location": "ISI Kolkata",
+            "type": "visit"
+        },
+        {
+            "title": "National Conference on Bioinformatics & Comp. Biology",
+            "details": "March 14-15, 2014.",
+            "location": "SMIT, Sikkim",
+            "type": "visit"
+        },
+        {
+            "title": "STC on Artificial Intelligence",
+            "details": "December 10-14, 2007.",
+            "location": "NITTR, Kolkata",
+            "type": "visit"
+        },
+        {
+            "title": "Staff Development Program on Data Mining",
+            "details": "November 12-23, 2007.",
+            "location": "SONA College of Technology, Tamil Nadu",
+            "type": "visit"
+        },
+    ]
+
+    return render_template('seminar_workshop.html', seminar_workshop_entries=seminar_workshop_entries, active_page='seminar_workshop')
+
 
 # About Me
 @app.route('/about-me')
@@ -595,6 +1007,13 @@ def about_me():
     '''
     return render_template('about_me.html')
 
+# Contact
+@app.route('/contact')
+def contact():
+    '''
+    This is the contact page
+    '''
+    return render_template('contact.html', active_page='contact')
 
 if __name__ == '__main__':
     """

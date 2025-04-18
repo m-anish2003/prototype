@@ -1,0 +1,75 @@
+/* seminars_workshops.css */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+.filter-buttons {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.filter-buttons button {
+  padding: 10px 20px;
+  margin: 0 8px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.filter-buttons button:hover {
+  background: #2980b9;
+}
+
+.entries-list {
+  list-style: none;
+  padding: 0;
+}
+
+.entry-item {
+  background: #f0f5f9;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-left: 5px solid #2980b9;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.entry-item:hover {
+  background: #e1ebf4;
+}
+
+.entry-item strong {
+  font-size: 1.1rem;
+}
+
+.entry-item em, .entry-item .location {
+  color: #555;
+  display: block;
+}
+
+.filter-buttons button.active {
+  background: #1abc9c; /* A distinct color for active button */
+  box-shadow: 0 4px 8px rgba(26, 188, 156, 0.3);
+}

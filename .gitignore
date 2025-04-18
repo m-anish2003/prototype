@@ -13,3 +13,6 @@ venv/
 .vscode/
 *.code-workspace
 .idea/
+
+# TODO 
+TODO.txt

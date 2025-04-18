@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and viewport configuration -->
     <meta charset="UTF-8">
     <title>Dr. Ranjeet Kumar Rout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- External CSS files for different sections -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/talks.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <!-- Font Awesome icons library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header with navigation -->
+    <!-- Header Section with navigation -->
     <header class="site-header">
         <div class="overlay"></div>
         <div class="nav-container">
@@ -29,54 +32,59 @@
                             <a href="{{ url_for('books') }}" class="{{ 'active' if active_page == 'books' else '' }}">Books</a>
                         </div>
                     </li>                    
-                      <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
+                    <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
                     <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
-                    <li><a href="{{ url_for('talks_writings') }}" class="{{ 'active' if active_page == 'talks_writings' else '' }}">Talks & Writings</a></li>
+                    <li class="dropdown {% if active_page in ['Seminars & Workshops', 'My Blogs', 'Talks Delivered'] %}active{% endif %}">
+                        <a href="javascript:void(0)">Outreach</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('seminar_workshop') }}" class="{{ 'active' if active_page == 'seminar_workshop' else '' }}">Seminars & Workshops</a>
+                            <a href="{{ url_for('my_blogs') }}" class="{{ 'active' if active_page == 'my_blogs' else '' }}">My Blogs</a>
+                            <a href="{{ url_for('talks_delivered') }}" class="{{ 'active' if active_page == 'talks_delivered' else '' }}">Talks Delivered</a>
+                        </div>
+                    </li>
+                    <li><a href="{{ url_for('contact') }}" class="{{ 'active' if active_page == 'contact' else '' }}">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+    
+<!-- Main Section -->
+    <main class="contact-main">
+        <h2>Contact Me</h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
-    <!-- Main content -->
-    <main>
-        <div class="toggle-buttons">
-            <button onclick="showEngage('seminars')" id="seminarsBtn" class="active">Seminars</button>
-            <button onclick="showEngage('talks')" id="talksBtn">Talks Delivered</button>
-            <button onclick="showEngage('blogs')" id="blogsBtn">Blogs</button>
-          </div>
-          
-          <div class="section" id="seminarsSection">
-            <!-- List of seminars -->
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="What's your query about?" required>
 
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
 
-          </div>
-          
-          <div class="section" id="talksSection" style="display: none;">
-            <!-- Talks Delivered -->
-
-
-          </div>
-          
-          <div class="section" id="blogsSection" style="display: none;">
-            <!-- Blog snippets -->
-
-
-          </div>          
+                <button type="submit">Send Message</button>
+            </form>
+            <p id="formMessage" class="form-message"></p>
+        </div>
     </main>
 
-    <!-- Footer with social media links -->
+
+    <!-- Footer Section with social media links -->
     <footer>
         <div class="social-icons">
+            <!-- Social media icons with links -->
             <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
             <a href="mailto:your@email.com"><i class="fas fa-envelope"></i></a>
         </div>
+        <!-- Copyright information -->
         <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/talks.js') }}"></script>
+    <!-- External JavaScript files -->
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
     <script src="{{ url_for('static', filename='js/header.js') }}"></script>
     <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
 
