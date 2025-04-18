@@ -1,22 +1,39 @@
-// Publication type switching
-const pubTypeBtns = document.querySelectorAll('.pub-type-btn'); // Select all publication type buttons
-const pubSections = document.querySelectorAll('.pub-section'); // Select all publication sections
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.pub-type-btn');
+    const sections = document.querySelectorAll('.pub-section');
+    const filters = document.querySelector('.filters');
 
-// Add event listeners to each button
-pubTypeBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-        pubTypeBtns.forEach(b => b.classList.remove('active')); // Remove active class from all buttons
-        this.classList.add('active'); // Add active class to the clicked button
-        
-        const type = this.dataset.type; // Get the type of publication from button's data attribute
-        pubSections.forEach(section => {
-            section.classList.remove('active'); // Remove active class from all sections
-            if (section.id === `${type}-pubs`) { // Check if the section matches the clicked type
-                section.classList.add('active'); // Add active class to the matched section
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            // Activate selected button
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Show corresponding section
+            const type = btn.getAttribute('data-type');
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(`${type}-pubs`).classList.add('active');
+
+            // Show/hide filters
+            if (type === 'journal' || type === 'conference') {
+                filters.style.display = 'flex';
+            } else {
+                filters.style.display = 'none';
             }
         });
     });
+
+    // INITIAL STATE: Ensure filters are shown only for journal
+    const initialType = document.querySelector('.pub-type-btn.active').getAttribute('data-type');
+    if (initialType === 'journal' || initialType === 'conference') {
+        filters.style.display = 'flex';
+    } else {
+        filters.style.display = 'none';
+    }
 });
+
+
+
 
 // Filter functionality
 const yearFilter = document.getElementById('year-filter'); // Select the year filter dropdown
