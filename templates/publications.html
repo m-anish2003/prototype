@@ -59,6 +59,7 @@
                 <div class="pub-types">
                     <button class="pub-type-btn active" data-type="journal">Journal Publications</button>
                     <button class="pub-type-btn" data-type="conference">Conference Publications</button>
+                    <button class="pub-type-btn" data-type="scholar">Scholar Publications</button>
                 </div>
             </div>
         
@@ -81,24 +82,6 @@
                         {% endfor %}
                     </select>
                 </div>
-            </div>
-        
-            <div id="scholar-pubs" class="pub-section">
-                <ul class="publications-list">
-                    {% if scholar_publications %}
-                        {% for pub in scholar_publications %}
-                        <li class="pub-card">
-                            <div class="pub-title">{{ pub.title }}</div>
-                            <div class="pub-venue">{{ pub.venue }}, {{ pub.year }}</div>
-                            <div class="pub-links">
-                                <a href="{{ pub.link }}" target="_blank" class="pub-link">View on Google Scholar</a>
-                            </div>
-                        </li>
-                        {% endfor %}
-                    {% else %}
-                        <p>No publications found or Google Scholar is unavailable.</p>
-                    {% endif %}
-                </ul>
             </div>
 
             <div id="journal-pubs" class="pub-section active">
@@ -152,6 +135,26 @@
                 </div>
                 {% endfor %}
             </div>
+
+            <div id="scholar-pubs" class="pub-section">
+                <ul class="publications-list">
+                    {% if scholar_pubs %}
+                        {% for pub in scholar_pubs %}
+                        <li class="pub-card" data-year="{{ pub.year }}" data-topics="{{ pub.topics|join(',') }}">
+                            <div class="pub-title">{{ pub.title }}</div>
+                            <div class="pub-venue">{{ pub.venue }}, {{ pub.year }}</div>
+                            <div class="pub-links">
+                                <a href="{{ pub.link }}" target="_blank" class="pub-link">View on Google Scholar</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        <p>No publications found or Google Scholar is unavailable.</p>
+                    {% endif %}
+                </ul>
+            </div>
+            
+            
         
             <!-- BibTeX Modal -->
             <div id="bibtex-modal" class="modal">
