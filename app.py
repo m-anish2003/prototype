@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request
 from scraper import get_scholar_publications
 
 app = Flask(__name__)
@@ -1015,6 +1015,22 @@ def about_me():
     This is the dedicated page for professor's about section
     '''
     return render_template('about_me.html')
+
+# Appointment
+@app.route('/appointment_form', methods=['GET', 'POST'])
+def appointment_form():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        date = request.form.get('date')
+        time = request.form.get('time')
+        reason = request.form.get('reason')
+        
+        # You can save this data to a database or send an email here.
+        
+        return "<script>window.close();</script><h3>Appointment Submitted Successfully!</h3>"
+
+    return render_template('appointment_form.html')
 
 # Contact
 @app.route('/contact')
