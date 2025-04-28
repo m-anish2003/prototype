@@ -6,148 +6,11 @@
   <title>Ranjeet Kumar Rout</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about_me.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f7f9fc;
-      color: #333;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: #003366;
-    }
-
-    .site-title {
-      color: white;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ffcc00;
-    }
-
-    .header-section {
-      text-align: center;
-      padding: 40px;
-    }
-
-    .header-section img {
-      max-width: 220px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .header-section h1 {
-      color: #003366;
-      font-size: 28px;
-    }
-
-    .content-section {
-      padding: 20px 80px;
-    }
-
-    .section-title {
-      color: #003366;
-      font-size: 22px;
-      margin-bottom: 10px;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
-    }
-
-    ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
-    a.cv-link {
-      color: #003366;
-      font-weight: bold;
-    }
-
-    a.cv-link:hover {
-      text-decoration: underline;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 500px;
-      margin-top: 20px;
-    }
-
-    label {
-      font-weight: 500;
-    }
-
-    input, textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    button {
-      background-color: #003366;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #005599;
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 10px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
-  <script>
-    // JavaScript to open a new window for the appointment form
-    function openAppointmentForm() {
-  window.open('/appointment_form', 'Appointment Request', 'width=600,height=400');
-}
-
-  </script>
 </head>
+
 <body>
 
   <!-- Top Navigation Bar -->
@@ -216,7 +79,7 @@
 </footer>
 
 <!-- External JavaScript files -->
-<script src="{{ url_for('static', filename='js/news.js') }}"></script>
+<script src="{{ url_for('static', filename='js/about_me.js') }}"></script>
 <script src="{{ url_for('static', filename='js/header.js') }}"></script>
 <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
 <!-- Font Awesome icons script -->
