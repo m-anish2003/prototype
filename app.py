@@ -1017,19 +1017,8 @@ def about_me():
     return render_template('about_me.html')
 
 # Appointment
-@app.route('/appointment_form', methods=['GET', 'POST'])
-def appointment_form():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        date = request.form.get('date')
-        time = request.form.get('time')
-        reason = request.form.get('reason')
-        
-        # You can save this data to a database or send an email here.
-        
-        return "<script>window.close();</script><h3>Appointment Submitted Successfully!</h3>"
-
+@app.route('/appointment_form')
+def appointment():
     return render_template('appointment_form.html')
 
 # Contact
