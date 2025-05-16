@@ -15,15 +15,23 @@
 </head>
 <body>
 
-    <!-- Header Section with navigation -->
+    <!-- Header with logo and navigation menu -->
     <header class="site-header">
         <div class="overlay"></div>
         <div class="nav-container">
+            <!-- Logo linking to About Me -->
             <div class="logo"><a class="logo-link" href="{{ url_for('about_me') }}">Dr. Ranjeet Kumar Rout</a></div>
+            
+            <!-- Hamburger menu for small screens -->
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            
+            <!-- Navigation bar -->
             <nav class="navbar" id="navbar">
                 <ul>
+                    <!-- Navigation links with active state highlighting -->
                     <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
+                    
+                    <!-- Dropdown for Research section -->
                     <li class="dropdown {% if active_page in ['projects', 'publications', 'books'] %}active{% endif %}">
                         <a href="javascript:void(0)">Research</a>
                         <div class="dropdown-content">
@@ -31,10 +39,13 @@
                             <a href="{{ url_for('publications') }}" class="{{ 'active' if active_page == 'publications' else '' }}">Publications</a>
                             <a href="{{ url_for('books') }}" class="{{ 'active' if active_page == 'books' else '' }}">Books</a>
                         </div>
-                    </li>                    
+                    </li>
+                    
+                    <!-- Other single navigation links -->
                     <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
-                    <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
+
+                     <!-- Dropdown for Outreach section -->
                     <li class="dropdown {% if active_page in ['Seminars & Workshops', 'My Blogs', 'Talks Delivered'] %}active{% endif %}">
                         <a href="javascript:void(0)">Outreach</a>
                         <div class="dropdown-content">
@@ -43,7 +54,10 @@
                             <a href="{{ url_for('talks_delivered') }}" class="{{ 'active' if active_page == 'talks_delivered' else '' }}">Talks Delivered</a>
                         </div>
                     </li>
-                    <li><a href="{{ url_for('contact') }}" class="{{ 'active' if active_page == 'contact' else '' }}">Contact</a></li>
+
+                    <!-- Other single navigation links -->
+                    <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
+
                 </ul>
             </nav>
         </div>

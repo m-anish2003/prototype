@@ -1021,13 +1021,7 @@ def about_me():
 def appointment():
     return render_template('appointment_form.html')
 
-# Contact
-@app.route('/contact')
-def contact():
-    '''
-    This is the contact page
-    '''
-    return render_template('contact.html', active_page='contact')
+
 
 if __name__ == '__main__':
     """
