@@ -13,49 +13,91 @@ document.addEventListener('DOMContentLoaded', function () {
             const type = btn.getAttribute('data-type');
             sections.forEach(sec => sec.classList.remove('active'));
             document.getElementById(`${type}-pubs`).classList.add('active');
+            
+            // Clear search when switching tabs
+            searchInput.value = '';
+            applyFilters();
         });
     });
 
     // ==============================
-    // Filter publications by year and topic
+    // Combined filter and search functionality
     // ==============================
     const yearFilter = document.getElementById('year-filter');
     const topicFilter = document.getElementById('topic-filter');
-    const pubCards = document.querySelectorAll('.pub-card');
+    const searchInput = document.getElementById('search-input');
     const pubYearGroups = document.querySelectorAll('.pub-year-group');
+    const noResultsMsg = document.getElementById('no-results-message');
 
     function applyFilters() {
         const selectedYear = yearFilter.value;
         const selectedTopic = topicFilter.value.toLowerCase();
+        const searchQuery = searchInput.value.toLowerCase().trim();
+        const activeSection = document.querySelector('.pub-section.active');
+        
+        let anyResultsFound = false;
 
         pubYearGroups.forEach(group => {
+            // Skip groups not in active section
+            if (!activeSection.contains(group)) return;
+
             const groupYear = group.dataset.year;
+            let hasVisibleCardsInGroup = false;
 
             // Filter by year
             if (selectedYear === 'all' || groupYear === selectedYear) {
                 group.style.display = 'block';
 
-                let hasVisibleCards = false;
-
-                // Filter individual cards by topic
+                // Filter individual cards by topic and search
                 group.querySelectorAll('.pub-card').forEach(card => {
                     const cardTopics = card.dataset.topics.toLowerCase();
-                    const showCard = (selectedTopic === 'all' || cardTopics.includes(selectedTopic));
+                    const title = card.querySelector('.pub-title').textContent.toLowerCase();
+                    const authors = card.querySelector('.pub-authors').textContent.toLowerCase();
+                    const venue = card.querySelector('.pub-venue').textContent.toLowerCase();
                     
+                    // Check topic match
+                    const matchesTopic = selectedTopic === 'all' || cardTopics.includes(selectedTopic);
+                    
+                    // Check search match
+                    const matchesSearch = searchQuery === '' || 
+                                         title.includes(searchQuery) || 
+                                         authors.includes(searchQuery) || 
+                                         venue.includes(searchQuery) || 
+                                         cardTopics.includes(searchQuery);
+                    
+                    const showCard = matchesTopic && matchesSearch;
                     card.style.display = showCard ? 'block' : 'none';
-                    if (showCard) hasVisibleCards = true;
+                    
+                    if (showCard) {
+                        hasVisibleCardsInGroup = true;
+                        anyResultsFound = true;
+                    }
                 });
 
-                // Hide year label if no cards are visible
-                group.querySelector('.pub-year').style.display = hasVisibleCards ? 'block' : 'none';
+                // Show/hide year group based on matches
+                group.style.display = hasVisibleCardsInGroup ? 'block' : 'none';
+                group.querySelector('.pub-year').style.display = hasVisibleCardsInGroup ? 'block' : 'none';
             } else {
                 group.style.display = 'none';
             }
         });
+
+        // Show "No results" message if needed
+        if (noResultsMsg) {
+            noResultsMsg.style.display = anyResultsFound ? 'none' : 'block';
+        }
     }
 
+    // Event listeners for all filters and search
     yearFilter.addEventListener('change', applyFilters);
     topicFilter.addEventListener('change', applyFilters);
+    
+    // Dynamic search on input with debounce
+    let searchTimeout;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(applyFilters, 300);
+    });
 
     // ==============================
     // BibTeX modal pop-up
@@ -96,89 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
             modal.style.display = 'none';
         }
     });
-});
 
-
-
-// ==============================
-// Search functionality
-// ==============================
-document.addEventListener('DOMContentLoaded', function () {
-    // Initialize variables after DOM is loaded
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
-    const pubCards = document.querySelectorAll('.pub-card');
-    const pubYearGroups = document.querySelectorAll('.pub-year-group');
-    const activePubSection = document.querySelector('.pub-section.active');
-
-    function performSearch() {
-        const query = searchInput.value.toLowerCase().trim();
-        const activeSection = document.querySelector('.pub-section.active');
-        
-        if (!query) {
-            // If search is empty, show all publications in active section
-            activeSection.querySelectorAll('.pub-card').forEach(card => {
-                card.style.display = 'block';
-            });
-            activeSection.querySelectorAll('.pub-year-group').forEach(group => {
-                group.style.display = 'block';
-                const hasVisibleCards = group.querySelector('.pub-card[style="display: block;"]') !== null;
-                group.querySelector('.pub-year').style.display = hasVisibleCards ? 'block' : 'none';
-            });
-            return;
-        }
-
-        let anyResultsFound = false;
-        
-        activeSection.querySelectorAll('.pub-year-group').forEach(group => {
-            let hasVisibleCardsInGroup = false;
-            
-            group.querySelectorAll('.pub-card').forEach(card => {
-                const title = card.querySelector('.pub-title').textContent.toLowerCase();
-                const authors = card.querySelector('.pub-authors').textContent.toLowerCase();
-                const venue = card.querySelector('.pub-venue').textContent.toLowerCase();
-                const topics = card.dataset.topics.toLowerCase();
-                
-                const matches = title.includes(query) || 
-                                authors.includes(query) || 
-                                venue.includes(query) || 
-                                topics.includes(query);
-                
-                card.style.display = matches ? 'block' : 'none';
-                if (matches) {
-                    hasVisibleCardsInGroup = true;
-                    anyResultsFound = true;
-                }
-            });
-
-            // Show/hide year group based on matches
-            group.style.display = hasVisibleCardsInGroup ? 'block' : 'none';
-            group.querySelector('.pub-year').style.display = hasVisibleCardsInGroup ? 'block' : 'none';
-        });
-
-        // Show "No results" message if needed
-        const noResultsMsg = document.getElementById('no-results-message');
-        if (noResultsMsg) {
-            noResultsMsg.style.display = anyResultsFound ? 'none' : 'block';
-        }
-    }
-
-    // Search on button click
-    searchBtn.addEventListener('click', performSearch);
-
-    // Search on Enter key
-    searchInput.addEventListener('keyup', function(e) {
-        if (e.key === 'Enter') {
-            performSearch();
-        }
-    });
-
-    // Clear search when switching between journal/conference tabs
-    const pubTypeBtns = document.querySelectorAll('.pub-type-btn');
-    pubTypeBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            searchInput.value = '';
-            performSearch(); // This will reset the view
-        });
-    });
+    // Initialize
+    applyFilters();
 });

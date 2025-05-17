@@ -46,11 +46,11 @@
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
 
                      <!-- Dropdown for Outreach section -->
-                    <li class="dropdown {% if active_page in ['Seminars & Workshops', 'My Blogs', 'Talks Delivered'] %}active{% endif %}">
-                        <a href="javascript:void(0)">Outreach</a>
+                    <li class="dropdown {% if active_page in ['Seminars & Workshops', 'Gallery', 'Talks Delivered'] %}active{% endif %}">
+                        <a href="javascript:void(0)">Events</a>
                         <div class="dropdown-content">
                             <a href="{{ url_for('seminar_workshop') }}" class="{{ 'active' if active_page == 'seminar_workshop' else '' }}">Seminars & Workshops</a>
-                            <a href="{{ url_for('my_blogs') }}" class="{{ 'active' if active_page == 'my_blogs' else '' }}">My Blogs</a>
+                            <a href="{{ url_for('gallery') }}" class="{{ 'active' if active_page == 'gallery' else '' }}">Gallery</a>
                             <a href="{{ url_for('talks_delivered') }}" class="{{ 'active' if active_page == 'talks_delivered' else '' }}">Talks Delivered</a>
                         </div>
                     </li>
@@ -86,6 +86,11 @@
                     <button class="filter-btn" data-filter="supervised">
                         <i class="fas fa-chalkboard-teacher"></i> Supervised
                     </button>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" id="project-search" placeholder="Search projects by title, description, or tags..." class="search-input">
+                    <i class="fas fa-search search-icon"></i>
                 </div>
         
                 <div class="projects-grid">

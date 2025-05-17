@@ -168,10 +168,23 @@ def news():
 @app.route('/responsibilities')
 def responsibilities():
     """
-    This route handles the responsibilities page ('/responsibilities') of the web application.
-    It renders the 'responsibilities.html' template.
+    This route handles the responsibilities page by loading data from JSON file.
     """
-    return render_template("responsibilities.html", active_page='responsibilities')
+    try:
+        # Load responsibilities data
+        resp_path = os.path.join(current_app.root_path, 'data', 'responsibility.json')
+        with open(resp_path, 'r', encoding='utf-8') as f:
+            responsibilities_data = json.load(f)
+            if not isinstance(responsibilities_data, dict):
+                current_app.logger.error("Responsibilities data is not properly formatted")
+                responsibilities_data = {"responsibilities": []}
+    except Exception as e:
+        current_app.logger.error(f"Error loading responsibilities data: {str(e)}")
+        responsibilities_data = {"responsibilities": []}
+
+    return render_template("responsibilities.html",
+                         responsibilities=responsibilities_data["responsibilities"],
+                         active_page='responsibilities')
 
 
 # People Section
@@ -242,15 +255,15 @@ def talks_delivered():
         )
 
 
-# Blogs
-@app.route('/my_blogs')
-def my_blogs():
+# Gallery
+@app.route('/gallery')
+def gallery():
     """
     This route handles the blogs route.
     """
-    return render_template("my_blogs.html", active_page='my_blogs')
+    return render_template("gallery.html", active_page='gallery')
 
-# Seminars
+
 # Seminars
 @app.route('/seminar_workshop')
 def seminar_workshop():

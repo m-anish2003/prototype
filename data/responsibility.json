@@ -1,0 +1,76 @@
+{
+    "responsibilities": [
+        {
+            "category": "Leadership Roles",
+            "items": [
+                {
+                    "role": "Associate Dean of Academic",
+                    "date": "October 2023"
+                },
+                {
+                    "role": "Warden",
+                    "date": "December 2020"
+                },
+                {
+                    "role": "Convener DUGC",
+                    "date": "March 2022"
+                }
+            ]
+        },
+        {
+            "category": "Academic & Program Coordination",
+            "items": [
+                {
+                    "role": "Nodal Officer Scholarship",
+                    "date": "October 2023"
+                },
+                {
+                    "role": "Program Coordinator, Center of Excellence AI and Agriculture (CEAIA)",
+                    "date": "December 2023"
+                },
+                {
+                    "role": "Adjunct Faculty, Center of Excellence Energy Research (CEER)",
+                    "date": "2023"
+                },
+                {
+                    "role": "EK BHARAT SHRESTHA BHARAT (EBSB) Nodal Officer",
+                    "date": "February 2022"
+                },
+                {
+                    "role": "Semester Coordinator",
+                    "date": "January 2019"
+                },
+                {
+                    "role": "Departmental NBA Coordinator",
+                    "date": "July 2020"
+                }
+            ]
+        },
+        {
+            "category": "Committee Memberships",
+            "items": [
+                {
+                    "role": "Plagiarism S/W Committee Member",
+                    "date": "June 2019"
+                },
+                {
+                    "role": "Wi-Fi Monitoring Committee Member",
+                    "date": "June 2019"
+                }
+            ]
+        },
+        {
+            "category": "Administrative Duties",
+            "items": [
+                {
+                    "role": "Upgradation of Teaching and Learning Process of the Institute",
+                    "date": "June 2019"
+                },
+                {
+                    "role": "Website Coordinator",
+                    "date": "November 2019"
+                }
+            ]
+        }
+    ]
+}

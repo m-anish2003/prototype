@@ -44,11 +44,11 @@
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
 
                      <!-- Dropdown for Outreach section -->
-                    <li class="dropdown {% if active_page in ['Seminars & Workshops', 'My Blogs', 'Talks Delivered'] %}active{% endif %}">
-                        <a href="javascript:void(0)">Outreach</a>
+                    <li class="dropdown {% if active_page in ['Seminars & Workshops', 'Gallery', 'Talks Delivered'] %}active{% endif %}">
+                        <a href="javascript:void(0)">Events</a>
                         <div class="dropdown-content">
                             <a href="{{ url_for('seminar_workshop') }}" class="{{ 'active' if active_page == 'seminar_workshop' else '' }}">Seminars & Workshops</a>
-                            <a href="{{ url_for('my_blogs') }}" class="{{ 'active' if active_page == 'my_blogs' else '' }}">My Blogs</a>
+                            <a href="{{ url_for('gallery') }}" class="{{ 'active' if active_page == 'gallery' else '' }}">Gallery</a>
                             <a href="{{ url_for('talks_delivered') }}" class="{{ 'active' if active_page == 'talks_delivered' else '' }}">Talks Delivered</a>
                         </div>
                     </li>
@@ -67,15 +67,23 @@
 
         <div class="container">
             <h1>Seminars, Workshops & Academic Visits</h1>
-    
-            <!-- Filter buttons -->
-            <div class="filter-buttons">
-                <button onclick="filterEntries('all')">All</button>
-                <button onclick="filterEntries('seminar')">Seminars</button>
-                <button onclick="filterEntries('workshop')">Workshops</button>
-                <button onclick="filterEntries('visit')">Academic Visits</button>
+
+            <!-- Search and Filter Section -->
+            <div class="search-filter-container">
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search by title, location or details...">
+                </div>
+                
+                <!-- Filter buttons -->
+                <div class="filter-buttons">
+                    <button onclick="filterEntries('all')">All</button>
+                    <button onclick="filterEntries('seminar')">Seminars</button>
+                    <button onclick="filterEntries('workshop')">Workshops</button>
+                    <button onclick="filterEntries('visit')">Academic Visits</button>
+                </div>
             </div>
-    
+
             <!-- Entries -->
             <ul class="entries-list" id="entriesList">
                 {% for entry in seminar_workshop_entries %}
