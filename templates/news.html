@@ -68,24 +68,34 @@
         <!-- News Section -->
         <section class="news-updates">
             <div class="container">
-                <h1>News & Updates</h1>
-    
+                <div class="section-header">
+                    <h1>News & Updates</h1>
+                    <div class="search-container">
+                        <input type="text" id="newsSearch" placeholder="Search news...">
+                        <i class="search-icon fas fa-search"></i>
+                    </div>
+                </div>
+
                 <!-- Swiper Container -->
                 <div class="swiper news-swiper">
                     <div class="swiper-wrapper">
-                        <!-- Slides will be populated from backend -->
                         {% for item in news_items %}
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" data-title="{{ item.title|lower }}" data-date="{{ item.date|lower }}" data-content="{{ (item.excerpt + ' ' + item.full_text)|lower }}">
                             <div class="news-card">
-                                <img src="{{ url_for('static', filename='images/news/' + item.image) if item.image else url_for('static', filename='images/news/default.jpg') }}" class="news-image">
+                                <div class="news-image-container">
+                                    <img src="{{ url_for('static', filename='images/news/' + item.image) if item.image else url_for('static', filename='images/news/default.jpg') }}" class="news-image" alt="{{ item.title }}">
+                                    <div class="news-date-badge">{{ item.date }}</div>
+                                </div>
                                 <div class="news-content">
-                                    <div class="news-date">{{ item.date }}</div>
                                     <h3>{{ item.title }}</h3>
-                                    <p class="news-excerpt">
-                                        {{ item.excerpt }}
-                                        <span class="full-text">{{ item.full_text }}</span>
-                                    </p>
-                                    <div class="read-more">Read More</div>
+                                    <div class="news-text">
+                                        <p class="news-excerpt">{{ item.excerpt }}</p>
+                                        <p class="news-full-text">{{ item.full_text }}</p>
+                                    </div>
+                                    <div class="news-footer">
+                                        <div class="read-more">Read More <i class="fas fa-chevron-down"></i></div>
+                                        <div class="news-category">Research</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -96,19 +106,31 @@
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
-    
+
                 <!-- Announcements -->
-                <div class="announcements">
-                    <h2>Important Announcements</h2>
-                    <ul>
+                <div class="announcements-section">
+                    <h2><i class="fas fa-bullhorn"></i> Important Announcements</h2>
+                    <div class="announcements-container">
                         {% for announcement in announcements %}
-                        <li>{{ announcement }}</li>
+                        <div class="announcement-card">
+                            <div class="announcement-bullet"><i class="fas fa-circle"></i></div>
+                            <div class="announcement-text">{{ announcement }}</div>
+                        </div>
                         {% endfor %}
-                    </ul>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- No Results Message Template -->
+    <div id="noResultsTemplate" style="display: none;">
+        <div class="no-results-message">
+            <i class="fas fa-newspaper"></i>
+            <h3>No news found matching your search</h3>
+            <p>Try different keywords or check back later for updates</p>
+        </div>
+    </div>
 
     <!-- ================= Footer Section ================= -->
     <footer>

@@ -65,25 +65,102 @@
 
     <!-- Main Content Section for People -->
     <main class="people-container">
-        <h1>Our Team</h1>
+        <h1>Research People</h1>
+        
+        <!-- Search and Filter Section -->
+        <div class="people-controls">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="people-search" placeholder="Search by name..." class="search-input">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Members</button>
+                <button class="filter-btn" data-filter="phd">
+                    <i class="fas fa-graduation-cap"></i> PhD
+                </button>
+                <button class="filter-btn" data-filter="mtech">
+                    <i class="fas fa-user-graduate"></i> M.Tech
+                </button>
+                <button class="filter-btn" data-filter="btech">
+                    <i class="fas fa-user"></i> B.Tech
+                </button>
+            </div>
+        </div>
+        
+        <div id="no-results-message" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No team members found</h3>
+            <p>Try adjusting your search or filters</p>
+        </div>
+
         <div class="people-grid">
-            <!-- Loop through the list of people and display each person's details -->
             {% for person in people %}
-            <div class="person-card">
+            <div class="person-card" 
+                data-degree="{{ person.degree|lower }}"
+                data-name="{{ person.name|lower }}"
+                data-interests="{{ person.interests|join(',')|lower }}">
                 <!-- Person's image -->
                 <img src="{{ url_for('static', filename='images/people/' + person.image) }}" alt="{{ person.name }}">
-                <!-- Person's name -->
-                <h2>{{ person.name }}</h2>
-                <!-- Person's title -->
-                <h3>{{ person.title }}</h3>
-                <p class="degree">{{ person.degree }}: {{ person.institution }}</p>
-
-                <!-- List of interests associated with the person -->
-                <ul>
-                    {% for interest in person.interests %}
-                    <li>{{ interest }}</li>
-                    {% endfor %}
-                </ul>
+                
+                <!-- Person's name and registration code -->
+                <div class="person-header">
+                    <h2>{{ person.name }}</h2>
+                    {% if person.title %}
+                    <span class="reg-code">{{ person.title }}</span>
+                    {% endif %}
+                </div>
+                
+                <!-- Person's education -->
+                <div class="person-education">
+                    <i class="fas fa-university"></i>
+                    <span>{{ person.degree }}: {{ person.institution }}</span>
+                </div>
+                
+                <!-- Research interests -->
+                <div class="person-research">
+                    <h4>Research Interests:</h4>
+                    <ul>
+                        {% for interest in person.interests %}
+                        <li>{{ interest }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <!-- Social links -->
+                <div class="person-social">
+                    {% if person.linkedin %}
+                    <a href="{{ person.linkedin }}" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    {% else %}
+                    <span class="social-link disabled">
+                        <i class="fab fa-linkedin"></i>
+                    </span>
+                    {% endif %}
+                    
+                    {% if person.email %}
+                    <a href="mailto:{{ person.email }}" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    {% else %}
+                    <span class="social-link disabled">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    {% endif %}
+                    
+                    {% if person.website %}
+                    <a href="{{ person.website }}" target="_blank" class="social-link">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    {% else %}
+                    <span class="social-link disabled">
+                        <i class="fas fa-globe"></i>
+                    </span>
+                    {% endif %}
+                </div>
             </div>
             {% endfor %}
         </div>

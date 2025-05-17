@@ -1,4 +1,5 @@
-from flask import Flask, render_template, send_from_directory, current_app
+from flask import Flask, render_template, send_from_directory, current_app, jsonify
+import subprocess
 import os
 import json
 from utils.data_loader import load_publications
@@ -116,7 +117,7 @@ def books():
                          books=books_data, 
                          active_page='books')
 
-
+# News
 @app.route('/news')
 def news():
     """
@@ -254,6 +255,21 @@ def talks_delivered():
             years=[]
         )
 
+
+@app.route('/refresh_publications', methods=['POST'])
+def refresh_publications():
+    try:
+        # Run the scraper script
+        result = subprocess.run(['python', 'scraper.py'], capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            return jsonify({'success': True, 'message': 'Publications refreshed successfully'})
+        else:
+            return jsonify({'success': False, 'message': result.stderr}), 400
+            
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
+    
 
 # Gallery
 @app.route('/gallery')

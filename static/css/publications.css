@@ -308,3 +308,71 @@
     border-radius: 8px;
     margin: 2rem 0;
 }
+
+/* Refresh Button Styles */
+#refresh-btn {
+    margin-left: 10px;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--primary-main);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+#refresh-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+#refresh-btn .refresh-text {
+    font-size: 0.95rem;
+}
+
+#refresh-btn .fa-sync-alt {
+    transition: transform 0.5s ease;
+}
+
+#refresh-btn.refreshing .fa-sync-alt {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    #refresh-btn .refresh-text {
+        display: none;
+    }
+    
+    #refresh-btn {
+        padding: 0.8rem;
+        margin-left: 5px;
+    }
+}
+
+/* Publications Graph Styles */
+.publications-graph {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.publications-graph h3 {
+    margin-top: 0;
+    color: var(--primary-dark);
+    text-align: center;
+}
+
+#publicationsChart {
+    width: 100%;
+    max-height: 400px;
+    margin: 0 auto;
+}

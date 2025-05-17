@@ -5,7 +5,10 @@
         "degree": "Ph.D.",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["E-Health Care System"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Amardeep Gupta",
@@ -13,7 +16,10 @@
         "degree": "Ph.D.",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["Meta-Huristic algorithms for Energy Harvesting in WSN"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Nazir Shabbir ",
@@ -21,7 +27,10 @@
         "degree": "Ph.D.",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": [" Affective Computing", "Object Detection"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Irfan Rashid  Pukhta",
@@ -29,7 +38,10 @@
         "degree": "Ph.D.",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["Classification/Detection essential genes from microarray data"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Monika Khandelwal",
@@ -37,7 +49,10 @@
         "degree": "Ph.D.",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["Artificial Intelligence/Machine Learning in Computational Biology"],
-        "image": "avatar_girl.png"
+        "image": "avatar_girl.png",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Ishrat Nazir",
@@ -45,7 +60,10 @@
         "degree": "Ph.D.",
         "institution": "Mensselaer Polytechnic Institute",
         "interests": ["Artificial Intelligence/Machine Learning in Computational Biology"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Parveen kumar",
@@ -53,7 +71,10 @@
         "degree": "M.Tech",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["Reconstruction of DNA Sequence using Cellular Automata for Identification of Features"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Jaiprakash Dhakar",
@@ -61,7 +82,10 @@
         "degree": "M.Tech",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["A Pattern Classification Model for vowel data using Fuzzy Nearest Neighbor"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Pranay Sakhare",
@@ -69,7 +93,10 @@
         "degree": "M.Tech",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["Identification of Olfactory Receptors using a Parametric model"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": " Shubham Jain ",
@@ -77,7 +104,10 @@
         "degree": "M.Tech",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["A Competent Algorithm to Detect Attractors in Gene Regulatory Networks (GRNs) Based On Divide and Conquer"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Santosh Punase  ",
@@ -85,7 +115,10 @@
         "degree": "M.Tech",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["Identification of singleton attractors of Boolean Network using graph isomorphism"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     },
     {
         "name": "Sagar Mal Nitharwal",
@@ -93,6 +126,9 @@
         "degree": "M.Tech",
         "institution": "Rensselaer Polytechnic Institute",
         "interests": ["A Boolean Based Multi –Secret Image Sharing scheme using bit-reversa"],
-        "image": "avatar.webp"
+        "image": "avatar.webp",
+        "linkedin": "",
+        "email": "",
+        "website": ""
     }
 ]

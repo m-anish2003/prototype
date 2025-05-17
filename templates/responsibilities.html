@@ -68,26 +68,42 @@
         </div>
     </header>
 
-    <!-- Main content for responsibilities section -->
+   <!-- Main content for responsibilities section -->
     <main>
         <!-- Section for listing institutional and departmental responsibilities -->
         <section class="responsibilities-section">
             <div class="container">
-                <h2 class="section-title">Institutional and Departmental Responsibilities</h2>
-
-                {% for category in responsibilities %}
-                <div class="category">
-                    <h3 class="category-title">{{ category.category }}</h3>
-                    <ul class="responsibilities-list">
-                        {% for item in category['items'] %}
-                        <li>
-                            <span class="role">{{ item.role }}</span>
-                            <span class="date">{{ item.date }}</span>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                <div class="search-container">
+                    <input type="text" id="responsibilitySearch" placeholder="Search responsibilities...">
                 </div>
-                {% endfor %}
+                
+                <h2 class="section-title">Institutional and Departmental Responsibilities</h2>
+                
+                <div id="responsibilitiesContainer">
+                    {% for category in responsibilities %}
+                    <div class="category">
+                        <h3 class="category-title">{{ category.category }}</h3>
+                        <ul class="responsibilities-list">
+                            {% for item in category['items'] %}
+                            <li class="responsibility-item" 
+                                data-role="{{ item.role | lower }}" 
+                                data-institute="{{ item.institute | lower }}"
+                                data-from="{{ item.from | lower }}"
+                                data-to="{{ item.to | lower }}">
+                                <div class="role-details">
+                                    <span class="role">{{ item.role }}</span>
+                                    <span class="institute">{{ item.institute }}</span>
+                                </div>
+                                <div class="date-range">
+                                    <span class="from">{{ item.from }}</span>
+                                    <span class="to">{{ item.to }}</span>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </section>
     </main>

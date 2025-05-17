@@ -77,7 +77,11 @@
 
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Search publications by title, author, or keywords...">
-                <button id="search-btn"><i class="fas fa-search"></i></button>
+                <button id="search-btn"></i></button>
+                <button id="refresh-btn" title="Refresh Publications Data">
+                    <i class="fas fa-sync-alt"></i>
+                    <span class="refresh-text">Refresh</span>
+                </button>
             </div>
 
             <div id="no-results-message" style="display: none; text-align: center; padding: 2rem; color: var(--neutral-medium);">
@@ -103,6 +107,11 @@
                         {% endfor %}
                     </select>
                 </div>
+            </div>
+
+            <div class="publications-graph">
+                <h3>Publications by Year</h3>
+                <canvas id="publicationsChart"></canvas>
             </div>
 
             <div id="journal-pubs" class="pub-section active">
@@ -186,6 +195,7 @@
     <script src="{{ url_for('static', filename='js/publications.js') }}"></script>
     <script src="{{ url_for('static', filename='js/header.js') }}"></script>
     <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 </html>
