@@ -14,24 +14,23 @@
 </head>
 <body>
 
-    <!-- ================= Header Section ================= -->
+    <!-- Header with logo and navigation menu -->
     <header class="site-header">
         <div class="overlay"></div>
-
         <div class="nav-container">
-            <!-- Site logo / Home link -->
+            <!-- Logo linking to About Me -->
             <div class="logo"><a class="logo-link" href="{{ url_for('about_me') }}">Dr. Ranjeet Kumar Rout</a></div>
             
-            <!-- Mobile menu toggle -->
+            <!-- Hamburger menu for small screens -->
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             
-            <!-- Navigation links -->
+            <!-- Navigation bar -->
             <nav class="navbar" id="navbar">
                 <ul>
-                    <!-- Highlight active page -->
+                    <!-- Navigation links with active state highlighting -->
                     <li><a href="{{ url_for('home') }}" class="{{ 'active' if active_page == 'home' else '' }}">Home</a></li>
                     
-                    <!-- Research dropdown menu -->
+                    <!-- Dropdown for Research section -->
                     <li class="dropdown {% if active_page in ['projects', 'publications', 'books'] %}active{% endif %}">
                         <a href="javascript:void(0)">Research</a>
                         <div class="dropdown-content">
@@ -41,11 +40,11 @@
                         </div>
                     </li>
                     
-                    <!-- Static navigation links -->
+                    <!-- Other single navigation links -->
                     <li><a href="{{ url_for('news') }}" class="{{ 'active' if active_page == 'news' else '' }}">News</a></li> 
                     <li><a href="{{ url_for('responsibilities') }}" class="{{ 'active' if active_page == 'responsibilities' else '' }}">Responsibilities</a></li>
 
-                    <!-- Outreach dropdown -->
+                     <!-- Dropdown for Outreach section -->
                     <li class="dropdown {% if active_page in ['Seminars & Workshops', 'Gallery', 'Talks Delivered'] %}active{% endif %}">
                         <a href="javascript:void(0)">Events</a>
                         <div class="dropdown-content">
@@ -55,8 +54,10 @@
                         </div>
                     </li>
 
-                    <!-- People page link -->
+                    <!-- Other single navigation links -->
                     <li><a href="{{ url_for('people') }}" class="{{ 'active' if active_page == 'people' else '' }}">People</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="{{ 'active' if active_page == 'contact' else '' }}">Contact</a></li>
+
                 </ul>
             </nav>
         </div>

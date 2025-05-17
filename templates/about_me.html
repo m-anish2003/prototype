@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Internal CSS Files -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/about_me.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 
@@ -19,72 +18,137 @@
 
 <body>
 
-  <!-- ========== Top Navigation Bar ========== -->
-  <header>
-    <div class="site-title">Dr. Ranjeet Kumar Rout</div>
-    <nav>
-      <ul>
-        <li><a href="#biography">Biography</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#membership">Membership</a></li>
-        <li><a href="/appointment">Appointment</a></li>
-        <li><a href="/">Research</a></li>
-        <li><a href="#cv">My CV</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="{{ url_for('about_me') }}" class="site-title">Dr. Ranjeet Kumar Rout</a>
+            <button class="mobile-menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#biography">Biography</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#membership">Membership</a></li>
+                    <li><a href="/appointment">Appointment</a></li>
+                    <li><a href="/">Research</a></li>
+                    <li><a href="#cv">My CV</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- ========== Profile Section ========== -->
-  <div class="header-section">
-    <img src="static/images/about me/teacher.jpg" alt="Ranjeet Kumar Rout" />
-    <h1>Ranjeet Kumar Raut</h1>
-  </div>
+  <main class="about-me-container">
+        <!-- ========== Profile Section ========== -->
+        <div class="profile-section">
+            <div class="profile-image-container">
+                <img src="static/images/about me/teacher.jpg" alt="Dr. Ranjeet Kumar Rout" class="profile-image">
+            </div>
+            <div class="profile-content">
+                <h1>Dr. Ranjeet Kumar Rout</h1>
+                <p class="profile-title">Associate Professor, Information Technology</p>
+                <p class="profile-institute">Dr. B. R. Ambedkar National Institute of Technology, Jalandhar</p>
+                
+                <div class="social-links">
+                    <a href="mailto:routrk@nitj.ac.in" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=UYHadLQAAAAJ" target="_blank" class="social-link"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://www.scopus.com/authid/detail.uri?authorId=56416176900" class="social-link" aria-label="Scopus Profile" title="Scopus Profile"><i class="fas fa-book"></i></a>
+                </div>
+            </div>
+        </div>
 
-  <!-- ========== Biography Section ========== -->
-  <div id="biography" class="content-section">
-    <h2 class="section-title">Biography</h2>
-    <p>
-      Dr. Ranjeet Kumar Rout is a faculty member of the Information Technology Department at the Dr. B. R. Ambedkar National Institute of Technology (NIT) Jalandhar, Punjab. Prior to this, he worked as an Assistant Professor in the CSE Department at NIT Srinagar, Hazratbal-190006, Srinagar, J&K. 
-      He joined NIT Srinagar in 2018 and NIT Jalandhar in 2024. He received his Ph.D. (Engineering) from IIEST Shibpur, West Bengal. His research was carried out at 
-      <b>Indian Statistical Institute (ISI), Kolkata</b>.
+        <!-- ========== Biography Section ========== -->
+        <section id="biography" class="content-section">
+            <h2 class="section-title"><i class="fas fa-user-graduate section-icon"></i> Biography</h2>
+            <div class="section-content">
+                <p>
+                    Dr. Ranjeet Kumar Rout is a faculty member of the Information Technology Department at the Dr. B. R. Ambedkar National Institute of Technology (NIT) Jalandhar, Punjab. Prior to this, he worked as an Assistant Professor in the CSE Department at NIT Srinagar, Hazratbal-190006, Srinagar, J&K. 
+                </p>
+                <p>
+                    He joined NIT Srinagar in 2018 and NIT Jalandhar in 2024. He received his Ph.D. (Engineering) from IIEST Shibpur, West Bengal. His research was carried out at <strong>Indian Statistical Institute (ISI), Kolkata</strong>.
+                </p>
+                <p>
+                    Dr. Rout has also worked on a project titled "Understanding Genes and Genomes through Fractal and Mathematical Morphology" at ISI Kolkata. His research interests include machine learning, deep learning, visual cryptography, affective computing, and computational biology.
+                </p>
+                <p>
+                    He holds three patents (2 Indian and 1 USA) and has published over 45 papers in peer-reviewed journals in the areas of non-linear Boolean functions, computational biology, and affective computing. He has supervised 2 PhD students (+3 submitted, +1 ongoing), and currently has 3 ongoing research projects in the area of Agriculture-AI and CV.
+                </p>
+                <p>
+                    He has completed two books: <strong>"Artificial Intelligence Technologies for Computational Biology"</strong> and <strong>"Advancement of Deep Learning and its Applications in Object Detection and Recognition"</strong>. Dr. Rout is actively involved in various government initiatives as Nodal Officer for Ek Bharat Shretha Bharat (EBSB), Yuva Sangam III and IV. 
+                </p>
+                <p>
+                    He is a lifelong member of CSI, ISTE, IEEE, and an adjunct faculty at the Centre of Excellence Energy Research (CEER), NIT Srinagar.
+                </p>
+            </div>
+        </section>
 
-      Dr. Rout has also worked on a project titled “Understanding Genes and Genomes through Fractal and Mathematical Morphology” at ISI Kolkata. His research interests include machine learning, deep learning, visual cryptography, affective computing, and computational biology.
+        <!-- ========== Education Section ========== -->
+        <section id="education" class="content-section">
+            <h2 class="section-title"><i class="fas fa-graduation-cap section-icon"></i> Education</h2>
+            <div class="section-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2018</div>
+                        <div class="timeline-content">
+                            <h3>Ph.D. in Engineering</h3>
+                            <p>IIEST Shibpur - Classification of Boolean Functions and Applications</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2010</div>
+                        <div class="timeline-content">
+                            <h3>M.Tech in Computer Science</h3>
+                            <p>Computer Science and Engineering</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2005</div>
+                        <div class="timeline-content">
+                            <h3>B.Tech in Computer Science</h3>
+                            <p>Computer Science and Engineering</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      He holds three patents (2 Indian and 1 USA) and has published over 45 papers in peer-reviewed journals in the areas of non-linear Boolean functions, computational biology, and affective computing. He has supervised 2 PhD students (+3 submitted, +1 ongoing), and currently has 3 ongoing research projects in the area of Agriculture-AI and CV.
+        <!-- ========== Academic Membership Section ========== -->
+        <section id="membership" class="content-section">
+            <h2 class="section-title"><i class="fas fa-users section-icon"></i> Academic Membership</h2>
+            <div class="section-content">
+                <div class="membership-cards">
+                    <div class="membership-card">
+                        <i class="fab fa-ieee card-icon"></i>
+                        <h3>IEEE Member</h3>
+                        <p>Membership No.: 94128392</p>
+                    </div>
+                    <div class="membership-card">
+                        <i class="fas fa-atom card-icon"></i>
+                        <h3>ISTE Life Member</h3>
+                        <p>Membership No.: LM 70058</p>
+                    </div>
+                    <div class="membership-card">
+                        <i class="fas fa-laptop-code card-icon"></i>
+                        <h3>CSI Life Member</h3>
+                        <p>Membership No.: F8003883</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      He has completed two books: <b>“Artificial Intelligence Technologies for Computational Biology”</b> and <b>“Advancement of Deep Learning and its Applications in Object Detection and Recognition”</b>. Dr. Rout is actively involved in various government initiatives as Nodal Officer for Ek Bharat Shretha Bharat (EBSB), Yuva Sangam III and IV. 
-
-      He is a lifelong member of CSI, ISTE, IEEE, and an adjunct faculty at the Centre of Excellence Energy Research (CEER), NIT Srinagar.
-    </p>
-  </div>
-
-  <!-- ========== Education Section ========== -->
-  <div id="education" class="content-section">
-    <h2 class="section-title">Education</h2>
-    <ul>
-      <li>Ph.D., IIEST Shibpur, 2018 – Classification of Boolean Functions and Applications</li>
-      <li>M.Tech, CSE, 2010 – Computer Science and Engineering</li>
-      <li>B.Tech, CSE, 2005 – Computer Science and Engineering</li>
-    </ul>
-  </div>
-
-  <!-- ========== Academic Membership Section ========== -->
-  <div id="membership" class="content-section">
-    <h2 class="section-title">Academic Membership</h2>
-    <ul>
-      <li>IEEE Member (Membership No.: 94128392)</li>
-      <li>ISTE Life Member (Membership No.: LM 70058)</li>
-      <li>CSI Life Member (Membership No.: F8003883)</li>
-    </ul>
-  </div>
-
-  <!-- ========== CV Download Section ========== -->
-  <div id="cv" class="content-section">
-    <h2 class="section-title">My CV</h2>
-    <p>
-      <a class="cv-link" href="static/docs/CV.pdf" target="_blank">Download CV (PDF)</a>
-    </p>
-  </div>
+        <!-- ========== CV Download Section ========== -->
+        <section id="cv" class="content-section">
+            <h2 class="section-title"><i class="fas fa-file-pdf section-icon"></i> Curriculum Vitae</h2>
+            <div class="section-content">
+                <div class="cv-download">
+                    <i class="fas fa-download download-icon"></i>
+                    <a href="static/docs/CV.pdf" target="_blank" class="cv-button">
+                        Download Full CV (PDF)
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
   <!-- ========== Footer Section ========== -->
   <footer>
@@ -100,7 +164,6 @@
 
   <!-- ========== JavaScript Files ========== -->
   <script src="{{ url_for('static', filename='js/about_me.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/header.js') }}"></script>
   <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
 
   <!-- Font Awesome JS (fallback for some browsers) -->

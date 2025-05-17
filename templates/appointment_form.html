@@ -1,51 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Request Appointment</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Appointment | Dr. Ranjeet Kumar Rout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Internal CSS Files -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/appointment.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="site-title"><a href="{{ url_for('about_me') }}">Dr. Ranjeet Kumar Rout</a></div>
-  </header>
+    <header class="simple-header">
+      <div class="header-content">
+        <a href="{{ url_for('about_me') }}" class="centered-title">Dr. Ranjeet Kumar Rout</a>
+      </div>
+    </header>
 
-  <div class="appointment-container">
-    <h2>Request an Appointment</h2>
-    <form class="appointment-form" action="#" method="POST">
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" required placeholder="Your full name">
+  <div class="page-container">
+    <main class="appointment-page">
+      <div class="appointment-header">
+        <h1>Schedule an Appointment</h1>
+        <p>Please fill out the form below to request a meeting</p>
+      </div>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required placeholder="Your email address">
+      <div class="appointment-card">
+        <form class="appointment-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            <i class="fas fa-user icon"></i>
+          </div>
 
-      <label for="date">Preferred Date:</label>
-      <input type="date" id="date" name="date" required>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <i class="fas fa-envelope icon"></i>
+          </div>
 
-      <label for="message">Purpose of Appointment:</label>
-      <textarea id="message" name="message" required placeholder="Please describe the purpose of your appointment"></textarea>
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" name="date" required>
+            <i class="fas fa-calendar-day icon"></i>
+          </div>
 
-      <button type="submit">Request Appointment</button>
-    </form>
-  </div>
+          <div class="form-group">
+            <label for="purpose">Purpose of Meeting</label>
+            <select id="purpose" name="purpose" required>
+              <option value="" disabled selected>Select purpose</option>
+              <option value="research">Research Collaboration</option>
+              <option value="academic">Academic Guidance</option>
+              <option value="project">Project Discussion</option>
+              <option value="other">Other</option>
+            </select>
+            <i class="fas fa-comment-dots icon"></i>
+          </div>
 
-  <footer>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://scholar.google.com/citations?hl=en&user=UYHadLQAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-      <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="mailto:routrk@nitj.ac.in"><i class="fas fa-envelope"></i></a>
-    </div>
-    <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
-  </footer>
+          <div class="form-group">
+            <label for="message">Additional Details</label>
+            <textarea id="message" name="message" placeholder="Please provide any additional details"></textarea>
+          </div>
 
-  <script src="{{ url_for('static', filename='js/header.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Request Appointment
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- ========== Footer Section ========== -->
+    <footer>
+      <div class="social-icons">
+        <!-- Replace placeholder links with real social profile URLs -->
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://scholar.google.com/citations?hl=en&user=UYHadLQAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+        <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:routrk@nitj.ac.in"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
+    </footer>
+
+    <!-- ========== JavaScript Files ========== -->
   <script src="{{ url_for('static', filename='js/appointment.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
+  </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory, current_app, jsonify
+from flask import Flask, render_template, send_from_directory, current_app, jsonify, request
 import subprocess
 import os
 import json
@@ -312,6 +312,48 @@ def seminar_workshop():
                         seminar_workshop_entries=seminar_workshop_entries,
                         active_page='seminar_workshop')
 
+# Contact route
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', active_page='contact')
+
+@app.route('/submit_contact_form', methods=['POST'])
+def handle_form_submission():
+    try:
+        data = request.get_json()
+        
+        # Validate required fields
+        required_fields = ['name', 'email', 'subject', 'message']
+        for field in required_fields:
+            if not data.get(field):
+                return jsonify({
+                    "status": "error",
+                    "message": f"Missing required field: {field}"
+                }), 400
+        
+        # Here you would typically:
+        # 1. Validate email format
+        # 2. Sanitize inputs
+        # 3. Send email or store in database
+        
+        # For now, just log the data
+        print("New contact form submission:")
+        print(f"Name: {data['name']}")
+        print(f"Email: {data['email']}")
+        print(f"Subject: {data['subject']}")
+        print(f"Message: {data['message']}")
+        
+        return jsonify({
+            "status": "success",
+            "message": "Thank you for your message! We will get back to you soon."
+        })
+        
+    except Exception as e:
+        print("Error processing form:", str(e))
+        return jsonify({
+            "status": "error",
+            "message": "An error occurred while processing your request."
+        }), 500
 
 # About Me
 @app.route('/about-me')
