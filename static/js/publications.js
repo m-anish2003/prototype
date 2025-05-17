@@ -199,45 +199,84 @@ document.addEventListener('DOMContentLoaded', function () {
     init();
 });
 
-// Publications Chart
 function renderPublicationsChart() {
     // Count publications by year
     const yearCounts = {};
     
-    // Get all publication cards
-    document.querySelectorAll('.pub-card').forEach(card => {
-        const year = card.querySelector('.pub-venue').textContent.match(/\d{4}/)?.[0];
+    // Get all publication year groups
+    document.querySelectorAll('.pub-year-group').forEach(group => {
+        const year = group.dataset.year;
         if (year) {
-            yearCounts[year] = (yearCounts[year] || 0) + 1;
+            // Count the number of publication cards in this year group
+            const pubCount = group.querySelectorAll('.pub-card').length;
+            yearCounts[year] = (yearCounts[year] || 0) + pubCount;
         }
     });
-    
+
     // Prepare data for chart
     const years = Object.keys(yearCounts).sort();
     const counts = years.map(year => yearCounts[year]);
     
-    // Create chart
-    const ctx = document.getElementById('publicationsChart').getContext('2d');
-    new Chart(ctx, {
+    // Get the chart canvas
+    const ctx = document.getElementById('publicationsChart');
+    if (!ctx) return;
+    
+    // Destroy previous chart instance if it exists
+    if (ctx.chart) {
+        ctx.chart.destroy();
+    }
+
+    // Create new chart with responsive settings
+    ctx.chart = new Chart(ctx.getContext('2d'), {
         type: 'bar',
         data: {
             labels: years,
             datasets: [{
-                label: 'Number of Publications',
+                label: 'Publications',
                 data: counts,
                 backgroundColor: '#2874A6',
                 borderColor: '#1F618D',
-                borderWidth: 1
+                borderWidth: 1,
+                borderRadius: 4, // Rounded corners for bars
+                barPercentage: 0.8, // Controls bar width
+                categoryPercentage: 0.9 // Controls space between categories
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    top: 20,
+                    right: 15,
+                    bottom: 15,
+                    left: 15
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        stepSize: 1
+                        stepSize: 1,
+                        font: {
+                            size: window.innerWidth < 768 ? 10 : 12
+                        },
+                        padding: 5
+                    },
+                    grid: {
+                        display: true,
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            size: window.innerWidth < 768 ? 10 : 12
+                        },
+                        padding: 5
+                    },
+                    grid: {
+                        display: false
                     }
                 }
             },
@@ -246,6 +285,18 @@ function renderPublicationsChart() {
                     display: false
                 },
                 tooltip: {
+                    enabled: true,
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    titleFont: {
+                        size: 12,
+                        weight: 'bold'
+                    },
+                    bodyFont: {
+                        size: 12
+                    },
+                    padding: 10,
+                    cornerRadius: 4,
+                    displayColors: false,
                     callbacks: {
                         label: function(context) {
                             return `${context.parsed.y} publication${context.parsed.y !== 1 ? 's' : ''}`;
@@ -255,7 +306,13 @@ function renderPublicationsChart() {
             }
         }
     });
+
+    // Add resize event listener to handle chart updates
+    window.addEventListener('resize', function() {
+        if (ctx.chart) {
+            ctx.chart.update();
+        }
+    });
 }
 
-// Call this after the page loads
 document.addEventListener('DOMContentLoaded', renderPublicationsChart);

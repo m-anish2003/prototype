@@ -356,23 +356,65 @@
     }
 }
 
-/* Publications Graph Styles */
+/* Publications Graph Styles - Enhanced */
 .publications-graph {
     background-color: white;
     border-radius: 8px;
     padding: 1.5rem;
     margin: 2rem 0;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    min-height: 300px; /* Minimum height to prevent collapsing */
 }
 
 .publications-graph h3 {
     margin-top: 0;
     color: var(--primary-dark);
     text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
 }
 
 #publicationsChart {
-    width: 100%;
-    max-height: 400px;
+    width: 100% !important;
+    height: 400px !important;
     margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .publications-graph {
+        padding: 1rem;
+    }
+    
+    #publicationsChart {
+        height: 350px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .publications-graph {
+        padding: 1rem 0.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .publications-graph h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    #publicationsChart {
+        height: 300px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #publicationsChart {
+        height: 250px !important;
+    }
+    
+    .publications-graph {
+        border-radius: 6px;
+        padding: 0.75rem 0.25rem;
+    }
 }
