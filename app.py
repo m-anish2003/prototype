@@ -173,6 +173,7 @@ def responsibilities():
     """
     return render_template("responsibilities.html", active_page='responsibilities')
 
+
 # People Section
 @app.route('/people')
 def people():
@@ -291,8 +292,9 @@ def about_me():
     '''
     return render_template('about_me.html')
 
+
 # Appointment
-@app.route('/appointment_form')
+@app.route('/appointment')
 def appointment():
     return render_template('appointment_form.html')
 

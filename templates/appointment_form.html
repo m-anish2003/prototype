@@ -4,235 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Request Appointment</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='templates/about_me.html') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/appointment.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f7f9fc;
-      color: #333;
-      padding: 20px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    label {
-      font-weight: 500;
-    }
-    input, textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-    button {
-      background-color: #003366;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #005599;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f7f9fc;
-      color: #333;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: #003366;
-    }
-
-    .site-title {
-      color: white;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ffcc00;
-    }
-
-    .header-section {
-      text-align: center;
-      padding: 40px;
-    }
-
-    .header-section img {
-      max-width: 220px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .header-section h1 {
-      color: #003366;
-      font-size: 28px;
-    }
-
-    .content-section {
-      padding: 20px 80px;
-    }
-
-    .section-title {
-      color: #003366;
-      font-size: 22px;
-      margin-bottom: 10px;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
-    }
-
-    ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
-    a.cv-link {
-      color: #003366;
-      font-weight: bold;
-    }
-
-    a.cv-link:hover {
-      text-decoration: underline;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 500px;
-      margin-top: 20px;
-    }
-
-    label {
-      font-weight: 500;
-    }
-
-    input, textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    button {
-      background-color: #003366;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #005599;
-    }
-
-    @media (max-width: 768px) {
-  .nav ul {
-    display: none; /* Hide links by default on mobile */
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: #333;
-    padding: 1rem;
-    box-sizing: border-box;
-  }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
 </head>
 <body>
   <header>
-    <div class="site-title">Dr. Ranjeet Kumar Rout</div>
-    <nav>
-      <ul>
-        <li><a href="#biography">Biography</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#membership">Membership</a></li>
-        <li><a href="javascript:void(0);" onclick="openAppointmentForm()">Appointment</a></li>
-        <li><a href="#cv">My CV</a></li>
-      </ul>
-    </nav>
+    <div class="site-title"><a href="{{ url_for('about_me') }}">Dr. Ranjeet Kumar Rout</a></div>
   </header>
 
-  <h2>Request an Appointment</h2>
-  <form action="#" method="POST">
-    <label for="name">Full Name:</label>
-    <input type="text" id="name" name="name" required />
+  <div class="appointment-container">
+    <h2>Request an Appointment</h2>
+    <form class="appointment-form" action="#" method="POST">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required placeholder="Your full name">
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="Your email address">
 
-    <label for="date">Preferred Date:</label>
-    <input type="date" id="date" name="date" required />
+      <label for="date">Preferred Date:</label>
+      <input type="date" id="date" name="date" required>
 
-    <label for="message">Message / Purpose:</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
+      <label for="message">Purpose of Appointment:</label>
+      <textarea id="message" name="message" required placeholder="Please describe the purpose of your appointment"></textarea>
 
-    <button type="submit">Request Appointment</button>
-  </form>
-
+      <button type="submit">Request Appointment</button>
+    </form>
+  </div>
 
   <footer>
     <div class="social-icons">
-        <!-- Social media icons with links -->
-        <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="mailto:your@email.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://scholar.google.com/citations?hl=en&user=UYHadLQAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+      <a href="https://twitter.com/your-handle" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:routrk@nitj.ac.in"><i class="fas fa-envelope"></i></a>
     </div>
-    <!-- Copyright information -->
     <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
-</footer>
+  </footer>
 
-<!-- External JavaScript files -->
-<!-- <script src="{{ url_for('static', filename='js/news.js') }}"></script> -->
-<script src="{{ url_for('static', filename='js/header.js') }}"></script>
-<script src="{{ url_for('static', filename='js/footer.js') }}"></script>
-<!-- Font Awesome icons script -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+  <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/appointment.js') }}"></script>
 </body>
 </html>
