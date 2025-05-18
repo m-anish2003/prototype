@@ -341,3 +341,23 @@
         width: 6px;
     }
 }
+
+/* ============================================================
+   Hide slider arrows on small mobile devices
+============================================================ */
+@media (max-width: 600px) {
+    .slider-prev, .slider-next {
+        display: none;
+    }
+    
+    /* Optional: Make the dots more visible since arrows are hidden */
+    .slider-dots {
+        background: rgba(0,0,0,0.4);
+        padding-bottom: 15px;
+    }
+    
+    .dot {
+        height: 10px;
+        width: 10px;
+    }
+}

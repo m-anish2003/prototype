@@ -90,17 +90,6 @@
         "topics": []
       },
       {
-        "title": "Eightydvec: a method for protein sequence similarity analysis using physicochemical properties of amino acids",
-        "authors": "RK Rout, S Umer, S Sheikh, S Sindhwani, S Pati",
-        "venue": "Computer Methods in Biomechanics and Biomedical Engineering: Imaging …, 2022",
-        "year": "2022",
-        "citation_link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=UYHadLQAAAAJ&pagesize=100&citation_for_view=UYHadLQAAAAJ:mVmsd5A6BfQC",
-        "doi": "",
-        "pdf": "",
-        "bibtex": "@article{scholar_2022_26,\n  title={Eightydvec: a method for protein sequence similarity analysis using physicochemical properties of amino acids},\n  author={RK Rout, S Umer, S Sheikh, S Sindhwani, S Pati},\n  journal={Computer Methods in Biomechanics and Biomedical Engineering: Imaging …, 2022},\n  year={2022}\n}",
-        "topics": []
-      },
-      {
         "title": "Improved procedure for multi-focus images using image fusion with qshiftN DTCWT and MPCA in Laplacian pyramid domain",
         "authors": "CR Mohan, K Chouhan, RK Rout, KS Sahoo, NZ Jhanjhi, AO Ibrahim, ...",
         "venue": "Applied Sciences 12 (19), 9495, 2022",
@@ -108,7 +97,18 @@
         "citation_link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=UYHadLQAAAAJ&pagesize=100&citation_for_view=UYHadLQAAAAJ:iH-uZ7U-co4C",
         "doi": "",
         "pdf": "",
-        "bibtex": "@article{scholar_2022_29,\n  title={Improved procedure for multi-focus images using image fusion with qshiftN DTCWT and MPCA in Laplacian pyramid domain},\n  author={CR Mohan, K Chouhan, RK Rout, KS Sahoo, NZ Jhanjhi, AO Ibrahim, ...},\n  journal={Applied Sciences 12 (19), 9495, 2022},\n  year={2022}\n}",
+        "bibtex": "@article{scholar_2022_26,\n  title={Improved procedure for multi-focus images using image fusion with qshiftN DTCWT and MPCA in Laplacian pyramid domain},\n  author={CR Mohan, K Chouhan, RK Rout, KS Sahoo, NZ Jhanjhi, AO Ibrahim, ...},\n  journal={Applied Sciences 12 (19), 9495, 2022},\n  year={2022}\n}",
+        "topics": []
+      },
+      {
+        "title": "Eightydvec: a method for protein sequence similarity analysis using physicochemical properties of amino acids",
+        "authors": "RK Rout, S Umer, S Sheikh, S Sindhwani, S Pati",
+        "venue": "Computer Methods in Biomechanics and Biomedical Engineering: Imaging …, 2022",
+        "year": "2022",
+        "citation_link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=UYHadLQAAAAJ&pagesize=100&citation_for_view=UYHadLQAAAAJ:mVmsd5A6BfQC",
+        "doi": "",
+        "pdf": "",
+        "bibtex": "@article{scholar_2022_27,\n  title={Eightydvec: a method for protein sequence similarity analysis using physicochemical properties of amino acids},\n  author={RK Rout, S Umer, S Sheikh, S Sindhwani, S Pati},\n  journal={Computer Methods in Biomechanics and Biomedical Engineering: Imaging …, 2022},\n  year={2022}\n}",
         "topics": []
       },
       {
@@ -521,7 +521,7 @@
         "citation_link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=UYHadLQAAAAJ&pagesize=100&citation_for_view=UYHadLQAAAAJ:HDshCWvjkbEC",
         "doi": "",
         "pdf": "",
-        "bibtex": "@article{scholar_2021_27,\n  title={A Vicenary analysis of SARS-CoV-2 genomes},\n  author={SS Hassan, RK Rout, KS Sahoo, N Jhanjhi, S Umer, TA Tabbakh, ...},\n  journal={Cmc-Computers Materials & Continua, 3477-3493, 2021},\n  year={2021}\n}",
+        "bibtex": "@article{scholar_2021_28,\n  title={A Vicenary analysis of SARS-CoV-2 genomes},\n  author={SS Hassan, RK Rout, KS Sahoo, N Jhanjhi, S Umer, TA Tabbakh, ...},\n  journal={Cmc-Computers Materials & Continua, 3477-3493, 2021},\n  year={2021}\n}",
         "topics": []
       },
       {
@@ -624,7 +624,7 @@
         "citation_link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=UYHadLQAAAAJ&pagesize=100&citation_for_view=UYHadLQAAAAJ:_xSYboBqXhAC",
         "doi": "",
         "pdf": "",
-        "bibtex": "@article{scholar_2024_28,\n  title={Enhanced biometric template protection schemes for securing face recognition in IoT environment},\n  author={A Sardar, S Umer, RK Rout, KS Sahoo, AH Gandomi},\n  journal={IEEE Internet of Things Journal, 2024},\n  year={2024}\n}",
+        "bibtex": "@article{scholar_2024_29,\n  title={Enhanced biometric template protection schemes for securing face recognition in IoT environment},\n  author={A Sardar, S Umer, RK Rout, KS Sahoo, AH Gandomi},\n  journal={IEEE Internet of Things Journal, 2024},\n  year={2024}\n}",
         "topics": []
       },
       {

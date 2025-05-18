@@ -184,6 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function setupRefreshButton() {
         if (refreshBtn) {
             refreshBtn.addEventListener('click', refreshPublications);
+            refreshBtn.addEventListener('touchend', refreshPublications);
         }
     }
 
