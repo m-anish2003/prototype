@@ -1,185 +1,162 @@
+// news.js => Handles the search bar
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Swiper
     const newsSwiper = new Swiper('.news-swiper', {
         loop: true,
-        autoplay: { 
-            delay: 5000,
-            disableOnInteraction: false
-        },
         slidesPerView: 1,
         spaceBetween: 20,
-        pagination: { 
-            el: '.swiper-pagination',
-            clickable: true
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-        },
-        breakpoints: {
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
-        }
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
     });
 
-    // Enhanced Read More/Less functionality with animation
-    document.querySelectorAll('.read-more').forEach(button => {
-        button.addEventListener('click', function() {
-            const card = this.closest('.news-card');
-            const textContainer = card.querySelector('.news-text');
-            const excerpt = card.querySelector('.news-excerpt');
-            const fullText = card.querySelector('.news-full-text');
-            
-            const isExpanded = card.classList.contains('expanded');
-            
-            if (!isExpanded) {
-                const startHeight = textContainer.offsetHeight;
-                excerpt.style.display = 'none';
-                fullText.style.display = 'block';
-                const endHeight = textContainer.offsetHeight;
-                
-                textContainer.style.height = startHeight + 'px';
-                textContainer.style.overflow = 'hidden';
-                textContainer.offsetHeight; // Trigger reflow
-                
-                textContainer.style.height = endHeight + 'px';
-                
-                setTimeout(() => {
-                    textContainer.style.height = '';
-                    textContainer.style.overflow = '';
-                    card.classList.add('expanded');
-                    this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
-                    newsSwiper.update();
-                }, 300);
-            } else {
-                const startHeight = textContainer.offsetHeight;
-                fullText.style.display = 'none';
-                excerpt.style.display = 'block';
-                const endHeight = textContainer.offsetHeight;
-                
-                textContainer.style.height = startHeight + 'px';
-                textContainer.style.overflow = 'hidden';
-                textContainer.offsetHeight; // Trigger reflow
-                
-                textContainer.style.height = endHeight + 'px';
-                
-                setTimeout(() => {
-                    textContainer.style.height = '';
-                    textContainer.style.overflow = '';
-                    card.classList.remove('expanded');
-                    this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-                    newsSwiper.update();
-                }, 300);
-            }
-        });
+    // Read More/Less Functionality
+    document.querySelector('.news-swiper').addEventListener('click', function(e) {
+        const readMoreBtn = e.target.closest('.read-more');
+        if (!readMoreBtn) return;
+
+        const card = readMoreBtn.closest('.news-card');
+        const fullText = card.querySelector('.news-full-text');
+        const isExpanded = card.classList.toggle('expanded');
+
+        fullText.style.display = isExpanded ? 'block' : 'none';
+        readMoreBtn.innerHTML = isExpanded 
+            ? 'Read Less <i class="fas fa-chevron-up"></i>' 
+            : 'Read More <i class="fas fa-chevron-down"></i>';
+        
+        newsSwiper.update();
     });
 
-    // Enhanced Search functionality
+    // Search Functionality
     const newsSearch = document.getElementById('newsSearch');
     if (newsSearch) {
-        const allNewsSlides = document.querySelectorAll('.swiper-slide');
-        const announcements = document.querySelectorAll('.announcement-card');
+        const allNewsSlides = Array.from(document.querySelectorAll('.swiper-slide'));
+        const allAnnouncements = Array.from(document.querySelectorAll('.announcement-card'));
         const noResultsMessage = document.getElementById('noResultsTemplate').cloneNode(true);
         noResultsMessage.id = '';
-        noResultsMessage.style.display = 'none';
         document.querySelector('.news-swiper').parentNode.insertBefore(noResultsMessage, document.querySelector('.announcements-section'));
 
-        function debounce(func, wait) {
-            let timeout;
-            return function() {
-                const context = this, args = arguments;
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(context, args), wait);
-            };
-        }
+        // Store original HTML to restore when search is cleared
+        const originalContents = {
+            news: allNewsSlides.map(slide => ({
+                element: slide,
+                html: slide.innerHTML
+            })),
+            announcements: allAnnouncements.map(ann => ({
+                element: ann,
+                html: ann.innerHTML
+            }))
+        };
 
-        newsSearch.addEventListener('input', debounce(function() {
-            const searchTerm = this.value.trim().toLowerCase();
-            let hasNewsResults = false;
-            let hasAnnouncementResults = false;
+        newsSearch.addEventListener('input', debounce(function(e) {
+            const term = e.target.value.trim().toLowerCase();
+            let hasResults = false;
 
-            allNewsSlides.forEach(slide => {
-                const title = slide.dataset.title || '';
-                const date = slide.dataset.date || '';
-                const content = slide.dataset.content || '';
-                
-                const matches = title.includes(searchTerm) || 
-                              content.includes(searchTerm) ||
-                              date.includes(searchTerm);
-
-                slide.style.display = matches ? '' : 'none';
-                if (matches) hasNewsResults = true;
-
-                if (matches && searchTerm) {
-                    highlightText(slide, searchTerm);
-                } else {
-                    removeHighlights(slide);
-                }
+            // Restore original content first (to remove any previous highlights)
+            originalContents.news.forEach(item => {
+                item.element.innerHTML = item.html;
+            });
+            originalContents.announcements.forEach(item => {
+                item.element.innerHTML = item.html;
             });
 
-            announcements.forEach(announcement => {
-                const text = announcement.querySelector('.announcement-text').textContent.toLowerCase();
-                const matches = text.includes(searchTerm);
-                
-                announcement.style.display = matches ? '' : 'none';
-                if (matches) hasAnnouncementResults = true;
+            // If search is empty, show all and exit
+            if (term === '') {
+                allNewsSlides.forEach(slide => slide.style.display = '');
+                allAnnouncements.forEach(ann => ann.style.display = '');
+                noResultsMessage.style.display = 'none';
+                document.querySelector('.news-swiper').style.display = '';
+                document.querySelector('.announcements-section').style.display = '';
+                newsSwiper.update();
+                return;
+            }
 
-                if (matches && searchTerm) {
-                    highlightText(announcement.querySelector('.announcement-text'), searchTerm);
-                } else {
-                    removeHighlights(announcement.querySelector('.announcement-text'));
-                }
+            // Search News
+            originalContents.news.forEach(item => {
+                const slideData = {
+                    title: item.element.dataset.title || '',
+                    content: item.element.dataset.content || '',
+                    date: item.element.dataset.date || ''
+                };
+                
+                const match = slideData.title.includes(term) ||
+                             slideData.content.includes(term) ||
+                             slideData.date.includes(term);
+                
+                item.element.style.display = match ? '' : 'none';
+                if (match) hasResults = true;
+                if (match) highlightText(item.element, term);
             });
 
-            document.querySelector('.news-swiper').style.display = hasNewsResults ? '' : 'none';
-            document.querySelector('.announcements-section').style.display = hasAnnouncementResults ? '' : 'none';
+            // Search Announcements
+            originalContents.announcements.forEach(item => {
+                const annData = {
+                    text: item.element.dataset.text || '',
+                    date: item.element.dataset.date || ''
+                };
+                
+                const match = annData.text.includes(term) ||
+                             annData.date.includes(term);
+                
+                item.element.style.display = match ? '' : 'none';
+                if (match) hasResults = true;
+                if (match) highlightText(item.element, term);
+            });
+
+            // Show/hide sections
+            document.querySelector('.news-swiper').style.display = 
+                originalContents.news.some(item => item.element.style.display !== 'none') ? '' : 'none';
+            document.querySelector('.announcements-section').style.display = 
+                originalContents.announcements.some(item => item.element.style.display !== 'none') ? '' : 'none';
             
-            noResultsMessage.style.display = (hasNewsResults || hasAnnouncementResults) ? 'none' : 'block';
+            noResultsMessage.style.display = hasResults ? 'none' : 'block';
             newsSwiper.update();
         }, 300));
 
-        function highlightText(element, searchTerm) {
-            const regex = new RegExp(searchTerm, 'gi');
-            const textNodes = [];
+        function highlightText(element, term) {
+            if (!term) return;
             
-            const walker = document.createTreeWalker(
+            // Create a tree walker to find all text nodes
+            const treeWalker = document.createTreeWalker(
                 element,
                 NodeFilter.SHOW_TEXT,
                 null,
                 false
             );
             
-            let node;
-            while (node = walker.nextNode()) {
-                textNodes.push(node);
+            const textNodes = [];
+            let currentNode;
+            while (currentNode = treeWalker.nextNode()) {
+                textNodes.push(currentNode);
             }
             
+            // Process each text node
             textNodes.forEach(node => {
-                if (node.parentNode.classList && 
-                    (node.parentNode.classList.contains('highlight-text') || 
-                     node.parentNode.classList.contains('highlight'))) {
+                if (node.parentNode.nodeName === 'SCRIPT' || 
+                    node.parentNode.nodeName === 'STYLE' ||
+                    node.parentNode.classList.contains('highlight')) {
                     return;
                 }
                 
                 const text = node.nodeValue;
-                if (regex.test(text)) {
+                if (text.toLowerCase().includes(term)) {
                     const span = document.createElement('span');
-                    span.className = 'highlight-text';
-                    span.innerHTML = text.replace(regex, match => `<span class="highlight">${match}</span>`);
+                    span.innerHTML = text.replace(
+                        new RegExp(term, 'gi'),
+                        match => `<span class="highlight">${match}</span>`
+                    );
                     node.parentNode.replaceChild(span, node);
                 }
             });
         }
 
-        function removeHighlights(element) {
-            const highlights = element.querySelectorAll('.highlight-text');
-            highlights.forEach(highlight => {
-                const parent = highlight.parentNode;
-                while (highlight.firstChild) {
-                    parent.insertBefore(highlight.firstChild, highlight);
-                }
-                parent.removeChild(highlight);
-            });
+        function debounce(func, delay) {
+            let timeout;
+            return function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, arguments), delay);
+            };
         }
     }
 });

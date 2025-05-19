@@ -1,4 +1,10 @@
 [
-    "Paper submission deadline: July 30",
-    "New lab equipment arrived"
+    {
+        "text": "Paper submission deadline: July 30",
+        "date": "2023-07-01"
+    },
+    {
+        "text": "New lab equipment arrived",
+        "date": "2023-07-05"
+    }
 ]

@@ -157,37 +157,96 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Refresh publications functionality
-    async function refreshPublications() {
+    // Enhanced refresh publications functionality with mobile support
+    async function refreshPublications(event) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
         if (!refreshBtn) return;
 
         try {
+            // Visual feedback
             refreshBtn.classList.add('refreshing');
             refreshBtn.disabled = true;
+            refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
             
             const response = await fetch('/refresh_publications', {
-                method: 'POST'
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin'
             });
             
             if (response.ok) {
-                window.location.reload();
+                refreshBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
             } else {
-                alert('Failed to refresh publications. Please try again.');
+                throw new Error('Server response not OK');
             }
         } catch (error) {
             console.error('Refresh error:', error);
-            alert('An error occurred while refreshing publications.');
-        } finally {
+            refreshBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed';
+            setTimeout(() => {
+                resetRefreshButton();
+            }, 2000);
+        }
+    }
+
+    function resetRefreshButton() {
+        if (refreshBtn) {
             refreshBtn.classList.remove('refreshing');
             refreshBtn.disabled = false;
+            refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Publications';
         }
     }
 
     function setupRefreshButton() {
-        if (refreshBtn) {
-            refreshBtn.addEventListener('click', refreshPublications);
-            refreshBtn.addEventListener('touchend', refreshPublications);
+        if (!refreshBtn) return;
+
+        // State management
+        let isRefreshing = false;
+        let lastTap = 0;
+        const tapDelay = 1000; // 1 second cooldown
+
+        // Unified handler for all interaction types
+        function handleRefresh(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Prevent double triggers
+            if (isRefreshing) return;
+            
+            // Mobile double-tap prevention
+            const now = Date.now();
+            if (now - lastTap < tapDelay) return;
+            lastTap = now;
+
+            // Visual feedback
+            refreshBtn.classList.add('touch-active');
+            isRefreshing = true;
+
+            // Execute refresh
+            refreshPublications(event).finally(() => {
+                refreshBtn.classList.remove('touch-active');
+                isRefreshing = false;
+            });
         }
+
+        // Universal event listeners
+        refreshBtn.addEventListener('click', handleRefresh);
+        refreshBtn.addEventListener('touchend', handleRefresh);
+
+        // Cleanup lingering states
+        refreshBtn.addEventListener('touchcancel', () => {
+            refreshBtn.classList.remove('touch-active');
+            isRefreshing = false;
+        });
     }
 
     // Initialize all functionality
@@ -202,15 +261,14 @@ document.addEventListener('DOMContentLoaded', function () {
     init();
 });
 
+// Publications chart rendering
 function renderPublicationsChart() {
     // Count publications by year
     const yearCounts = {};
     
-    // Get all publication year groups
     document.querySelectorAll('.pub-year-group').forEach(group => {
         const year = group.dataset.year;
         if (year) {
-            // Count the number of publication cards in this year group
             const pubCount = group.querySelectorAll('.pub-card').length;
             yearCounts[year] = (yearCounts[year] || 0) + pubCount;
         }
@@ -229,7 +287,7 @@ function renderPublicationsChart() {
         ctx.chart.destroy();
     }
 
-    // Create new chart with responsive settings
+    // Create new chart
     ctx.chart = new Chart(ctx.getContext('2d'), {
         type: 'bar',
         data: {
@@ -240,82 +298,30 @@ function renderPublicationsChart() {
                 backgroundColor: '#2874A6',
                 borderColor: '#1F618D',
                 borderWidth: 1,
-                borderRadius: 4, // Rounded corners for bars
-                barPercentage: 0.8, // Controls bar width
-                categoryPercentage: 0.9 // Controls space between categories
+                borderRadius: 4,
+                barPercentage: 0.8,
+                categoryPercentage: 0.9
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            layout: {
-                padding: {
-                    top: 20,
-                    right: 15,
-                    bottom: 15,
-                    left: 15
-                }
-            },
             scales: {
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        stepSize: 1,
-                        font: {
-                            size: window.innerWidth < 768 ? 10 : 12
-                        },
-                        padding: 5
-                    },
-                    grid: {
-                        display: true,
-                        color: 'rgba(0, 0, 0, 0.05)'
-                    }
-                },
-                x: {
-                    ticks: {
-                        font: {
-                            size: window.innerWidth < 768 ? 10 : 12
-                        },
-                        padding: 5
-                    },
-                    grid: {
-                        display: false
+                        stepSize: 1
                     }
                 }
             },
             plugins: {
                 legend: {
                     display: false
-                },
-                tooltip: {
-                    enabled: true,
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    titleFont: {
-                        size: 12,
-                        weight: 'bold'
-                    },
-                    bodyFont: {
-                        size: 12
-                    },
-                    padding: 10,
-                    cornerRadius: 4,
-                    displayColors: false,
-                    callbacks: {
-                        label: function(context) {
-                            return `${context.parsed.y} publication${context.parsed.y !== 1 ? 's' : ''}`;
-                        }
-                    }
                 }
             }
         }
     });
-
-    // Add resize event listener to handle chart updates
-    window.addEventListener('resize', function() {
-        if (ctx.chart) {
-            ctx.chart.update();
-        }
-    });
 }
 
+// Initialize chart when DOM is loaded
 document.addEventListener('DOMContentLoaded', renderPublicationsChart);

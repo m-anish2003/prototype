@@ -1,9 +1,10 @@
 [
     {
         "image": "news1.jpg",
-        "date": "June 15, 2023",
+        "date": "2023-06-15",
         "title": "New Research Published",
         "excerpt": "Our quantum computing paper accepted in Nature...",
-        "full_text": "Detailed findings show breakthrough in quantum entanglement simulation using novel qubit architecture."
+        "full_text": "Detailed findings show breakthrough in quantum entanglement simulation using novel qubit architecture.",
+        "category": "Research"
     }
 ]
