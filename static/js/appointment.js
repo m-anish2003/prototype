@@ -1,0 +1,1 @@
+// appointment.js => Handles the appointment logic

@@ -1,3 +1,5 @@
+// seminar_workshop.js => Handles all the filters and search bar
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize the page with all entries shown
     filterEntries('all');

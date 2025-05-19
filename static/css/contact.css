@@ -1,4 +1,6 @@
-/* Main Contact Container */
+/*contact.css : Contact Page Styles */
+
+/* ===== Main Contact Container ===== */
 .contact-container {
     max-width: 1200px;
     margin: 2rem auto;
@@ -12,7 +14,7 @@
     font-size: 2.5rem;
 }
 
-/* Contact Grid Layout */
+/* ===== Contact Grid Layout ===== */
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -20,7 +22,7 @@
     margin-bottom: 3rem;
 }
 
-/* Contact Cards */
+/* ===== Contact Cards ===== */
 .contact-card {
     background: white;
     border-radius: 10px;
@@ -88,7 +90,7 @@
     background: #2980b9;
 }
 
-/* Research Group Section */
+/* ===== Research Group Section ===== */
 .research-group {
     background: white;
     border-radius: 10px;
@@ -138,7 +140,7 @@
     color: #7f8c8d;
 }
 
-/* Contact Form */
+/* ===== Contact Form ===== */
 .contact-form-container {
     background: white;
     border-radius: 10px;
@@ -220,7 +222,7 @@
     display: block;
 }
 
-/* Visit Information */
+/* ===== Visit Information ===== */
 .visit-info {
     background: white;
     border-radius: 10px;
@@ -246,6 +248,8 @@
     margin: 1rem 0;
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
 }
 
 .office-hours {
@@ -273,7 +277,7 @@
     color: #2c3e50;
 }
 
-/* Responsive Design */
+/* ===== Responsive Design ===== */
 @media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;
@@ -296,7 +300,7 @@
     }
 }
 
-/* Map Container */
+/* ===== Map Container Styling ===== */
 .map-container {
     height: 300px;
     margin: 1rem 0;
@@ -306,7 +310,7 @@
     border: 1px solid #e0e0e0;
 }
 
-/* Form Button Loading State */
+/* ===== Form Button Loading State ===== */
 .submit-btn {
     position: relative;
 }
@@ -322,7 +326,7 @@
     transform: translateX(-50%);
 }
 
-/* Map Popup Styling */
+/* ===== Map Popup Styling ===== */
 .leaflet-popup-content {
     font-family: Arial, sans-serif;
     line-height: 1.4;
@@ -332,7 +336,7 @@
     color: #2c3e50;
 }
 
-/* Form Validation */
+/* ===== Form Validation States ===== */
 input:invalid, textarea:invalid {
     border-color: #e74c3c;
 }
@@ -341,7 +345,7 @@ input:valid, textarea:valid {
     border-color: #2ecc71;
 }
 
-/* Loading Animation */
+/* ===== Loading Animation ===== */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

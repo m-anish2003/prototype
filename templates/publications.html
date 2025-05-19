@@ -1,3 +1,5 @@
+<!-- This is the Publications Page -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +12,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/publications.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
     <!-- Font Awesome icons library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
+<!-- Body Section -->
 <body>
 
     <!-- Header with logo and navigation menu -->
@@ -67,28 +72,40 @@
     <!-- Main content -->
     <main>
         {% block content %}
+        <!-- Main container for all publication-related content -->
         <div class="publications-container">
+
+            <!-- Header section with title and publication type toggle buttons -->
             <div class="pub-header">
                 <h2>Publications</h2>
+
+                <!-- Toggle buttons to switch between Journal and Conference publications -->
                 <div class="pub-types">
                     <button class="pub-type-btn active" data-type="journal">Journal Publications</button>
                     <button class="pub-type-btn" data-type="conference">Conference Publications</button>
                 </div>
             </div>
 
+            <!-- Search bar and refresh button -->
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Search publications by title, author, or keywords...">
-                <button id="search-btn"></i></button>
+
+                <!-- Search button (likely handled by JS) -->
+                <button id="search-btn"></button>
+
+                <!-- Button to refresh the publications data (may trigger a data re-fetch) -->
                 <button id="refresh-btn" title="Refresh Publications Data">
                     <i class="fas fa-sync-alt"></i>
                     <span class="refresh-text">Refresh</span>
                 </button>
             </div>
 
+            <!-- Message displayed when no search results are found -->
             <div id="no-results-message" style="display: none; text-align: center; padding: 2rem; color: var(--neutral-medium);">
                 No publications found matching your search criteria.
             </div>
-        
+
+            <!-- Filters for year and topic -->
             <div class="filters">
                 <div class="filter-group">
                     <label for="year-filter">Filter by Year:</label>
@@ -99,6 +116,7 @@
                         {% endfor %}
                     </select>
                 </div>
+
                 <div class="filter-group">
                     <label for="topic-filter">Filter by Topic:</label>
                     <select id="topic-filter">
@@ -110,11 +128,13 @@
                 </div>
             </div>
 
+            <!-- Publications statistics graph section -->
             <div class="publications-graph">
                 <h3>Publications by Year</h3>
-                <canvas id="publicationsChart"></canvas>
+                <canvas id="publicationsChart"></canvas> <!-- Chart.js will use this -->
             </div>
 
+            <!-- Journal Publications Section (initially visible) -->
             <div id="journal-pubs" class="pub-section active">
                 {% for year in journal_pubs|sort(reverse=True) %}
                 <div class="pub-year-group" data-year="{{ year }}">
@@ -125,6 +145,8 @@
                             <div class="pub-title">{{ pub.title }}</div>
                             <div class="pub-authors">{{ pub.authors }}</div>
                             <div class="pub-venue">{{ pub.venue }}, {{ pub.year }}</div>
+
+                            <!-- Links for DOI, PDF, and BibTeX -->
                             <div class="pub-links">
                                 {% if pub.doi %}
                                 <a href="https://doi.org/{{ pub.doi }}" target="_blank" class="pub-link">DOI</a>
@@ -140,7 +162,8 @@
                 </div>
                 {% endfor %}
             </div>
-        
+
+            <!-- Conference Publications Section (hidden initially) -->
             <div id="conference-pubs" class="pub-section">
                 {% for year in conference_pubs|sort(reverse=True) %}
                 <div class="pub-year-group" data-year="{{ year }}">
@@ -151,6 +174,8 @@
                             <div class="pub-title">{{ pub.title }}</div>
                             <div class="pub-authors">{{ pub.authors }}</div>
                             <div class="pub-venue">{{ pub.venue }}, {{ pub.year }}</div>
+
+                            <!-- Links for DOI, PDF, and BibTeX -->
                             <div class="pub-links">
                                 {% if pub.doi %}
                                 <a href="https://doi.org/{{ pub.doi }}" target="_blank" class="pub-link">DOI</a>
@@ -166,19 +191,20 @@
                 </div>
                 {% endfor %}
             </div>
-            
-            <!-- BibTeX Modal -->
+
+            <!-- Modal dialog for showing BibTeX citation -->
             <div id="bibtex-modal" class="modal">
                 <div class="modal-content">
-                    <span class="close-modal">&times;</span>
+                    <span class="close-modal">&times;</span> <!-- Close button -->
                     <h3>BibTeX Citation</h3>
-                    <pre id="bibtex-content"></pre>
+                    <pre id="bibtex-content"></pre> <!-- BibTeX content will be inserted here -->
                     <button id="copy-bibtex">Copy to Clipboard</button>
                 </div>
             </div>
         </div>
         {% endblock %}
     </main>
+
 
     <!-- ================= Footer Section ================= -->
     <footer>

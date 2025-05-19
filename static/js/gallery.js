@@ -1,3 +1,5 @@
+// gallery.js => Handles the slides for images related to events
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all sliders
     document.querySelectorAll('.event-slider').forEach(sliderContainer => {

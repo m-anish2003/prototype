@@ -1,3 +1,5 @@
+/*news.css : News Page Styles */
+
 /* =======================
    News & Updates Section
 ======================= */
@@ -191,6 +193,31 @@
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 500;
+}
+
+/* Highlight styles */
+.highlight {
+    background-color: #fffde7;
+    border-left: 4px solid #ffd600;
+    padding: 2px 4px;
+    margin: 0 -2px;
+}
+
+.highlight-text .highlight {
+    background-color: #ffeb3b;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* Animation for read more */
+.news-text {
+    transition: height 0.3s ease;
+    will-change: height;
+}
+
+/* Ensure proper spacing when expanded */
+.news-card.expanded .news-content {
+    padding-bottom: 25px;
 }
 
 /* Announcements Section */

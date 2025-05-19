@@ -1,4 +1,5 @@
-// Wait for the DOM to be fully loaded before executing the script
+// books.js => Handles the search bar
+
 document.addEventListener("DOMContentLoaded", function () {
     // Get DOM elements for search input, book cards, page info, and navigation buttons
     const searchInput = document.getElementById("searchInput");

@@ -1,3 +1,5 @@
+// index.js => Handles the carousel logic and scripts for home page
+
 /* ================================
    Navbar Toggle Functionality
 ================================== */

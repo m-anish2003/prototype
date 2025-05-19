@@ -1,18 +1,23 @@
+<!-- This is the Talks Delivered Page -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Basic metadata -->
+    <!-- Meta tags for character encoding and viewport configuration -->
     <meta charset="UTF-8">
     <title>Dr. Ranjeet Kumar Rout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- External and internal CSS files -->
+    <!-- External CSS files for different sections -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/talks_delivered.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
+    <!-- Font Awesome icons library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
+<!-- Body Section -->
 <body>
 
     <!-- Header with logo and navigation menu -->
@@ -106,7 +111,7 @@
         <p>&copy; 2025 Dr. Ranjeet Kumar Rout. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for header toggle, filtering talks, and footer behavior -->
+    <!-- External JavaScript files -->
     <script src="{{ url_for('static', filename='js/talks_delivered.js') }}"></script>
     <script src="{{ url_for('static', filename='js/header.js') }}"></script>
     <script src="{{ url_for('static', filename='js/footer.js') }}"></script>

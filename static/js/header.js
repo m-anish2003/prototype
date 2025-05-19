@@ -1,3 +1,5 @@
+// header.js => Handles the header section
+
 /* ===========================
    Responsive Navbar Toggle
 =========================== */

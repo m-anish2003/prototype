@@ -1,3 +1,5 @@
+<!-- This is the Projects Page-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +12,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
     <!-- Font Awesome icons library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
+<!-- Body Section -->
 <body>
 
     <!-- Header with logo and navigation menu -->
@@ -66,10 +71,13 @@
 
     <!-- Main content -->
     <main>
+        <!-- Projects Section -->
         <section class="projects-section">
             <div class="container">
+                <!-- Page Title -->
                 <h1 class="page-title">Research Projects</h1>
                 
+                <!-- Filter Buttons -->
                 <div class="filter-btn-group">
                     <button class="filter-btn active" data-filter="all">All Projects</button>
                     <button class="filter-btn" data-filter="ongoing">
@@ -89,54 +97,63 @@
                     </button>
                 </div>
 
+                <!-- Search Input -->
                 <div class="search-container">
                     <input type="text" id="project-search" placeholder="Search projects by title, description, or tags..." class="search-input">
                     <i class="fas fa-search search-icon"></i>
                 </div>
         
+                <!-- Projects Grid -->
                 <div class="projects-grid">
+                    <!-- Loop through each project -->
                     {% for project in projects %}
                     <div class="project-card" 
-                         data-status="{{ project.status }}"
-                         data-type="{% if project.patent %}patent {% endif %}{% if project.sponsored %}sponsored {% endif %}{% if project.supervised %}supervised{% endif %}">
+                        data-status="{{ project.status }}"
+                        data-type="{% if project.patent %}patent {% endif %}{% if project.sponsored %}sponsored {% endif %}{% if project.supervised %}supervised{% endif %}">
                         
-                        <!-- Patent/Sponsored/Supervised Badge -->
+                        <!-- Badge for Patent -->
                         {% if project.patent %}
                         <div class="project-badge badge-patent">
                             <i class="fas fa-certificate"></i> Patent Filed
                         </div>
                         {% endif %}
                         
+                        <!-- Badge for Sponsored -->
                         {% if project.sponsored %}
                         <div class="project-badge badge-sponsored">
                             <i class="fas fa-handshake"></i> {{ project.sponsored_by }}
                         </div>
                         {% endif %}
 
+                        <!-- Badge for Supervised -->
                         {% if project.supervised %}
                         <div class="project-badge badge-supervised">
                             <i class="fas fa-chalkboard-teacher"></i> Supervised
                         </div>
                         {% endif %}
 
-                        
-                        <!-- Project Image -->
+                        <!-- Project Image (background style) -->
                         <div class="project-image" 
                             style="background-image: url('{{ url_for('static', filename='images/projects/' + project.image) }}')">
                             <div class="project-status">{{ project.status|capitalize }}</div>
                         </div>                    
 
-                        <!-- Project Content -->
+                        <!-- Project Details -->
                         <div class="project-content">
+                            <!-- Title -->
                             <h2>{{ project.title }}</h2>
                             
+                            <!-- Meta Info: year, funding, team size -->
                             <div class="project-meta">
                                 <span><i class="fas fa-calendar-alt"></i> {{ project.year }}</span>
                                 <span><i class="fas fa-dollar-sign"></i> {{ project.funding }}</span>
                                 <span><i class="fas fa-users"></i> {{ project.team|length }} members</span>
                             </div>
                             
+                            <!-- Description -->
                             <p>{{ project.description }}</p>
+
+                            <!-- Documents: links to reports, etc. -->
                             <div class="project-documents">
                                 {% for doc in project.documents %}
                                 <a href="{{ doc.url }}" class="document-link" target="_blank">
@@ -145,6 +162,7 @@
                                 {% endfor %}
                             </div>
                             
+                            <!-- Tags -->
                             <div class="project-tags">
                                 {% for tag in project.tags %}
                                 <span class="project-tag">{{ tag }}</span>
@@ -157,6 +175,7 @@
             </div>
         </section>
     </main>
+
 
     <!-- ================= Footer Section ================= -->
     <footer>

@@ -1,3 +1,5 @@
+// contact.js => Handles the contact page, including the map
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize the map
     initMap();

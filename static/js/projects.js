@@ -1,4 +1,5 @@
-// Enhanced Project Filtering with Search
+// projects.js => Handles enhanced project filtering with search
+
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('project-search');

@@ -1,4 +1,6 @@
-// Mobile Screen Optimization of the menu 
+// about_me.js => Handles the about me page logic 
+
+// Mobile Screen Optimization of the nav bar
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');

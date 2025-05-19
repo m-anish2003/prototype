@@ -1,28 +1,35 @@
+<!-- This is the Seperate Page for Professor (About Me Page)-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ranjeet Kumar Rout</title>
+    <!-- Meta tags for character encoding and viewport configuration -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ranjeet Kumar Rout</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Internal CSS Files -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/about_me.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <!-- Internal CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about_me.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
+<!-- Body Section -->
 <body>
+    <!-- Header Secction -->
     <header class="site-header">
         <div class="header-container">
+            <!-- Hyperlink to about me page -->
             <a href="{{ url_for('about_me') }}" class="site-title">Dr. Ranjeet Kumar Rout</a>
             <button class="mobile-menu-toggle" aria-label="Menu">
                 <i class="fas fa-bars"></i>
             </button>
+            <!-- Nav Bar -->
             <nav class="main-nav">
                 <ul>
                     <li><a href="#biography">Biography</a></li>
@@ -48,6 +55,7 @@
                 <p class="profile-title">Associate Professor, Information Technology</p>
                 <p class="profile-institute">Dr. B. R. Ambedkar National Institute of Technology, Jalandhar</p>
                 
+                <!-- Social Media Links -->
                 <div class="social-links">
                     <a href="mailto:routrk@nitj.ac.in" class="social-link"><i class="fas fa-envelope"></i></a>
                     <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>

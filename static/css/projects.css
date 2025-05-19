@@ -1,100 +1,113 @@
-/* ===== Enhanced Filter Buttons ===== */
+/*projects.css : Projects Page Styles */
+
+/* ============================================
+   FILTER BUTTONS
+   Stylish filter buttons with hover effects
+   ============================================ */
 .filter-btn-group {
-    display: flex; /* Align buttons in a row */
-    gap: 12px; /* Space between buttons */
-    margin: 30px 0; /* Vertical margin */
-    flex-wrap: wrap; /* Allow buttons to wrap */
+    display: flex;
+    gap: 12px;
+    margin: 30px 0;
+    flex-wrap: wrap;
 }
 
 .filter-btn {
-    padding: 10px 24px; /* Padding inside buttons */
-    border: none; /* No border */
-    border-radius: 30px; /* Rounded corners */
-    font-weight: 600; /* Bold text */
-    font-size: 0.9rem; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: all 0.3s ease; /* Smooth transition */
-    position: relative; /* Position for pseudo-elements */
-    overflow: hidden; /* Hide overflow */
-    z-index: 1; /* Layer above other elements */
-    background: #f0f0f0; /* Light background */
-    color: var(--oxford-blue); /* Text color */
+    padding: 10px 24px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: #f0f0f0;
+    color: var(--oxford-blue);
 }
 
 .filter-btn::before {
-    content: ''; /* Empty content for pseudo-element */
-    position: absolute; /* Position at the top-left */
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
-    width: 0%; /* Start with 0% width */
-    height: 100%; /* Full height */
-    background: linear-gradient(90deg, var(--oxford-blue), var(--imperial-red)); /* Gradient background */
-    transition: width 0.3s ease; /* Animate width */
-    z-index: -1; /* Layer below button */
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--oxford-blue), var(--imperial-red));
+    transition: width 0.3s ease;
+    z-index: -1;
 }
 
 .filter-btn:hover::before {
-    width: 100%; /* Expand gradient on hover */
+    width: 100%;
 }
 
 .filter-btn:hover {
-    color: white; /* Change text color on hover */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Shadow on hover */
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .filter-btn.active {
-    background: linear-gradient(90deg, var(--oxford-blue), var(--imperial-red)); /* Gradient background for active state */
-    color: white; /* White text */
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2); /* Stronger shadow */
+    background: linear-gradient(90deg, var(--oxford-blue), var(--imperial-red));
+    color: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 
-/* ===== Premium Project Cards ===== */
+
+/* ============================================
+   PROJECT CARD GRID
+   Responsive card layout with hover animation
+   ============================================ */
 .projects-grid {
-    display: grid; /* Grid layout */
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Responsive columns */
-    gap: 30px; /* Space between cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
 }
 
 .project-card {
-    background: white; /* White background */
-    border-radius: 12px; /* Rounded corners */
-    overflow: hidden; /* Hide overflow */
-    box-shadow: 0 8px 30px rgba(0,0,0,0.08); /* Soft shadow */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth transition */
-    position: relative; /* Position for badge and hover effects */
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
 }
 
 .project-card:hover {
-    transform: translateY(-8px); /* Lift the card on hover */
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15); /* Deeper shadow on hover */
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
 }
 
+
+/* ============================================
+   PROJECT BADGES
+   Color-coded tags like 'patent', 'sponsored'
+   ============================================ */
 .project-badge {
-    position: absolute; /* Position at the top-right */
+    position: absolute;
     top: 20px;
     right: 20px;
-    padding: 6px 12px; /* Padding inside badge */
-    border-radius: 20px; /* Rounded corners */
-    font-weight: 600; /* Bold text */
-    font-size: 0.75rem; /* Smaller font size */
-    text-transform: uppercase; /* Uppercase text */
-    letter-spacing: 0.5px; /* Letter spacing */
-    z-index: 2; /* Layer above card */
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
 }
 
 .badge-patent {
-    background: var(--gold-leaf); /* Patent badge background */
-    color: var(--oxford-blue); /* Text color */
+    background: var(--gold-leaf);
+    color: var(--oxford-blue);
 }
 
 .badge-sponsored {
-    background: var(--imperial-red); /* Sponsored badge background */
-    color: white; /* Text color */
+    background: var(--imperial-red);
+    color: white;
 }
 
-/* Supervised badge styling */
 .badge-supervised {
-    background-color: #4b7bec; 
+    background-color: #4b7bec;
     color: #fff;
     padding: 5px 10px;
     border-radius: 20px;
@@ -106,98 +119,119 @@
 }
 
 
+/* ============================================
+   PROJECT IMAGE SECTION
+   Background cover with gradient overlay
+   ============================================ */
 .project-image {
-    height: 220px; /* Fixed height for image */
-    background-size: cover; /* Cover image within container */
-    background-position: center; /* Center the image */
-    position: relative; /* Position for overlay */
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
 .project-image::after {
-    content: ""; /* Empty content for overlay */
-    position: absolute; /* Full size overlay */
+    content: "";
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(0,33,71,0.1), rgba(0,33,71,0.8)); /* Gradient overlay */
+    background: linear-gradient(to bottom, rgba(0,33,71,0.1), rgba(0,33,71,0.8));
 }
 
+
+/* ============================================
+   PROJECT CONTENT SECTION
+   Title, meta info, and tags
+   ============================================ */
 .project-content {
-    padding: 25px; /* Padding inside the project card */
+    padding: 25px;
 }
 
 .project-meta {
-    display: flex; /* Flex container for meta information */
-    gap: 15px; /* Space between meta items */
-    margin: 15px 0; /* Vertical margin */
-    font-size: 0.9rem; /* Font size */
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+    font-size: 0.9rem;
 }
 
 .project-meta span {
-    display: flex; /* Flex for icon and text */
-    align-items: center; /* Align items center */
-    gap: 5px; /* Space between icon and text */
-    color: var(--slate-gray); /* Text color */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--slate-gray);
 }
 
 .project-meta i {
-    font-size: 1.1rem; /* Larger icons */
-    color: var(--gold-leaf); /* Icon color */
+    font-size: 1.1rem;
+    color: var(--gold-leaf);
 }
 
 .project-tags {
-    display: flex; /* Flex for tags */
-    flex-wrap: wrap; /* Wrap tags */
-    gap: 8px; /* Space between tags */
-    margin-top: 20px; /* Margin on top */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
 }
 
 .project-tag {
-    padding: 4px 12px; /* Padding inside tags */
-    background: #f0f2f5; /* Light background */
-    border-radius: 20px; /* Rounded corners */
-    font-size: 0.8rem; /* Font size */
-    color: var(--oxford-blue); /* Text color */
+    padding: 4px 12px;
+    background: #f0f2f5;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--oxford-blue);
 }
 
-/* Document Links Styling */
+
+/* ============================================
+   DOCUMENT LINKS
+   Clickable icons for project files
+   ============================================ */
 .project-documents {
-    margin: 15px 0; /* Vertical margin */
-    display: flex; /* Flex for document links */
-    flex-wrap: wrap; /* Wrap links */
-    gap: 10px; /* Space between links */
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .document-link {
-    display: inline-flex; /* Inline flex for icon and text */
-    align-items: center; /* Center items */
-    gap: 8px; /* Space between icon and text */
-    padding: 8px 15px; /* Padding inside the link */
-    background-color: #f8f9fa; /* Light background */
-    border-radius: 6px; /* Rounded corners */
-    color: var(--oxford-blue); /* Text color */
-    text-decoration: none; /* Remove underline */
-    font-size: 0.85rem; /* Font size */
-    transition: all 0.3s; /* Smooth transition */
-    border: 1px solid #e0e0e0; /* Border around link */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    color: var(--oxford-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    border: 1px solid #e0e0e0;
 }
 
 .document-link:hover {
-    background-color: var(--oxford-blue); /* Change background on hover */
-    color: white; /* Change text color on hover */
-    transform: translateY(-2px); /* Lift link on hover */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Shadow on hover */
+    background-color: var(--oxford-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Document Type Colors */
-.fa-file-pdf { color: #e63946; } /* PDF icon color */
-.fa-file-word { color: #2b579a; } /* Word icon color */
-.fa-file-contract { color: var(--gold-leaf); } /* Contract icon color */
-.fa-file-powerpoint { color: #d24726; } /* PowerPoint icon color */
-.fa-file-excel { color: #217346; } /* Excel icon color */
 
-/* ===== Search Bar Styles ===== */
+/* ============================================
+   FILE TYPE ICON COLORS
+   Font Awesome colors for different file types
+   ============================================ */
+.fa-file-pdf { color: #e63946; }
+.fa-file-word { color: #2b579a; }
+.fa-file-contract { color: var(--gold-leaf); }
+.fa-file-powerpoint { color: #d24726; }
+.fa-file-excel { color: #217346; }
+
+
+/* ============================================
+   SEARCH BAR
+   Sleek search input with icon
+   ============================================ */
 .search-container {
     position: relative;
     margin: 20px 0 30px;

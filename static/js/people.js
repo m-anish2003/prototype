@@ -1,3 +1,5 @@
+// people.js => Handles the search bar
+
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('people-search');
     const filterButtons = document.querySelectorAll('.filter-btn');

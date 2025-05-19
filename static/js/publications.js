@@ -1,3 +1,5 @@
+// publications.js => Handles all the filters, search bar and chart related functions.
+
 document.addEventListener('DOMContentLoaded', function () {
     // DOM Elements
     const buttons = document.querySelectorAll('.pub-type-btn');

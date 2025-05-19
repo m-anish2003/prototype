@@ -1,3 +1,5 @@
+// responsibilities.js => This handles the search bar
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Responsibilities page loaded');
     
