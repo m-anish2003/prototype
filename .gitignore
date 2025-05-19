@@ -17,6 +17,6 @@ venv/
 # TODO 
 TODO.txt
 
-#
+# Cache Files
 __pycache__
 utils/__pycache__

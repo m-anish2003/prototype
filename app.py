@@ -1,3 +1,8 @@
+'''
+This the app.py file, all the routing related code is present here.
+'''
+
+# Imports
 from flask import Flask, render_template, send_from_directory, current_app, jsonify, request
 import subprocess
 import os
@@ -13,6 +18,7 @@ def home():
     This route handles the home page ('/') of the web application.
     It renders the 'index.html' template and passes an additional
     variable 'active_page' to mark the home link as active in the navbar.
+    Similar pattern is followed throughout the file.
     """
     return render_template("index.html", active_page='home')
 
@@ -47,8 +53,12 @@ def projects():
                          projects=projects_data, 
                          active_page='projects')
 
+# Protected Route
 @app.route('/protected/<path:filename>')
 def protected_files(filename):
+    '''
+    This route loads the files from the docs.
+    '''
     return send_from_directory(
         'secure_docs',  
         filename,
@@ -59,6 +69,9 @@ def protected_files(filename):
 # Publications
 @app.route('/publications')
 def publications():
+    '''
+    This route handles the publications page.
+    '''
     # Load all publication data
     data = load_publications()
     
@@ -90,7 +103,6 @@ def publications():
 def books():
     """
     This route handles the books page by loading data from JSON.
-    Uses consistent error handling pattern.
     """
     try:
         # Path to your JSON file
@@ -122,7 +134,6 @@ def books():
 def news():
     """
     This route handles the news page by loading data from JSON files.
-    Uses consistent error handling pattern for both news and announcements.
     """
     # Initialize default empty data
     news_items = []
@@ -193,7 +204,6 @@ def responsibilities():
 def people():
     """
     This route handles the people page by loading data from JSON.
-    Uses consistent error handling pattern.
     """
     try:
         # Path to your JSON file
@@ -256,8 +266,12 @@ def talks_delivered():
         )
 
 
+# Refresh Publications
 @app.route('/refresh_publications', methods=['POST'])
 def refresh_publications():
+    '''
+    This route will refresh the data in scholar.json
+    '''
     try:
         # Run the scraper script
         result = subprocess.run(['python', 'scraper.py'], capture_output=True, text=True)
@@ -285,7 +299,6 @@ def gallery():
 def seminar_workshop():
     """
     This route handles the seminar/workshop page by loading data from JSON.
-    Uses consistent error handling with talks_delivered route.
     """
     try:
         # Path to your JSON file
@@ -315,10 +328,16 @@ def seminar_workshop():
 # Contact route
 @app.route('/contact')
 def contact():
+    '''
+    This is the contact page
+    '''
     return render_template('contact.html', active_page='contact')
 
 @app.route('/submit_contact_form', methods=['POST'])
 def handle_form_submission():
+    '''
+    This route handles the contact form submission.
+    '''
     try:
         data = request.get_json()
         
@@ -331,7 +350,7 @@ def handle_form_submission():
                     "message": f"Missing required field: {field}"
                 }), 400
         
-        # Here you would typically:
+        # TODO
         # 1. Validate email format
         # 2. Sanitize inputs
         # 3. Send email or store in database
@@ -367,6 +386,9 @@ def about_me():
 # Appointment
 @app.route('/appointment')
 def appointment():
+    '''
+    This page acts as an appointment form
+    '''
     return render_template('appointment_form.html')
 
 

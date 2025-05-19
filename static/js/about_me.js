@@ -1,3 +1,4 @@
+// Mobile Screen Optimization of the menu 
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');

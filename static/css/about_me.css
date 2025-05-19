@@ -1,4 +1,40 @@
-/* ===== Header Styles ===== */
+/* ============================================================
+   ========== CSS STYLESHEET FOR ABOUT ME / PROFILE PAGE ==========
+   ============================================================ */
+
+/* ========== Base Variables ========== */
+:root {
+    --primary-color: #003366;
+    --secondary-color: #0056b3;
+    --accent-color: #ffcc00;
+    --text-color: #333;
+    --light-gray: #f7f9fc;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #555;
+    --white: #ffffff;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+/* ========== Global Reset ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-gray);
+}
+
+/* ============================================================
+   ========== HEADER SECTION ==========
+   ============================================================ */
+
+/* Sticky site header with background and shadow */
 .site-header {
     background-color: #003366;
     color: white;
@@ -10,6 +46,7 @@
     position: relative;
 }
 
+/* Header content layout */
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -19,6 +56,7 @@
     align-items: center;
 }
 
+/* Site title styling */
 .site-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -31,6 +69,7 @@
     color: #ffcc00;
 }
 
+/* Navigation menu */
 .main-nav ul {
     display: flex;
     list-style: none;
@@ -52,6 +91,7 @@
     color: #ffcc00;
 }
 
+/* Underline effect on nav link hover */
 .main-nav a::after {
     content: '';
     position: absolute;
@@ -67,6 +107,7 @@
     width: 100%;
 }
 
+/* Hamburger button for mobile nav */
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -76,69 +117,21 @@
     cursor: pointer;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
+/* ============================================================
+   ========== MAIN PAGE LAYOUT ==========
+   ============================================================ */
 
-    .main-nav {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: #003366;
-        padding: 1rem 0;
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
-    }
-
-    .main-nav.active {
-        transform: translateY(0);
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-}
-
-/* ========== Base Styles ========== */
-:root {
-    --primary-color: #003366;
-    --secondary-color: #0056b3;
-    --accent-color: #ffcc00;
-    --text-color: #333;
-    --light-gray: #f7f9fc;
-    --medium-gray: #e0e0e0;
-    --dark-gray: #555;
-    --white: #ffffff;
-    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    --border-radius: 8px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--light-gray);
-}
-
-/* ========== Main Container ========== */
+/* Main container */
 .about-me-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* ========== Profile Section ========== */
+/* ============================================================
+   ========== PROFILE SECTION ==========
+   ============================================================ */
+
 .profile-section {
     display: flex;
     flex-wrap: wrap;
@@ -209,7 +202,10 @@ body {
     transform: translateY(-3px);
 }
 
-/* ========== Content Sections ========== */
+/* ============================================================
+   ========== CONTENT SECTIONS ==========
+   ============================================================ */
+
 .content-section {
     background-color: var(--white);
     margin-bottom: 30px;
@@ -241,7 +237,10 @@ body {
     margin-bottom: 15px;
 }
 
-/* ========== Timeline ========== */
+/* ============================================================
+   ========== TIMELINE ==========
+   ============================================================ */
+
 .timeline {
     position: relative;
     padding-left: 30px;
@@ -295,7 +294,10 @@ body {
     font-size: 0.95rem;
 }
 
-/* ========== Membership Cards ========== */
+/* ============================================================
+   ========== MEMBERSHIP CARDS ==========
+   ============================================================ */
+
 .membership-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -330,7 +332,10 @@ body {
     font-size: 0.9rem;
 }
 
-/* ========== CV Download ========== */
+/* ============================================================
+   ========== CV DOWNLOAD BUTTON ==========
+   ============================================================ */
+
 .cv-download {
     display: flex;
     align-items: center;
@@ -364,42 +369,70 @@ body {
     margin-left: 5px;
 }
 
-/* ========== Responsive Design ========== */
+/* ============================================================
+   ========== RESPONSIVE STYLES ==========
+   ============================================================ */
+
 @media (max-width: 992px) {
     .profile-section {
         gap: 30px;
     }
-    
+
     .profile-image-container {
         flex: 0 0 200px;
     }
 }
 
 @media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #003366;
+        padding: 1rem 0;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+    }
+
+    .main-nav.active {
+        transform: translateY(0);
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
     .about-me-container {
         padding: 15px;
     }
-    
+
     .profile-section {
         flex-direction: column;
         text-align: center;
         padding: 20px;
     }
-    
+
     .profile-image-container {
         flex: 0 0 auto;
         max-width: 200px;
         margin-bottom: 20px;
     }
-    
+
     .social-links {
         justify-content: center;
     }
-    
+
     .content-section {
         padding: 20px;
     }
-    
+
     .section-title {
         font-size: 1.3rem;
     }
@@ -409,25 +442,47 @@ body {
     .profile-content h1 {
         font-size: 1.7rem;
     }
-    
+
     .profile-title {
         font-size: 1.1rem;
     }
-    
+
     .content-section {
         padding: 15px;
     }
-    
+
     .timeline-content {
         padding-left: 20px;
     }
-    
+
     .cv-download {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .membership-cards {
         grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        padding-left: 40px;
+    }
+
+    .timeline-date {
+        left: -40px;
+        width: 70px;
+        top: -5px;
+        font-size: 0.7rem;
+        padding: 3px 5px;
+    }
+
+    .timeline-content {
+        padding-left: 20px;
+        padding-top: 25px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1rem;
+        margin-bottom: 3px;
     }
 }

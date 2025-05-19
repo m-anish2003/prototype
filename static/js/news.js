@@ -22,79 +22,75 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Read More/Less functionality
+    // Enhanced Read More/Less functionality
     document.querySelectorAll('.read-more').forEach(button => {
         button.addEventListener('click', function() {
             const card = this.closest('.news-card');
-            const excerpt = card.querySelector('.news-excerpt');
-            const fullText = card.querySelector('.news-full-text');
-            const icon = this.querySelector('i');
+            card.classList.toggle('expanded');
             
-            if (excerpt.style.display === 'none') {
-                excerpt.style.display = 'block';
-                fullText.style.display = 'none';
-                this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-            } else {
-                excerpt.style.display = 'none';
-                fullText.style.display = 'block';
+            // Update button text and icon
+            if (card.classList.contains('expanded')) {
                 this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+            } else {
+                this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
             }
+            
+            // Update swiper layout
+            newsSwiper.update();
         });
     });
 
-    // Search functionality
+    // Enhanced Search functionality
     const newsSearch = document.getElementById('newsSearch');
     if (newsSearch) {
-        const newsSlides = document.querySelectorAll('.swiper-slide');
-        const noResultsMessage = document.createElement('div');
-        noResultsMessage.className = 'no-results-message';
-        noResultsMessage.innerHTML = `
-            <i class="fas fa-newspaper"></i>
-            <h3>No news found matching your search</h3>
-            <p>Try different keywords or check back later for updates</p>
-        `;
+        const allNewsCards = document.querySelectorAll('.swiper-slide');
+        const announcements = document.querySelectorAll('.announcement-card');
+        const noResultsTemplate = document.getElementById('noResultsTemplate');
+        const noResultsMessage = noResultsTemplate.cloneNode(true);
+        noResultsMessage.id = '';
         noResultsMessage.style.display = 'none';
-        document.querySelector('.news-swiper').parentNode.appendChild(noResultsMessage);
+        document.querySelector('.news-swiper').parentNode.insertBefore(noResultsMessage, document.querySelector('.announcements-section'));
 
         newsSearch.addEventListener('input', function() {
             const searchTerm = this.value.trim().toLowerCase();
             let hasResults = false;
+            let newsHasResults = false;
 
-            newsSlides.forEach(slide => {
-                const title = slide.querySelector('h3').textContent.toLowerCase();
-                const excerpt = slide.querySelector('.news-excerpt').textContent.toLowerCase();
-                const fullText = slide.querySelector('.news-full-text').textContent.toLowerCase();
-                const combinedContent = title + ' ' + excerpt + ' ' + fullText;
+            // Search through news cards
+            allNewsCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const excerpt = card.querySelector('.news-excerpt').textContent.toLowerCase();
+                const fullText = card.querySelector('.news-full-text').textContent.toLowerCase();
+                const date = card.querySelector('.news-date-badge').textContent.toLowerCase();
+                
+                const matches = title.includes(searchTerm) || 
+                              excerpt.includes(searchTerm) || 
+                              fullText.includes(searchTerm) ||
+                              date.includes(searchTerm);
 
-                if (searchTerm === '' || combinedContent.includes(searchTerm)) {
-                    slide.style.display = '';
-                    hasResults = true;
-                    
-                    // Highlight matching text
-                    const highlight = (element) => {
-                        element.innerHTML = element.textContent.replace(
-                            new RegExp(searchTerm, 'gi'),
-                            match => `<span class="highlight-text">${match}</span>`
-                        );
-                    };
-
-                    if (searchTerm !== '') {
-                        highlight(slide.querySelector('h3'));
-                        highlight(slide.querySelector('.news-excerpt'));
-                        highlight(slide.querySelector('.news-full-text'));
-                        slide.classList.add('highlight');
-                    } else {
-                        slide.querySelector('h3').innerHTML = slide.querySelector('h3').textContent;
-                        slide.querySelector('.news-excerpt').innerHTML = slide.querySelector('.news-excerpt').textContent;
-                        slide.querySelector('.news-full-text').innerHTML = slide.querySelector('.news-full-text').textContent;
-                        slide.classList.remove('highlight');
-                    }
-                } else {
-                    slide.style.display = 'none';
-                }
+                card.style.display = matches ? '' : 'none';
+                if (matches) newsHasResults = true;
             });
 
+            // Search through announcements
+            let announcementsHasResults = false;
+            announcements.forEach(announcement => {
+                const text = announcement.querySelector('.announcement-text').textContent.toLowerCase();
+                const matches = text.includes(searchTerm);
+                
+                announcement.style.display = matches ? '' : 'none';
+                if (matches) announcementsHasResults = true;
+            });
+
+            // Show/hide sections based on results
+            document.querySelector('.news-swiper').style.display = newsHasResults ? '' : 'none';
+            document.querySelector('.announcements-section').style.display = announcementsHasResults ? '' : 'none';
+            
+            // Show no results message if nothing matches
+            hasResults = newsHasResults || announcementsHasResults;
             noResultsMessage.style.display = hasResults ? 'none' : 'block';
+            
+            // Update swiper after search
             newsSwiper.update();
         });
     }

@@ -1,6 +1,9 @@
 /* talks.css - Talks Delivered Page Styles */
 
-/* Basic body styles for font and background */
+/* 
+ * GLOBAL STYLES
+ * Base styles for the entire page including font and background
+ */
 body {
     font-family: 'Segoe UI', sans-serif;
     background: #f4f7fa;
@@ -8,68 +11,87 @@ body {
     padding: 0;
 }
 
-/* Container that holds the entire content */
+/* 
+ * LAYOUT CONTAINER
+ * Main container for content with centered positioning and visual styling
+ */
 .container {
-    max-width: 960px; /* Max width for readability */
-    margin: 40px auto; /* Centered with vertical spacing */
-    background: white; /* Clean white background */
+    max-width: 960px;
+    margin: 40px auto;
+    background: white;
     padding: 30px;
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for elevation */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Main heading of the page */
+/* 
+ * PAGE HEADING
+ * Styling for the main page heading
+ */
 h1 {
     text-align: center;
     margin-bottom: 30px;
-    color: #2c3e50; /* Dark bluish color for contrast */
+    color: #2c3e50;
 }
 
-/* Search input styling */
+/* 
+ * SEARCH COMPONENT
+ * Styling for the search input field
+ */
 #searchInput {
     width: 100%;
     padding: 12px;
     margin-bottom: 25px;
     font-size: 16px;
     border: 2px solid #ccc;
-    border-radius: 8px; /* Smooth rounded corners */
+    border-radius: 8px;
 }
 
-/* Year section headings */
+/* 
+ * YEAR SECTIONS
+ * Styling for year grouping headings
+ */
 .year-heading {
     margin-top: 30px;
     font-size: 1.6rem;
-    color: #3498db; /* Blue to highlight year sections */
+    color: #3498db;
 }
 
-/* Remove bullets and padding for talk list */
+/* 
+ * TALKS LIST
+ * Styling for the unordered list of talks
+ */
 .talks-list {
     list-style: none;
     padding: 0;
 }
 
-/* Individual talk entry container */
+/* 
+ * TALK ENTRY
+ * Individual talk item styling including hover effects
+ */
 .talk-entry {
-    background: #f0f5f9; /* Light background for entries */
+    background: #f0f5f9;
     padding: 15px;
     margin-bottom: 12px;
-    border-left: 5px solid #2980b9; /* Highlighted blue line on the left */
+    border-left: 5px solid #2980b9;
     border-radius: 8px;
-    transition: background 0.3s ease; /* Smooth hover transition */
+    transition: background 0.3s ease;
 }
 
-/* Hover effect for talk entries */
 .talk-entry:hover {
-    background: #e1ebf4; /* Slightly darker on hover */
+    background: #e1ebf4;
 }
 
-/* Talk title styling */
+/* 
+ * TALK DETAILS
+ * Typography styles for talk title and metadata
+ */
 .talk-entry strong {
     font-size: 1.1rem;
 }
 
-/* Talk event and location styling */
 .talk-entry em, .talk-entry .location {
-    color: #555; /* Muted gray for secondary text */
-    display: block; /* Ensure each is on a new line */
+    color: #555;
+    display: block;
 }

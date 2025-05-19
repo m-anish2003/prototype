@@ -350,7 +350,6 @@
         display: none;
     }
     
-    /* Optional: Make the dots more visible since arrows are hidden */
     .slider-dots {
         background: rgba(0,0,0,0.4);
         padding-bottom: 15px;

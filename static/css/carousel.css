@@ -1,6 +1,6 @@
-/* =======================
-   Carousel Content Styling
-======================= */
+/* ================================ */
+/* === Carousel Content Styling === */
+/* ================================ */
 .carousel-heading {
     font-family: 'Caveat', serif;
     font-size: 1.6rem;
@@ -17,9 +17,9 @@
     text-align: center;
 }
 
-/* =======================
-   Carousel Section Layout
-======================= */
+/* ================================ */
+/* === Carousel Section Layout === */
+/* ================================ */
 .carousel-section {
     display: flex;
     flex-direction: column;
@@ -29,9 +29,9 @@
     gap: 30px;
 }
 
-/* =======================
-   Carousel Container Styling
-======================= */
+/* ====================================== */
+/* === Carousel Container Styling === */
+/* ====================================== */
 .carousel-container {
     position: relative;
     width: 800px;
@@ -47,9 +47,9 @@
     position: relative;
 }
 
-/* =======================
-   Carousel Images
-======================= */
+/* ============================ */
+/* === Carousel Images === */
+/* ============================ */
 .carousel-image {
     width: 100%;
     height: 100%;
@@ -64,9 +64,9 @@
     display: block;
 }
 
-/* =======================
-   Navigation Buttons
-======================= */
+/* ================================= */
+/* === Navigation Buttons === */
+/* ================================= */
 .prev,
 .next {
     position: absolute;
@@ -90,10 +90,9 @@
     right: 10px;
 }
 
-
-/* =======================
-   Carousel Dots
-======================= */
+/* ============================== */
+/* === Carousel Dots === */
+/* ============================== */
 .carousel-dots {
     text-align: center;
     margin-top: 12px;
@@ -114,10 +113,9 @@
     background-color: #333;
 }
 
-
-/* =======================
-   Carousel Text Section
-======================= */
+/* ==================================== */
+/* === Carousel Text Section === */
+/* ==================================== */
 .carousel-text {
     text-align: center;
     max-width: 700px;
@@ -133,10 +131,9 @@
     line-height: 1.6;
 }
 
-
-/* =======================
-   Responsive Styles
-======================= */
+/* ============================= */
+/* === Responsive Styles === */
+/* ============================= */
 @media (max-width: 768px) {
     .intro-section {
         flex-direction: column;

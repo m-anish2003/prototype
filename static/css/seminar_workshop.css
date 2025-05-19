@@ -1,6 +1,7 @@
-/* ===============================
-   Base Styles
-================================= */
+/* ===========================================
+   GLOBAL STYLES
+   Base styles for typography and page layout
+============================================ */
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   background: #f8fafc;
@@ -9,7 +10,10 @@ body {
   color: #334155;
 }
 
-/* Main container with proper centering */
+/* ===========================================
+   LAYOUT CONTAINER
+   Main content container with responsive padding
+============================================ */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -18,9 +22,10 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* ===============================
-   Heading with Proper Centering
-================================= */
+/* ===========================================
+   TYPOGRAPHY
+   Heading styles and text hierarchy
+============================================ */
 .page-title {
   text-align: center;
   margin: 0 auto 2rem;
@@ -32,16 +37,16 @@ body {
   border-bottom: 2px solid #e2e8f0;
 }
 
-/* ===============================
-   Search and Filter Container
-================================= */
 .section-heading {
   text-align: center;
-  margin-top: 30px; /* Optional: adds spacing */
-  font-size: 2rem;   /* Optional: adjusts size */
+  margin-top: 30px;
+  font-size: 2rem;
 }
 
-
+/* ===========================================
+   SEARCH COMPONENTS
+   Search bar with icon and focus states
+============================================ */
 .search-filter-container {
   display: flex;
   flex-direction: column;
@@ -50,7 +55,6 @@ body {
   align-items: center;
 }
 
-/* Search Bar with Clear Styling */
 .search-bar {
   width: 100%;
   max-width: 600px;
@@ -74,9 +78,10 @@ body {
   box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
 }
 
-/* ===============================
-   Filter Buttons - Responsive Grid
-================================= */
+/* ===========================================
+   FILTER COMPONENTS
+   Interactive filter buttons grid
+============================================ */
 .filter-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -111,9 +116,10 @@ body {
   box-shadow: 0 2px 5px rgba(37, 99, 235, 0.2);
 }
 
-/* ===============================
-   Seminar/Workshop Entries with Clear Hierarchy
-================================= */
+/* ===========================================
+   CONTENT ENTRIES
+   Seminar/workshop entry cards styling
+============================================ */
 .entries-list {
   list-style: none;
   padding: 0;
@@ -135,7 +141,6 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Entry Title - Clear Hierarchy */
 .entry-title {
   color: #1e293b;
   font-size: 1.3rem;
@@ -144,7 +149,6 @@ body {
   line-height: 1.4;
 }
 
-/* Entry Meta Information */
 .entry-meta {
   display: flex;
   flex-wrap: wrap;
@@ -166,14 +170,12 @@ body {
   fill: #94a3b8;
 }
 
-/* Entry Description */
 .entry-description {
   color: #475569;
   margin: 1rem 0 0;
   line-height: 1.6;
 }
 
-/* Entry Tags */
 .entry-tags {
   display: flex;
   flex-wrap: wrap;
@@ -190,9 +192,35 @@ body {
   font-weight: 500;
 }
 
-/* ===============================
-   Responsive Adjustments
-================================= */
+/* ===========================================
+   ENHANCEMENTS
+   Special styling for specific elements
+============================================ */
+.entry-date {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.entry-location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.entry-presenter {
+  font-weight: 500;
+  color: #334155;
+}
+
+.tag.category {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* ===========================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile-specific style overrides
+============================================ */
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;
@@ -213,7 +241,7 @@ body {
 
 @media (max-width: 480px) {
   body {
-    padding: 10px;
+    padding: 0;
   }
   
   .container {
@@ -237,32 +265,4 @@ body {
   .entry-title {
     font-size: 1.2rem;
   }
-}
-
-/* ===============================
-   Visual Enhancements
-================================= */
-/* Date with accent color */
-.entry-date {
-  color: #2563eb;
-  font-weight: 500;
-}
-
-/* Location with icon */
-.entry-location {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-/* Presenter/speaker highlight */
-.entry-presenter {
-  font-weight: 500;
-  color: #334155;
-}
-
-/* Category tag with different color */
-.tag.category {
-  background: #dbeafe;
-  color: #1e40af;
 }
